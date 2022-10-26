@@ -1,5 +1,3 @@
-package main;
-
 /*
  * Main entry point into the program.
 */
