@@ -1,6 +1,6 @@
-package UI;
+package ui;
 
 public class MainController {
 
-    public void display 
+    public void display();
 }
