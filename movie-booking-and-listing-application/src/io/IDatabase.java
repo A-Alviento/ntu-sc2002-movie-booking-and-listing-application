@@ -1,6 +1,6 @@
 package io;
 
-import model.Serializable;
+import java.io.Serializable;
 
 /*
  * Interface for database. The data base source can be a text file, binary file

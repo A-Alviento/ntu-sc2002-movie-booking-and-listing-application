@@ -3,24 +3,15 @@ package io;
 import java.util.Scanner;
 import java.io.File;
 import java.io.PrintWriter;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-import model.Serializable;
-
 /*
- * The database source is a text file on the local computer. This won't attempt
- * to optimize opening/closing - will read/write everything from/to the source
- * file. Will be inefficient for large source files.
+ * For text based database files on local storage.
  */
-public abstract class TextDatabase<S extends Serializable> implements IDatabase<S>{
-    private String textFilePath;
-    private boolean isOpened = false;
-    private ISerializer<String, S> serializer;
-    private ArrayList<S> database;
-
-    public TextDatabase(String textFilePath, ISerializer<String, S> serializer) {
-        this.textFilePath = textFilePath;
-        this.serializer = serializer;
+public abstract class TextLocalDatabase<S extends Serializable> extends LocalDatabase<String, S>{
+    public TextLocalDatabase(String filePath, ISerializer<String, S> serializer) {
+        super(filePath, serializer);
     }
 
     /*
@@ -31,9 +22,9 @@ public abstract class TextDatabase<S extends Serializable> implements IDatabase<
         if (isOpened) {return;}
         try {
             database = new ArrayList<>();
-            Scanner sc = new Scanner(new File(textFilePath));
+            Scanner sc = new Scanner(new File(filePath));
             while (sc.hasNext()) {
-                database.add(serializer.deserialize(sc.nextLine().strip()));
+                add(serializer.deserialize(sc.nextLine().strip()));
             }
             sc.close();
             isOpened = true;
@@ -42,6 +33,7 @@ public abstract class TextDatabase<S extends Serializable> implements IDatabase<
         }
     }
 
+
     /*
      * Write everything from the array list back to the source file.
      */
@@ -49,7 +41,7 @@ public abstract class TextDatabase<S extends Serializable> implements IDatabase<
     public void close() throws Exception{
         if (!isOpened) {return;}
         try {
-            PrintWriter pw = new PrintWriter(textFilePath);
+            PrintWriter pw = new PrintWriter(filePath);
             for (int i=0; i < database.size(); i++) {
                 pw.println(serializer.serialize(database.get(i)));
             }

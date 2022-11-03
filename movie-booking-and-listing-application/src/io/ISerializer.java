@@ -1,6 +1,6 @@
 package io;
 
-import model.Serializable;
+import java.io.Serializable;
 
 /*
  * Serializing is the process of converting an object into format suitable for

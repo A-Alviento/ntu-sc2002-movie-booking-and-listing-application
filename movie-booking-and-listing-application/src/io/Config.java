@@ -1,6 +1,6 @@
 package io;
 
-import model.Serializable;
+import java.io.Serializable;
 
 /*
  * Configuration for the application that users can change. This needs to persist
