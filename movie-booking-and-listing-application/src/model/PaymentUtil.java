@@ -1,3 +1,5 @@
+package model;
+
 /*
  * Payment Utility are methods used for a customer to purchase a movie ticket.  
  */

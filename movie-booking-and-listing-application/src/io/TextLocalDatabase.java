@@ -24,7 +24,7 @@ public abstract class TextLocalDatabase<S extends Serializable> extends LocalDat
             database = new ArrayList<>();
             Scanner sc = new Scanner(new File(filePath));
             while (sc.hasNext()) {
-                add(serializer.deserialize(sc.nextLine().strip()));
+                database.add(serializer.deserialize(sc.nextLine().strip()));
             }
             sc.close();
             isOpened = true;
@@ -53,8 +53,4 @@ public abstract class TextLocalDatabase<S extends Serializable> extends LocalDat
         }
     }
 
-    @Override
-    public void add(S obj) {
-        database.add(obj);
-    }
 }

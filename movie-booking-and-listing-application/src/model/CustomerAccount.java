@@ -1,3 +1,5 @@
+package model;
+
 
 /**
  * Represents a customer Account stored in the db

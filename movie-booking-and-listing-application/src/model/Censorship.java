@@ -1,3 +1,5 @@
+package model;
+
 /**
  *  Represents the constants that is used by movie class to decide the movie's censorship 
  */

@@ -1,7 +1,9 @@
+package model;
+
 /*
  * Represent a review that a customer can make
  */
-public class Review {
+public class Review extends Model{
 	/*
 	 * Comment about a movie that the customer wrote
 	 */

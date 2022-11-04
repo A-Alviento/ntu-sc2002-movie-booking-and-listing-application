@@ -1,1 +1,3 @@
-STORAGE_PATH,../data/dataastat
+databasepath ../data/customeraccount.ser customeraccount
+databasepath ../data/movie.ser movie
+databasepath ../data/review.ser review

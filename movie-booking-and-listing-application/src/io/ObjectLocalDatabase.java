@@ -6,33 +6,49 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /*
  * For object(byte) based database files on local storage.
  */
-public class ObjectLocalDatabase<T, S extends Serializable> extends LocalDatabase<T, S> {
+public class ObjectLocalDatabase<S extends Serializable> extends LocalDatabase<S, S> {
 
     
+    /*
+     * Use this constructor if you don't want to change the object
+     * before serializing.
+     */
     public ObjectLocalDatabase(String filePath) {
-        super(filePath, null);
+        super(filePath, new IdentitySerializer<S>());
     }
 
+    /*
+     * Use this constructor if you want to change the object before
+     * serializing.
+     */
+    public ObjectLocalDatabase(String filePath, ISerializer<S, S> serializer) {
+        super(filePath, serializer);
+    }
+
+    /*
+     * Will create a new file if it does not exist.
+     */
     @Override
     @SuppressWarnings("unchecked")
     public void open() throws Exception {
         if (isOpened) return;
         try {
+            database = new ArrayList<>();
             ObjectInputStream ois = new ObjectInputStream(
                                         new FileInputStream(filePath));
-
-            try {
-                while (true) {
-                   add((S)ois.readObject());    // compiler will print warnings for this
-                }
-            } catch (EOFException except) {
-                // Do nothing
+            Object o = null;
+            while ((o = ois.readObject()) != null) {
+                   database.add(serializer.deserialize((S)o));    // compiler will print warnings for this
             }
             ois.close();
+            isOpened = true;
+        } catch (EOFException except) {
+            // do nothing, the object file is empty
             isOpened = true;
         } catch (Exception except) {
             throw except;
@@ -49,7 +65,7 @@ public class ObjectLocalDatabase<T, S extends Serializable> extends LocalDatabas
                                     new FileOutputStream(filePath) 
             );
             for (int i=0; i < database.size(); i++) {
-                oos.writeObject(database.get(i));
+                oos.writeObject(serializer.serialize(database.get(i)));
             }
             database = null;
             oos.close();
@@ -58,4 +74,21 @@ public class ObjectLocalDatabase<T, S extends Serializable> extends LocalDatabas
             throw except;
         }
     }
+}
+
+/*
+ * Serializer which just returns the object passed to it.
+ */
+class IdentitySerializer<S extends Serializable> implements ISerializer<S, S> {
+
+    @Override
+    public S serialize(S obj) throws Exception {
+        return obj;    
+    }
+
+    @Override
+    public S deserialize(S src) throws Exception {
+    return src;
+    }
+
 }

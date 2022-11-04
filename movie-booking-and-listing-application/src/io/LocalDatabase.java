@@ -2,6 +2,7 @@ package io;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /*
  * The database source is a file on the local computer. This won't attempt
@@ -19,9 +20,21 @@ public abstract class LocalDatabase<T, S extends Serializable> implements IDatab
         this.serializer = serializer;
     }
 
-    @Override
     public void add(S obj) {
         database.add(obj);
+    }
+
+    public void remove(S obj) {
+        database.remove(obj);
+    }
+
+    /*
+     * Return the pointer to the database. Keep in mind that this is pass by reference.
+     * So if you modify the array or modify the objects in the array, it will also
+     * modify the database.
+     */
+    public Iterator<S> iterator() {
+        return database.iterator();
     }
 
 }

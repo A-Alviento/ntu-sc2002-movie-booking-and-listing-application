@@ -1,14 +1,18 @@
 package io;
 
+import java.util.ArrayList;
+
 public class ConfigSerializer implements ISerializer<String, Config>{
 
     @Override
     public String serialize(Config obj) throws Exception {
-        if (obj.getType() == Config.Type.STORAGE_PATH) {
+        ArrayList<Object> arr = obj.getValue();
+        if (obj.getType() == Config.Type.DATABASE_PATH) {
             return String.format(
-                                "%s,%s",
+                                "%s %s %s",
                                 obj.getType().toString(),
-                                obj.getValue().toString());
+                                arr.get(0).toString(),
+                                arr.get(1).toString());
         } else {
             throw new Exception("Config has no/invalid type.");
         }
@@ -16,14 +20,17 @@ public class ConfigSerializer implements ISerializer<String, Config>{
 
     @Override
     public Config deserialize(String src) throws Exception {
-        String[] s = src.split(",", 0);
+        String[] s = src.split(" ", 0);
+        ArrayList<Object> arr = new ArrayList<>();
 
         if (s.length == 0) {
             throw new Exception("Error in deserializing.");
         }
         
-        if (s[0].compareTo("STORAGE_PATH") == 0) {
-            return new Config(Config.Type.STORAGE_PATH, s[1]);
+        if (s[0].compareTo("databasepath") == 0) {
+            arr.add(s[1]);
+            arr.add(s[2]);
+            return new Config(Config.Type.DATABASE_PATH, arr);
         } else {
             throw new Exception("Error in deserializing. Invalid config type.");
         }

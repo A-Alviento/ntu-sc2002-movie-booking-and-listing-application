@@ -1,6 +1,7 @@
 package io;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /*
  * Configuration for the application that users can change. This needs to persist
@@ -12,14 +13,23 @@ public class Config implements Serializable{
      * configurations can be implemented in the future.
      */
     public static enum Type {
-        STORAGE_PATH
+        DATABASE_PATH("databasepath");          // format is "databasepath path databasekeyword"
+        
+        private String name;
+
+        Type(String name) {this.name = name;};
+
+        @Override
+        public String toString() {
+            return name;
+        }
     }
 
     private Type type;
     // A bit unsafe
-    private Object value;
+    private ArrayList<Object> value;
 
-    public Config(Type type, Object value) {
+    public Config(Type type, ArrayList<Object> value) {
         this.type = type;
         this.value = value;
     }
@@ -29,11 +39,7 @@ public class Config implements Serializable{
         return this.type;
     }
 
-    public Object getValue() {
+    public ArrayList<Object> getValue() {
         return this.value;
-    }
-
-    public void setValue(Object value) {
-        this.value = value;
     }
 }

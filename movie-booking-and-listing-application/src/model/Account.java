@@ -1,3 +1,5 @@
+package model;
+
 /**
  * An abstract class for account that both customer and an admin needs to login
  *

@@ -1,3 +1,5 @@
+package model;
+
 /*
  * Represents a movie in the database. 
  * Each movie has 9 attributes: title, director, casts (array), reviews (array), synopsis, 

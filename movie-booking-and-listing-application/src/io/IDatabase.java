@@ -17,10 +17,4 @@ public interface IDatabase<S extends Serializable> {
      * Attempts to close the database.
      */
     public abstract void close() throws Exception;
-
-    public void add(S obj);
-
-    // public void remove(S obj)
-    // public void get()
-
 }

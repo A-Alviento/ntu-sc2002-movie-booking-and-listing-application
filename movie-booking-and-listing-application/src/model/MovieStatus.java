@@ -1,3 +1,5 @@
+package model;
+
 /**
  *  Represents 4 different movie status a movie can have. 
  */
