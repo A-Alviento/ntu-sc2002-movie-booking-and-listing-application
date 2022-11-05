@@ -2,7 +2,7 @@ package ui;
 
 import java.util.ArrayList;
 
-import model.CustomerAccount;
+import model.*;
 
 /*
  * This represents the main logic coordinator of the UI subclasses
@@ -13,14 +13,19 @@ import model.CustomerAccount;
 
 public class MainController {
  
+    // appEntry class
     protected AppEntry appEnt;
-    protected CineplexUI cineplex;
     
+    // UI Components
+    protected CineplexUI cineplex;
     private AdminMenuUI admin;
     private UserMenuUI user;
     private MovieUI movie;
     
+    // Cinema related classes
     private ArrayList<CustomerAccount> cusAcc;
+    protected Cineplexes cinPlex;
+    
     
     public MainController() {
         
@@ -31,6 +36,8 @@ public class MainController {
         
         // stores list of accounts
         cusAcc = new ArrayList<>();
+        
+        cinPlex = new Cineplexes();
     }
     
     /*
