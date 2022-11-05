@@ -55,19 +55,30 @@ public class UserMenuUI {
         do {
             switch(selection){
                 case 1:
-                    
+                    // TODO
+                    // first we list the movie using the movie list from MainController
+                    // then we ask for user input
+                    // match that input to currMov in MainController and copy it
+                    // go to MovieUI
+                    // 
                     break;
                 case 2:
-                
+                    // TODO
+                    // first we take an input of movie title from user
+                    // find any matching movie title from movie list in MainController
+                    // If match found, match input to currMov go ot MovieUI
+                    // If no match, try again
                     break;
                 case 3:
-              
+                    // TODO
+                    // Simply get from current customeraccount object
                     break;
                 case 4:
-                    
+                    // TODO
+                    // print from movie list extracted from db
                     break;
                 case 5:
-                    
+                    // print from movie list extracted from db
                     break;
                 case 6:
                     mC.cineplex.displayCineplexUI();

@@ -3,6 +3,7 @@ package ui;
 import java.util.Scanner;
 
 import model.Movie;
+import model.Review;
 
 /*
  * This represents the movie options UI
@@ -26,8 +27,8 @@ public class MovieUI {
      // list out main menu selection UI
         System.out.println("**************************************************************************************************");
         System.out.println("1. View details.\n"
-                + "2. Seat Availability.\n"
-                + "3. Book ticket.\n"
+                + "2. Book ticket.\n"
+                + "3. Rate and review.\n"
                 + "4. Back.");
         System.out.println("**************************************************************************************************");
         System.out.println("**************************************************************************************************");
@@ -65,14 +66,24 @@ public class MovieUI {
                     System.out.println(mov.getReviews());
                     break;
                 case 2:
-                    System.out.println();
+                    // TODO
+                    // clarify how the seat layout is done (by movie or by cinema etc and how about timing)
+                    // display price and ask to confirm or go back
+                    // if confirm, record movie booking under current CustomerAccount
                     break;
                 case 3:
-              
-                    break;
+                    System.out.println("Input your rating out of 5:\n");
+                    int rating = sc.nextInt();
+                    System.out.println("Input your review:\n");
+                    String review = sc.next();
+                    Review r = new Review(review, rating);
+                    mov.addReview(r);
+                    break; 
                 case 4:
                     mC.user.displayMainUI();
                     repeat = false; 
+                this.textDisplayUI();
+                selection = sc.nextInt();
             }
         }while(repeat = true);
         

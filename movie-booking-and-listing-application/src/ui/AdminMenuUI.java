@@ -2,6 +2,8 @@ package ui;
 
 import java.util.Scanner;
 
+import model.Movie;
+
 public class AdminMenuUI {
     
     static Scanner sc = new Scanner(System.in);
@@ -48,7 +50,25 @@ public class AdminMenuUI {
         
         switch(selection){
             case 1:
+                System.out.println("Enter movie title: ");
+                String title = sc.next();
+                Movie newMov = new Movie(title);
                 
+                System.out.println("Enter movie director: ");
+                String director = sc.next();
+                newMov.setDirector(director);
+                
+                System.out.println("Enter number of cast: ");
+                int castSize = sc.nextInt();
+                for (int i = 0; i < castSize; i++) {
+                    System.out.println("Enter Cast " + i +": ");
+                    newMov.addCast(sc.next()); 
+                }
+                
+                System.out.println("Enter Synopsis: ");
+                newMov.setSynopsis(sc.next());
+                
+                System.out.println("Enter movieStatus: ")
                 break;
             case 2:
             

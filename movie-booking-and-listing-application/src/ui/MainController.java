@@ -29,6 +29,7 @@ public class MainController {
     private ArrayList<CustomerAccount> cusAcc;
     protected Cineplexes cinPlex;
     protected CustomerAccount currAcc;
+    protected Movie currMov;
      
     // to do -> private ArrayList <Movie> mov; need to extract data from binary file
     // then store in an array;
