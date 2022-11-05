@@ -1,6 +1,7 @@
 package ui;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import model.*;
 
@@ -12,6 +13,8 @@ import model.*;
  */
 
 public class MainController {
+    
+    static Scanner sc = new Scanner(System.in);
  
     // appEntry class
     protected AppEntry appEnt;
@@ -19,13 +22,17 @@ public class MainController {
     // UI Components
     protected CineplexUI cineplex;
     private AdminMenuUI admin;
-    private UserMenuUI user;
+    protected UserMenuUI user;
     private MovieUI movie;
     
     // Cinema related classes
     private ArrayList<CustomerAccount> cusAcc;
     protected Cineplexes cinPlex;
-    
+    protected CustomerAccount currAcc;
+     
+    // to do -> private ArrayList <Movie> mov; need to extract data from binary file
+    // then store in an array;
+      
     
     public MainController() {
         
@@ -38,21 +45,33 @@ public class MainController {
         cusAcc = new ArrayList<>();
         
         cinPlex = new Cineplexes();
+        
+        // stores list of movie
+        // mov = new ArrayList<>();
     }
+    
+    /*
+     * TODO
+     * function to take movie data from database and insert
+     * to mov arraylist
+     * 
+     */
     
     /*
      * take in user input for LoginUI
      * 
      */
     public int login(int selection) {
-        
+        boolean auth = false;
         switch(selection){
             case 1:
-                // login class
+                // authenticates user account
+                while(!auth)
+                    auth = this.authenticateUserAccount();
+                auth = false;
                 
                 cineplex.displayCineplexUI();
                 user.displayMainUI();
-                
                 
                 return 1;
             case 2:
@@ -64,7 +83,10 @@ public class MainController {
                 
                 return 1;
             case 3:
-                // login class
+                // authenticates admin account
+                while(!auth)
+                    auth = this.authenticateAdminAccount();
+                auth = false;
                 
                 admin.displayAdminUI();
                 return 1;
@@ -74,6 +96,43 @@ public class MainController {
         }
         
         return -1;
+    }
+    
+    public boolean authenticateUserAccount() {
+        System.out.println("Enter Email: ");
+        String userID = sc.next();
+        System.out.println("Enter Password: ");
+        String userPass = sc.next();
+        
+        int len = cusAcc.size();
+        
+        for (int i = 0; i < len; i++) {
+            if (userID.equals(cusAcc.get(i).getEmail())) {
+                if (userPass.equals(cusAcc.get(i).getPassword()))
+                    this.currAcc = cusAcc.get(i);
+                    System.out.println("Successfully logged in");
+                    return true;
+            }
+            
+        }
+        System.out.println("Invalid, try again");
+        return false;
+    }
+    
+    public boolean authenticateAdminAccount() {
+        System.out.println("Enter Email: ");
+        String userID = sc.next();
+        System.out.println("Enter Password: ");
+        String userPass = sc.next();
+        
+        if(userID.equals("DummyID")) {
+            if(userPass.equals("Password123"))
+                System.out.println("Successfully logged in");
+                return true;
+        }
+        
+        System.out.println("Invalid, try again");
+        return false;
     }
 
     
