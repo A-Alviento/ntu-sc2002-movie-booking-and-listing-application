@@ -7,6 +7,11 @@ public class MovieUI {
     static Scanner sc = new Scanner(System.in);
     private MainController mC;
     
+    public void setMainController(MainController mC) {
+        
+        this.mC = mC;
+    }
+    
     public void displayMovieUI() {
         int selection;
         
