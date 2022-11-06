@@ -27,9 +27,10 @@ public class MovieUI {
      // list out main menu selection UI
         System.out.println("**************************************************************************************************");
         System.out.println("1. View details.\n"
-                + "2. Book ticket.\n"
-                + "3. Rate and review.\n"
-                + "4. Back.");
+                + "2. View reviews.\n"
+                + "3. Book ticket.\n"
+                + "4. Rate and review.\n"
+                + "5. Back.");
         System.out.println("**************************************************************************************************");
         System.out.println("**************************************************************************************************");
         System.out.println("\nPlease choose an option from the menu:");
@@ -40,38 +41,65 @@ public class MovieUI {
      * options for users and process user input
      * 
      */
-    public void displayMovieUI(Movie mov) {
+    public boolean displayMovieUI() {
         
         boolean repeat = true;
         int selection;
-        
-        this.textDisplayUI();
-        selection = sc.nextInt();
-        
-        while (selection < 1 || selection >4) {
-            System.out.println("Please choose from the options\n");
-            selection = sc.nextInt();
-        }
+
+        Movie mov = mC.currMov;
         
         do {
+            
+            this.textDisplayUI();
+            selection = sc.nextInt();
+            
+            while (selection < 1 || selection >5) {
+                System.out.println("Please choose from the options\n");
+                selection = sc.nextInt();
+                
+            }
             switch(selection) {
+                
                 case 1:
-                    System.out.println(mov.getTitle());
-                    System.out.println(mov.getMovieStatus());
-                    System.out.println(mov.getCensorship());
-                    System.out.println(mov.getSynopsis());
-                    System.out.println(mov.getDirector());
-                    System.out.println(mov.getCasts());
-                    System.out.println(mov.getRating());
-                    System.out.println(mov.getReviews());
+                    System.out.println("Title: " + mov.getTitle());
+                    System.out.println("Status: " + mov.getMovieStatus());
+                    System.out.println("Parental Guidance: " + mov.getCensorship());
+                    System.out.println("Synopsis: " + mov.getSynopsis());
+                    System.out.println("Director: " + mov.getDirector());
+                    System.out.println("Cast: " + mov.getCasts());
+                    System.out.println("Rating: " + mov.getRating());
+                    System.out.println("Reviews: " + mov.getReviews());
                     break;
+                    
                 case 2:
-                    // TODO
-                    // clarify how the seat layout is done (by movie or by cinema etc and how about timing)
-                    // display price and ask to confirm or go back
-                    // if confirm, record movie booking under current CustomerAccount
+                    int len = mov.getReviews().size();
+                    
+                    for (int i = 0; i < len; i++) {
+                        System.out.println("Review " + i + ": " + mov.getReviews().get(i));
+                        System.out.println("--------------------------------------------------------------------------------------------------");
+                    }
                     break;
+                    
                 case 3:
+                    /*
+                     * TODO:
+                     * ASK USER TO SELECT A CINEMA FROM THE CURRENT CINEPLEX. FROM THERE, ACCESS 
+                     * CURRMOVIE AND EXTRACT MOVIE SHOWING (DATE + TIMING) FOR THAT PARTICULAR
+                     * CINEPLEX AND CINEMA; THEN ASK USER TO SELECT A SLOT
+                     * 
+                     * ONCE SELECTED, SHOW SEATLAYOUT AND ASK USER TO SELECT SEAT
+                     * 
+                     * PROCEED TO PAYMENT
+                     * 
+                     * RECORD THE BOOKING TO THE CURRCUSTOMER OBJECT
+                     * 
+                     * 
+                     * CONFUSION: MOVIE SHOULD HAVE ASSOCIATION TO MOVIESHOWING AND MOVIESHOWING IS MISSING DATE
+                     * 
+                     */
+                    break;
+                    
+                case 4:
                     System.out.println("Input your rating out of 5:\n");
                     int rating = sc.nextInt();
                     System.out.println("Input your review:\n");
@@ -79,15 +107,14 @@ public class MovieUI {
                     Review r = new Review(review, rating);
                     mov.addReview(r);
                     break; 
-                case 4:
-                    mC.user.displayMainUI();
-                    repeat = false; 
-                this.textDisplayUI();
-                selection = sc.nextInt();
+                    
+                case 5:
+                    if(!mC.user.displayMainUI())
+                        return false;
             }
         }while(repeat = true);
         
+        return true;
     }
-    
     
 }

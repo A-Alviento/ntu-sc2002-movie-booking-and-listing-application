@@ -10,10 +10,17 @@ import java.util.Scanner;
 
 
 public class CineplexUI {
+    
+    static Scanner sc = new Scanner(System.in);
+    
+    /*
+     * List of cineplexes and their opening time
+     * 
+     */
     private static final String[][] arr = { {"Cineplex 1", "9"}, {"Cineplex 2", "10"},
                                             {"Cineplex 3", "11"} };
     
-    static Scanner sc = new Scanner(System.in);
+
     private MainController mC;
     
     public void setMainController(MainController mC) {
@@ -26,7 +33,7 @@ public class CineplexUI {
      * process user input
      * 
      */
-    public void displayCineplexUI() {
+    public boolean displayCineplexUI() {
         
         int selection;
         
@@ -34,7 +41,7 @@ public class CineplexUI {
         System.out.println("1. Cineplex 1\n"
                 + "2. Cineplex 2\n"
                 + "3. Cineplex 3\n"
-                + "4. Back.");
+                + "4. logout.");
         System.out.println("**************************************************************************************************");
         System.out.println("**************************************************************************************************");
         System.out.println("\nPlease choose a cineplex");
@@ -45,10 +52,10 @@ public class CineplexUI {
             selection = sc.nextInt();
         }
         if (selection == 4)
-            mC.appEnt.start();
+            return false;
                    
-        mC.cinPlex.setLocation(arr[selection][0]);     
-        mC.cinPlex.setOpeningTime(Integer.parseInt(arr[selection][1]));
+        mC.currCineplex = mC.cinPlex.get(selection-1);
+        return true;
     }
     
 }

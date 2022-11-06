@@ -16,89 +16,140 @@ public class MainController {
     
     static Scanner sc = new Scanner(System.in);
  
-    // appEntry class
+    /*
+     * UI Components
+     * 
+     */
     protected AppEntry appEnt;
-    
-    // UI Components
     protected CineplexUI cineplex;
-    private AdminMenuUI admin;
+    protected AdminMenuUI admin;
     protected UserMenuUI user;
-    private MovieUI movie;
+    protected MovieUI movie;
     
-    // Cinema related classes
-    private ArrayList<CustomerAccount> cusAcc;
-    protected Cineplexes cinPlex;
+    /*
+     * Components related to entity  classes
+     * 
+     */
+    protected ArrayList<CustomerAccount> cusAcc;
+    protected ArrayList<Movie> movList;
+    protected ArrayList<Cineplexes> cinPlex;
+    
+    /*
+     * Stores the current account being used
+     * and the current movie being viewed
+     * 
+     */
     protected CustomerAccount currAcc;
     protected Movie currMov;
-     
-    // to do -> private ArrayList <Movie> mov; need to extract data from binary file
-    // then store in an array;
+    protected Cineplexes currCineplex;
+    
       
     
+    /*
+     * Constructor; Initializes all default components
+     * 
+     */
     public MainController() {
         
+        /*
+         * Ensures all UI components has an association
+         * back to this instance of MainController
+         * 
+         */
         cineplex.setMainController(this);
         admin.setMainController(this);
         user.setMainController(this);
         movie.setMainController(this);
         
-        // stores list of accounts
         cusAcc = new ArrayList<>();
+        movList = new ArrayList<>();
+        cinPlex = new ArrayList<>();
         
-        cinPlex = new Cineplexes();
-        
-        // stores list of movie
-        // mov = new ArrayList<>();
+        for (int i = 0; i < 3; i++)
+            cinPlex.add(new Cineplexes("Location " + i, 8));
+ 
+        currAcc = null;
+        currMov = null;
+        currCineplex = null;
     }
+   
+    
     
     /*
-     * TODO
-     * function to take movie data from database and insert
-     * to mov arraylist
+     * TODO:
+     * IMPLEMENT OR INTEGRATE METHOD TO EXTRACT
+     * LIST OF MOVIES FROM DB INTO AN ARRAYLIST
      * 
      */
     
+
+    
     /*
-     * take in user input for LoginUI
+     * Takes in user input for LoginUI and from there onwards
+     * processes the options accordingly as specified 
      * 
      */
     public int login(int selection) {
         boolean auth = false;
+        
         switch(selection){
+            // case for user login
             case 1:
-                // authenticates user account
+                // authenticates customer login
                 while(!auth)
                     auth = this.authenticateUserAccount();
                 auth = false;
                 
-                cineplex.displayCineplexUI();
-                user.displayMainUI();
+                // once authenticated, move on 
+                if (!cineplex.displayCineplexUI()) {
+                    currAcc = null;
+                    return -1;
+                }
+                if (!user.displayMainUI()) {
+                    currAcc = null;
+                    return -1;
+                }
                 
                 return 1;
+                
+            // case for user sign up
             case 2:
                 CustomerAccount c = new CustomerAccount();
                 c.createAccount();
                 cusAcc.add(c);
                 System.out.println("Account created");
-                appEnt.start();
                 
-                return 1;
+                // once account created, go back to login page
+                return -1;
+                
+            //case for admin login
             case 3:
-                // authenticates admin account
+                // authenticates admin login
                 while(!auth)
                     auth = this.authenticateAdminAccount();
                 auth = false;
                 
-                admin.displayAdminUI();
+                // once authenticated, move on
+                if (!admin.displayAdminUI()) 
+                    return -1;
+                
                 return 1;
+            
+            // case to stop app
             case 4:
                 appEnt.stop();
                 return 1;
         }
         
+        // else keep displaying the LoginUI
         return -1;
     }
     
+    /*
+     * authenticates customer account by checking with list 
+     * of accounts stored in cusAcc arraylist
+     * 
+     */
     public boolean authenticateUserAccount() {
         System.out.println("Enter Email: ");
         String userID = sc.next();
@@ -120,6 +171,11 @@ public class MainController {
         return false;
     }
     
+    /*
+     * authenticates admin account by checking with pre
+     * determined list of authorised accounts
+     * 
+     */
     public boolean authenticateAdminAccount() {
         System.out.println("Enter Email: ");
         String userID = sc.next();
@@ -138,7 +194,7 @@ public class MainController {
 
     
     /*
-     * allow appEntry to terminate app
+     * allows appEntry to terminate app
      * 
      */
     public void setObject(AppEntry appEnt) {

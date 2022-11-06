@@ -24,9 +24,8 @@ public class LoginUI {
      * 
      */
     public void displayLoginUI() {
-        // type specifies if user logging in is 
-        // movie goer (0) or cinema staff (1)
-        int type;
+        
+        int selection;
         System.out.println("MOBLIMA\n");
         
         do {
@@ -38,7 +37,7 @@ public class LoginUI {
             System.out.println("**************************************************************************************************");
             System.out.println("**************************************************************************************************");
             System.out.println("\nPlease choose an option:");
-            type = sc.nextInt();
-        }while(mC.login(type) == -1);
+            selection = sc.nextInt();
+        }while(mC.login(selection) == -1);
     }
 }

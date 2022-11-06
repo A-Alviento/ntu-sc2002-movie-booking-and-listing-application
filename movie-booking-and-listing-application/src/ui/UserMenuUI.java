@@ -27,7 +27,7 @@ public class UserMenuUI {
                 + "3. View booking history \n"
                 + "4. List top 5 ranking by sales"
                 + "5. List top 5 ranking by ratings"
-                + "6. logout.");
+                + "6. back.");
         System.out.println("**************************************************************************************************");
         System.out.println("**************************************************************************************************");
         System.out.println("\nPlease choose an option from the menu:");
@@ -38,54 +38,82 @@ public class UserMenuUI {
      * process user input 
      * 
      */
-    public void displayMainUI() {
+    public boolean displayMainUI() {
         
-        boolean repeat = false;
+        boolean repeat = true;
         int selection;
         
-        // list out main menu selection UI
-        this.textDisplayUI();
-        selection = sc.nextInt();
-        
-        while (selection < 1 || selection > 6) {
-            System.out.println("Please choose from the options\n");
-            selection = sc.nextInt();
-        }
-        
         do {
+            
+            this.textDisplayUI();
+            selection = sc.nextInt();
+            
+            while (selection < 1 || selection > 6) {
+                System.out.println("Please choose from the options\n");
+                selection = sc.nextInt();
+            }
+            
             switch(selection){
+
                 case 1:
-                    // TODO
-                    // first we list the movie using the movie list from MainController
-                    // then we ask for user input
-                    // match that input to currMov in MainController and copy it
-                    // go to MovieUI
-                    // 
+                    /*
+                     * TODO:
+                     * FIRST LIST MOVIE USING MOVIE LIST FROM MAINCONTROLLER
+                     * ASK FOR USER INPUT TO INDICATE SELECTED MOVIE
+                     * COPY THE SELECTED MOVIE TO CURRMOV IN MAIN CONTROLLER
+                     * GO TO MOVIEUI 
+                     * 
+                     */
+                    if (!mC.movie.displayMovieUI()) {
+                        return false;
+                    }
+                    
                     break;
                 case 2:
-                    // TODO
-                    // first we take an input of movie title from user
-                    // find any matching movie title from movie list in MainController
-                    // If match found, match input to currMov go ot MovieUI
-                    // If no match, try again
+                    /*
+                     * TODO:
+                     * FIRST TAKE INPUT OF MOVIE TITLE FROM USER
+                     * FIND MATCHING MOVIE TITLE FROM MOVIE LIST IN MAINCONTROLLER
+                     * IF MATCH FOUND, COPY TO CURRMOV AND GO TO MOVIEUI
+                     * ELSE PROMPT USER TO TRY AGAIN
+                     * 
+                     */
+                    if (!mC.movie.displayMovieUI()) {
+                        return false;
+                    }
+                    
                     break;
                 case 3:
-                    // TODO
-                    // Simply get from current customeraccount object
+                    /*
+                     * TODO:
+                     * SIMPLY EXTRACT FROM THE CURRUSER IN MAINCONTROLLER AND PRINT OUT
+                     * 
+                     */
                     break;
                 case 4:
-                    // TODO
-                    // print from movie list extracted from db
+                    /*
+                     * TODO:
+                     * FROM THE MOVIE LIST, SORT IN DESCENDING ORDER
+                     * ACCORDING TO SALES, THEN EXTRACT AND PRINT 
+                     * FIRST 5 ELEMENTS
+                     * 
+                     */
                     break;
                 case 5:
-                    // print from movie list extracted from db
+                    /*
+                     * TODO:
+                     * FROM THE MOVIE LIST, SORT IN DESCENDING ORDER
+                     * ACCORDING TO RATING, THEN EXTRACT AND PRINT 
+                     * FIRST 5 ELEMENTS
+                     * 
+                     */
                     break;
                 case 6:
-                    mC.cineplex.displayCineplexUI();
-                    repeat = true;
-                    this.textDisplayUI();
-                    selection = sc.nextInt();
+                    if(!mC.cineplex.displayCineplexUI())
+                        return false;
             }     
-        }while(repeat = true);      
+        }while(repeat = true);    
+        
+        return true;
     }
 }
