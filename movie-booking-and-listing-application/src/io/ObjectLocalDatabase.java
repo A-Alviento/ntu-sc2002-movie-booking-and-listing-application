@@ -10,6 +10,8 @@ import java.util.ArrayList;
 
 /*
  * For object(byte) based database files on local storage.
+ * 
+ * @author Min Khant
  */
 public class ObjectLocalDatabase<S extends Serializable> extends LocalDatabase<S, S> {
 
@@ -17,6 +19,8 @@ public class ObjectLocalDatabase<S extends Serializable> extends LocalDatabase<S
     /*
      * Use this constructor if you don't want to change the object
      * before serializing.
+     * 
+     * @param filePath The path of the object database.
      */
     public ObjectLocalDatabase(String filePath) {
         super(filePath, new IdentitySerializer<S>());
@@ -25,6 +29,10 @@ public class ObjectLocalDatabase<S extends Serializable> extends LocalDatabase<S
     /*
      * Use this constructor if you want to change the object before
      * serializing.
+     *
+     * @param filePath      The path of the object database.
+     * @param serializer    The serializer, which transforms the object to another
+     *                      object 
      */
     public ObjectLocalDatabase(String filePath, ISerializer<S, S> serializer) {
         super(filePath, serializer);
@@ -56,6 +64,9 @@ public class ObjectLocalDatabase<S extends Serializable> extends LocalDatabase<S
         
     }
 
+    /*
+     * Write everything from the array list back to the source file.
+     */
     @Override
     public void close() throws Exception {
         if (!isOpened) return;

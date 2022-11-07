@@ -8,6 +8,8 @@ import java.util.ArrayList;
 
 /*
  * For text based database files on local storage.
+ * 
+ * @author Min Khant
  */
 public abstract class TextLocalDatabase<S extends Serializable> extends LocalDatabase<String, S>{
     public TextLocalDatabase(String filePath, ISerializer<String, S> serializer) {

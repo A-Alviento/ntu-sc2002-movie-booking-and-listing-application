@@ -29,12 +29,22 @@ public abstract class LocalDatabase<T, S extends Serializable> implements IDatab
     }
 
     /*
-     * Return the pointer to the database. Keep in mind that this is pass by reference.
-     * So if you modify the array or modify the objects in the array, it will also
-     * modify the database.
+     * Return an iterator to the arraylist of models in the database. Keep in mind
+     * that this is pass by reference. So if you modify the array or modify the
+     * objects in the array, it will also modify the database.
      */
     public Iterator<S> iterator() {
         return database.iterator();
+    }
+
+
+    /*
+     * Return the arraylist of models in the database. Keep in mind
+     * that this is pass by reference. So if you modify the array or modify the
+     * objects in the array, it will also modify the database.
+     */
+    public ArrayList<S> arraylist() {
+        return database;
     }
 
 }

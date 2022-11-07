@@ -5,7 +5,7 @@ import model.*;
 import ui.*;
 
 /*
- * Main entry point into the program.
+* Main entry point into the program.
 */
 public class Main {
     private static final String configPath = "../config.txt";
