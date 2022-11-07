@@ -1,3 +1,4 @@
+package model;
 
 /*
  * Represents list of Public Holidays to be stored in a database

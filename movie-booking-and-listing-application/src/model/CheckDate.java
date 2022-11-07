@@ -1,3 +1,5 @@
+package model;
+
 /*
  *  A utility function used by the Price Class to check if a date is public holiday or weekend
  *  to determine the pricing.
