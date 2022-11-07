@@ -1,6 +1,3 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-
 import io.*;
 import model.*;
 import ui.*;
@@ -45,6 +42,7 @@ public class Main {
 
     private void finalizeMain() throws Exception {
         mdc.closeModelDatabase();
+        mdc = null;
         if (configDatabase != null) {
             configDatabase.close();
         }
