@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Iterator;
 
 import io.*;
@@ -27,22 +28,23 @@ public class Main {
     private void initializeMain() throws Exception{
         configDatabase = new ConfigDatabase(configPath, new ConfigSerializer());
         configDatabase.open();
-        mdc = new ModelDatabaseController();
 
         String path, keyword;
-        // Add all relevant databases to the controller from the config
-        for (Iterator<Config> iter = configDatabase.iterator(); iter.hasNext(); ) {
-            Config conf = iter.next();
+        // Initialize setting using configDatabase
+        for (Config conf : configDatabase.arraylist()) {
             if (conf.getType() == Config.Type.DATABASE_PATH) {
                 path = (String) conf.getValue().get(0);
                 keyword = (String) conf.getValue().get(1);
-                mdc.addAndOpenDatabase(path, keyword);
+                if (keyword.compareTo("modeldatabase") == 0) {
+                    mdc = new ModelDatabaseController(path);
+                    mdc.openModelDatabase();
+                }
             }
         }
     }
 
     private void finalizeMain() throws Exception {
-        mdc.closeAllDatabases();
+        mdc.closeModelDatabase();
         if (configDatabase != null) {
             configDatabase.close();
         }

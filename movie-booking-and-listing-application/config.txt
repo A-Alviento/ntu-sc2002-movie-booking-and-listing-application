@@ -1,7 +1,1 @@
-databasepath ../data/booking.ser booking
-databasepath ../data/cinema.ser cinema
-databasepath ../data/cineplexes.ser cineplexes
-databasepath ../data/customeraccount.ser customeraccount
-databasepath ../data/movie.ser movie
-databasepath ../data/movieshowing.ser movieshowing
-databasepath ../data/review.ser review
+databasepath ../data/modeldatabase.ser modeldatabase

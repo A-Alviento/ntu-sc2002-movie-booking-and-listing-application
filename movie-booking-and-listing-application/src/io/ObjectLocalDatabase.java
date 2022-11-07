@@ -1,7 +1,9 @@
 package io;
 
 import java.io.EOFException;
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -55,6 +57,9 @@ public class ObjectLocalDatabase<S extends Serializable> extends LocalDatabase<S
             }
             ois.close();
             isOpened = true;
+        } catch (FileNotFoundException except) {
+            File newFile = new File(filePath);
+            newFile.createNewFile();
         } catch (EOFException except) {
             // do nothing, the object file is empty
             isOpened = true;

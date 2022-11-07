@@ -1,49 +1,48 @@
 package io;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import model.Model;
 
-public class ModelDatabase<M extends Model> extends ObjectLocalDatabase<M> {
+public class ModelDatabase extends ObjectLocalDatabase<HashMap<String, ArrayList<Model>>> {
+    public static String[] modelKeywords = {
+        "booking", "cinema", "cineplexes", "customeraccount", "movie",
+        "movieshowing", "review"
+    };
 
-    private String keyword;
+    /*
+     * Check if a keyword is valid i.e. keyword is in the list of modelKeywords
+     * @param   keywords    The target keyword
+     */
+    public static boolean isKeywordValid(String keyword) {
+        for (String s : modelKeywords) {
+            if (s.compareTo(keyword) == 0) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     /*
      * Keyword is used to uniquely identify the model database from other databases.
+     * @param   filePath    The path of the database
      */
-    public ModelDatabase(String filePath, String keyword) {
+    public ModelDatabase(String filePath) {
         super(filePath);
     }
-   
-    public String getKeyword() {
-        return keyword;
-    }
 
-    /*
-     * Initialize a model database and open it. If the database file does not
-     * exists, then create it. Then try to open it again.
-     * Returns the reference to the database.
-     */
-    public static <T extends Model> ModelDatabase<T> initializeAndOpen(String path, String keyword) throws Exception{
-        ModelDatabase<T> database = new ModelDatabase<>(path, keyword);
-        try {
-            database.open();
-            return database;
-        } catch (FileNotFoundException except) {
-            File newFile = new File(path);
-            newFile.createNewFile();
-        } catch (Exception except) {
-            throw except;
+    @Override
+    public void open() throws Exception {
+        super.open();
+        if (database.size() == 0) {
+            database.add(new HashMap<>());
         }
-
-        // try opening again since we've create the file
-        try {
-            database.open();
-            return database;
-        } catch (Exception except) {
-            throw except;
+        HashMap<String, ArrayList<Model>> hm = database.get(0);
+        for (String s: modelKeywords) {
+            if (!hm.containsKey(s)) {
+                hm.put(s, new ArrayList<>());
+            }
         }
-
     }
 }
