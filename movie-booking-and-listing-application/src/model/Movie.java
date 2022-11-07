@@ -9,6 +9,8 @@ package model;
 import java.util.ArrayList;
 
 public class Movie extends Model {
+	public static final long serialVersionUID = 67L;
+
 	/*
 	 * Movie Title
 	 */

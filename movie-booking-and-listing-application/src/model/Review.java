@@ -4,6 +4,8 @@ package model;
  * Represent a review that a customer can make
  */
 public class Review extends Model{
+	public static final long serialVersionUID = 53L;
+
 	/*
 	 * Comment about a movie that the customer wrote
 	 */

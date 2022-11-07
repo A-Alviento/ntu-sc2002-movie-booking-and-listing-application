@@ -1,6 +1,7 @@
 package model;
 
 public class Booking extends Model{
+	public static final long serialVersionUID = 80L;
 	/**
 	 * @param seat An integer array with 2 elements
 	 * seat[0] - row number; seat[1] - column number; 

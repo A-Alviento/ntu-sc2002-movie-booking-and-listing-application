@@ -1,6 +1,8 @@
 package model;
 
 public class Cinema extends Model{
+	public static final long serialVersionUID = 26L;
+
 	private int id;
 	private int[][] seatLayout;
 	private String cinemaClass;

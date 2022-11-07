@@ -9,6 +9,7 @@ import java.util.Scanner;
 
 
 public class CustomerAccount extends Account {
+	public static final long serialVersionUID = 73L;
 	/*
 	 * Name and password variables to be inherited from Account class
 	 */

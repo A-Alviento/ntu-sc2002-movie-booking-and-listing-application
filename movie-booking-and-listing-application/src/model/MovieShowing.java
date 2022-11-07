@@ -1,6 +1,8 @@
 package model;
 
 public class MovieShowing extends Model{
+	public static final long serialVersionUID = 23L;
+
 	private int timing;
 	/**
 	 * @param numofMovies Number of movies at a certain timing

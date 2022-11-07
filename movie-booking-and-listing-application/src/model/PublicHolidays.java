@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.time.LocalDate;
 
 public class PublicHolidays extends Model {
+	public static final long serialVersionUID = 91L;
+
 	/*
 	 * Array of the public holidays
 	 */
