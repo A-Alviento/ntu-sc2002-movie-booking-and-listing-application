@@ -1,6 +1,6 @@
 package model;
 
-public class MovieShowing {
+public class MovieShowing extends Model{
 	private int timing;
 	/**
 	 * @param numofMovies Number of movies at a certain timing

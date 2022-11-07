@@ -36,6 +36,18 @@ public class ModelDatabaseController {
      */
     public void addAndOpenDatabase(String path, String keyword) throws Exception{
         switch (keyword) {
+            case "booking":
+                ModelDatabase<Booking> booking = ModelDatabase.initializeAndOpen(path, keyword);
+                hm.put(keyword, booking);
+                break;
+            case "cinema":
+                ModelDatabase<Cinema> cinema = ModelDatabase.initializeAndOpen(path, keyword);
+                hm.put(keyword, cinema);
+                break;
+            case "cineplexes":
+                ModelDatabase<Cineplexes> cineplexes= ModelDatabase.initializeAndOpen(path, keyword);
+                hm.put(keyword, cineplexes);
+                break;
             case "customeraccount":
                 ModelDatabase<CustomerAccount> customermodel = ModelDatabase.initializeAndOpen(path, keyword);
                 hm.put(keyword, customermodel);
@@ -43,6 +55,10 @@ public class ModelDatabaseController {
             case "movie":
                 ModelDatabase<Movie> moviemodel = ModelDatabase.initializeAndOpen(path, keyword);
                 hm.put(keyword, moviemodel);
+                break;
+            case "movieshowing":
+                ModelDatabase<Movie> movieshowing= ModelDatabase.initializeAndOpen(path, keyword);
+                hm.put(keyword, movieshowing);
                 break;
             case "review":
                 ModelDatabase<Review> reviewmodel = ModelDatabase.initializeAndOpen(path, keyword);

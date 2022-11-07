@@ -1,6 +1,6 @@
 package model;
 
-public class Cinema {
+public class Cinema extends Model{
 	private int id;
 	private int[][] seatLayout;
 	private String cinemaClass;

@@ -1,6 +1,6 @@
 package model;
 
-public class Booking {
+public class Booking extends Model{
 	/**
 	 * @param seat An integer array with 2 elements
 	 * seat[0] - row number; seat[1] - column number; 

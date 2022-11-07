@@ -1,6 +1,6 @@
 package model;
 
-public class Cineplexes {
+public class Cineplexes extends Model{
 	private String location;
 	private int openingTime;
 	
