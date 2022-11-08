@@ -128,7 +128,7 @@ public final class PriceUtil {
 			return;
 		}
 		//weekday and before 6pm 
-		Age ageCategory = checkAge.checkAgeCategory(age);
+		Age ageCategory = CheckAge.checkAgeCategory(age);
 		if(ageCategory == Age.STUDENT) {
 			price *= studentMultipler; 
 			return;
