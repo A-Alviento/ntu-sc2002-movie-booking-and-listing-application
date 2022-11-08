@@ -1,48 +1,53 @@
-package model;
 
-public class Booking extends Model{
-	public static final long serialVersionUID = 80L;
-	/**
-	 * @param seat An integer array with 2 elements
-	 * seat[0] - row number; seat[1] - column number; 
-	 */
-	private int[] seat;
-	private int price;
-	private int bookingDate;
+import java.time.LocalDate;
 
-	public Booking(int[] seat, int price, int bookingDate) {
+public class Booking {
+	private int[] seat = new int[2];
+	private double price;
+	private LocalDate date;	
+	private String cinemaCode;
+	private String movieTitle;
+	private String transectionID = "";
+	
+	public Booking(String name, String code, int[] seat, double price, String movieTitle, String cinemaCode) {
 		this.seat = seat;
 		this.price = price;
-		this.bookingDate = bookingDate;
+		this.date = LocalDate.now();
+		this.setMovie(movieTitle);
+		cinemaCode = code;
+		transectionID = createTransectionID();
 	}
 	
-	public void checkAvailability(int[][] Layout, int row, int col) {
-		if (Layout[row][col]==0)
-			System.out.println("Seat Available!");
-		else System.out.println("Seat Not Available!");
+	private String createTransectionID() {
+		return PaymentUtil.generateTID(cinemaCode);
 	}
-
+	
+	public String getTransectionID() {
+		return transectionID;
+	}
+	public LocalDate getBookingDate() {
+		return date;
+	}
+	
 	public int[] getSeat() {
 		return seat;
 	}
-
-	public void setSeat(int[] seat) {
-		this.seat = seat;
-	}
-
-	public int getPrice() {
+	
+	public double getPrice() {
 		return price;
 	}
-
-	public void setPrice(int price) {
-		this.price = price;
+	
+	public String getCinema() {
+		return cinemaCode;
 	}
 
-	public int getBookingDate() {
-		return bookingDate;
+	public String getMovie() {
+		return movieTitle;
 	}
 
-	public void setBookingDate(int bookingDate) {
-		this.bookingDate = bookingDate;
+	public void setMovie(String movie) {
+		this.movieTitle = movie;
 	}
+	
+	
 }
