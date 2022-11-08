@@ -74,7 +74,7 @@ public final class PriceUtil {
 	private static double studentMultipler = 0.8;
 	private static double elderlyMultuipler = 0.65;
 	
-	public static double getstudentyMultipler() {
+	public static double getStudentMultipler() {
 		return studentMultipler;
 	}
 	public static void setStudentMultipler(double multiplier) {
