@@ -1,16 +1,18 @@
 package model;
-
 /*
  * Represents a movie in the database. 
- * Each movie has 9 attributes: title, director, casts (array), reviews (array), synopsis, 
- * 							    rating, movieStatus (enum), censorship (enum), isBlockbuster (bool)
+ * Each movie has 10 attributes: title, director, casts (array), reviews (array), synopsis, 
+ * 							    rating, movieStatus (enum), censorship (enum), isBlockbuster (bool),
+ * 								ticketSale and ShowTimes(array).
  * 
  */
 import java.util.ArrayList;
+import java.time.LocalDateTime;
+import java.util.Iterator;
 
-public class Movie extends Model {
+
+public class Movie extends Model{
 	public static final long serialVersionUID = 67L;
-
 	/*
 	 * Movie Title
 	 */
@@ -57,6 +59,19 @@ public class Movie extends Model {
 	private boolean isBlockbuster = false;
 	
 	/*
+	 * Number of ticket sales the movie has made
+	 */
+	private int ticketSale = 0;
+	/*
+	 * List of when movie is shown
+	 */
+	private ArrayList<MovieShowTime> movieShowTimes = new ArrayList<MovieShowTime>();
+	
+	
+	
+	
+	
+	/*
 	 * Creates a new Movie with a title
 	 * Also, creates a empty array for the reviews and casts for that movie.
 	 * @param title The movie's title
@@ -65,6 +80,20 @@ public class Movie extends Model {
 		this.title = title;
 		this.reviews = new ArrayList<Review>();
 		this.casts = new ArrayList<String>();
+	}
+	/*
+	 * Gets the ticketSale
+	 * @return ticketSale number of tickets sold by the movie
+	 */
+	public int getTicketSale() {
+		return ticketSale;
+	}
+	
+	/*
+	 * Increment the ticketSale by 1 whenever a new sale is made
+	 */
+	public void incTicketSale() {
+		ticketSale++;
 	}
 	
 	/*
@@ -232,6 +261,42 @@ public class Movie extends Model {
 	public boolean isBlockbuster() {
 		return isBlockbuster;
 	}
-
+	/*
+	 * Get list of when movie is shown to be displayed to user
+	 * @return movieShowTimes
+	 */
+	public ArrayList<MovieShowTime> getMovieShowTimes() {
+		return movieShowTimes;
+	}
+	/*
+	 * Set movieShowTime
+	 * @param ArrayList of movieShowTimes
+	 */
+	public void setMovieShowTimes(ArrayList<MovieShowTime> movieShowTimes) {
+		this.movieShowTimes = movieShowTimes;
+	}
+	/*
+	 * Automatically delete movies if their showTime has passed the current time and date
+	 */
+	private void updateMovieShowTime() {
+		Iterator <MovieShowTime> itr = movieShowTimes.iterator();
+		while(itr.hasNext()) {
+			MovieShowTime movieShowTime = itr.next();
+			LocalDateTime movieTime = LocalDateTime.of(movieShowTime.getMovieDate(), movieShowTime.getMovieTime() );
+			LocalDateTime current = LocalDateTime.now();
+			if(movieTime.isBefore(current)) {
+				itr.remove();
+			}
+		}
+	}
+	
+	/*
+	 * Add when movieShowTime into the array and automatically remove movie screening pasted the current date and time
+	 */
+	public void addMovieShowTime(MovieShowTime movieShowTime) {
+		this.movieShowTimes.add(0,movieShowTime);
+		updateMovieShowTime();
+	}
 
 }
+
