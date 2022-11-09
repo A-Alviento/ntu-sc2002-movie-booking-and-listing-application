@@ -1,26 +1,22 @@
 package model;
-
-public class Cinema extends Model{
+public class Cinema extends Model {
 	public static final long serialVersionUID = 26L;
 
-	private int id;
+	private String cinemaID;
 	private int[][] seatLayout;
-	private String cinemaClass;
+	private CinemaClass cinemaType;
 	
-	public Cinema() {
-	}
-	public Cinema(int id, int[][] seatLayout, String cinemaClass) {
-		super();
-		this.id = id;
+	public Cinema(String id, int[][] seatLayout, CinemaClass type) {
+		this.cinemaID = id;
 		this.seatLayout = seatLayout;
-		this.cinemaClass = cinemaClass;
+		this.cinemaType = type;
 	}
 	
-	public int getId() {
-		return id;
+	public String getCinemaCode() {
+		return cinemaID;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setCinemaCode(String id) {
+		this.cinemaID = id;
 	}
 	public int[][] getSeatLayout() {
 		return seatLayout;
@@ -28,36 +24,25 @@ public class Cinema extends Model{
 	public void setSeatLayout(int[][] seatLayout) {
 		this.seatLayout = seatLayout;
 	}
-	public String getCinemaClass() {
-		return cinemaClass;
-	}
-	public void setCinemaClass(String cinemaClass) {
-		this.cinemaClass = cinemaClass;
+	
+	public CinemaClass getCinemaClass() {
+		return cinemaType;
 	}
 	
-//	public void checkAvailability(int row, int col) {
-//		if (seatLayout[row][col]==0)
-//			System.out.println("Seat Available!");
-//		else System.out.println("Seat Not Available!");
+	public void setCinemaClass(CinemaClass type) {
+		this.cinemaType = type;
+	}
+//	public String getCinemaClass() {
+//		return cinemaClass;
+//	}
+//	public void setCinemaType(String cinemaClass) {
+//		switch(cinemaClass) {
+//			case("Bronze"): cinemaType = CinemaClass.BRONZE;break;
+//			case("Silver"): cinemaType = CinemaClass.SILVER;break;
+//			case("Gold"): cinemaType = CinemaClass.GOLD;break;
+//			default: System.out.println("You have entered an invalid cinema Class.");break;
+//		}
 //	}
 	
-	public void printLayout() {
-		for (int[] i : seatLayout) {
-			for (int j : i) {
-				if (j==0)
-					System.out.print("0 ");
-				else
-					System.out.print("1 ");
-			}
-			System.out.println();	
-		}
-		
-	}	
-	
-	public static void main(String args[]) 
-	{
-		int[][] y = new int[][] {{1,2},{4,5},{1,0},{4,0,7,2},{4,0,0,2}};	
-		Cinema x2 = new Cinema(1001, y,"Cinema1");
-		x2.printLayout();
-	}
+
 }
