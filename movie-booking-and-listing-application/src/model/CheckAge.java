@@ -1,4 +1,4 @@
-
+package model;
 public final class CheckAge {
 	
 	private static int studentAge = 15;
