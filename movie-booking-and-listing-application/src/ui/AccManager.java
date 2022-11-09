@@ -2,6 +2,8 @@ package ui;
 
 import java.util.Scanner;
 
+import model.CustomerAccount;
+
 public class AccManager {
     
     static Scanner sc = new Scanner(System.in);
@@ -60,6 +62,24 @@ public class AccManager {
         System.out.println("Invalid, try again");
         return false;
     
+
+    }
+    
+    /*
+     * create user account
+     * 
+     */
+    public void makeAccount() {
+        
+        CustomerAccount c = new CustomerAccount();
+        c.createAccount();
+        mC.cusAcc.add(c);
+        /*
+         * TODO:
+         * Update in binary file as well
+         * 
+         */
+        System.out.println("Account created");
 
     }
 }

@@ -141,10 +141,7 @@ public class MainController {
                 
             // case for user sign up
             case 2:
-                CustomerAccount c = new CustomerAccount();
-                c.createAccount();
-                cusAcc.add(c);
-                System.out.println("Account created");
+                accMan.makeAccount();
                 
                 // once account created, go back to login page
                 return -1;

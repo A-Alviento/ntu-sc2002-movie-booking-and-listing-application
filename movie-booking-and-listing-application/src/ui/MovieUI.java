@@ -64,23 +64,8 @@ public class MovieUI {
                     break;
                     
                 case 3:
-                    
-                    /*
-                     * TODO:
-                     * ASK USER TO SELECT A CINEMA FROM THE CURRENT CINEPLEX. FROM THERE, ACCESS 
-                     * CURRMOVIE AND EXTRACT MOVIE SHOWING (DATE + TIMING) FOR THAT PARTICULAR
-                     * CINEPLEX AND CINEMA; THEN ASK USER TO SELECT A SLOT
-                     * 
-                     * ONCE SELECTED, SHOW SEATLAYOUT AND ASK USER TO SELECT SEAT
-                     * 
-                     * PROCEED TO PAYMENT
-                     * 
-                     * RECORD THE BOOKING TO THE CURRCUSTOMER OBJECT
-                     * 
-                     * 
-                     * CONFUSION: MOVIE SHOULD HAVE ASSOCIATION TO MOVIESHOWING AND MOVIESHOWING IS MISSING DATE
-                     * 
-                     */
+                    if(!new BookingManager(mC).displayBookingManagerUI())
+                        return false;
                     break;
                     
                 case 4:
