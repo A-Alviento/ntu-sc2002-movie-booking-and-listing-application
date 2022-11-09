@@ -5,6 +5,7 @@ public class Cineplexes extends Model{
 
 	private String location;
 	private int openingTime;
+	private Cinema[] cinemaList;
 	
 	public Cineplexes() {
 		Cinema[] cinemaList = new Cinema[3];
@@ -27,5 +28,8 @@ public class Cineplexes extends Model{
 	}
 	public void setOpeningTime(int openingTime) {
 		this.openingTime = openingTime;
+	}
+	public Cinema[] getCinema() {
+	    return this.cinemaList;
 	}
 }
