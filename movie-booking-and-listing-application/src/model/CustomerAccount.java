@@ -1,11 +1,9 @@
 package model;
-
-
 /**
  * Represents a customer Account stored in the db
  */
 import java.util.Scanner;
-//import java.time.LocalDate;
+import java.util.ArrayList;
 
 
 public class CustomerAccount extends Account {
@@ -26,6 +24,10 @@ public class CustomerAccount extends Account {
 	 * Customer's age
 	 */
 	private int age;
+	/*
+	 * Cusotmer's list of past bookings
+	 */
+	private ArrayList<Booking> bookingList;
 	
 	/*
 	 * Default constructor for a customer account
@@ -34,10 +36,21 @@ public class CustomerAccount extends Account {
 		name = "Default Name";
 		email = "default Email";
 		phoneNum = "69696969";
+		bookingList = new ArrayList<Booking>();
+	}
+	
+	public CustomerAccount(String name, String email, String phoneNum, String password, int age ) {
+		this.name = name;
+		this.email = email;
+		this.phoneNum = phoneNum;
+		this.password = password;
+		this.age = age;
+		bookingList = new ArrayList<Booking>();
 	}
 	
 	/*
 	 * Creating a Customer account by asking for their name, number, email, age and password.
+	 * To be depreciated once its not used.
 	 */
 	public void createAccount() {
 		Scanner sc = new Scanner(System.in) ;
@@ -55,6 +68,19 @@ public class CustomerAccount extends Account {
 		
 	}
 	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+
+	public void addBooking(int[] seat, double price, String movieTitle, String cinemaCode) {
+		Booking temp = new Booking( seat,  price,  movieTitle,  cinemaCode);
+		this.bookingList.add(0, temp);
+	}
+	
+	public ArrayList<Booking> getBookingList() {
+		return this.bookingList;
+	}
 	/*
 	 * Get phone number of the account
 	 * @return customer's phone number
@@ -93,9 +119,21 @@ public class CustomerAccount extends Account {
 	 */
 	public int getAge() {
 		return age;
+	}	
+	
+	public void setPhoneNum(String phoneNum) {
+		this.phoneNum = phoneNum;
 	}
-
-
+	
+	public void setAge(int age) {
+		this.age = age;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public void setPassword(String pw) {
+		password = pw;
+	}
 	
 
 }
