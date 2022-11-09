@@ -13,8 +13,7 @@ public class LoginUI {
     static Scanner sc = new Scanner(System.in);
     private MainController mC;
     
-    
-    public void setMainController(MainController mC) {
+    public LoginUI(MainController mC) {
         
         this.mC = mC;
     }
@@ -32,8 +31,9 @@ public class LoginUI {
             System.out.println("**************************************************************************************************");
             System.out.println("1. User Login\n"
                     + "2. User Signup\n"
-                    + "3. Admin Login\n"
-                    + "4. Quit.");
+                    + "3. Guest\n"
+                    + "4. Admin Login\n"
+                    + "5. Quit.");
             System.out.println("**************************************************************************************************");
             System.out.println("**************************************************************************************************");
             System.out.println("\nPlease choose an option:");

@@ -155,8 +155,9 @@ public class Movie extends Model{
 	 * Add reviews to the movie by customers
 	 * @param review : Movie's review by customers
 	 */
-	public void addReview(Review review) {
-		this.reviews.add(0, review);
+	public void addReview(String s, int n) {
+		Review review = new Review(s, n);
+	    this.reviews.add(0, review);
 	}
 
 	/*
@@ -170,7 +171,7 @@ public class Movie extends Model{
 	/*
 	 *  Updates the rating in the movie class
 	 */
-	private void updateRating() {
+	public void updateRating() {
 		int count = reviews.size();
 		
 		if(count == 0) rating = -1.0;

@@ -7,24 +7,12 @@ import java.util.Scanner;
  * choose which cineplex to go to
  * 
  */
-
-
 public class CineplexUI {
     
     static Scanner sc = new Scanner(System.in);
-    
-    /*
-     * List of cineplexes and their opening time
-     * 
-     */
-    private static final String[][] arr = { {"Cineplex 1", "9"}, {"Cineplex 2", "10"},
-                                            {"Cineplex 3", "11"} };
-    
-
     private MainController mC;
     
-    public void setMainController(MainController mC) {
-        
+    public CineplexUI(MainController mC) {
         this.mC = mC;
     }
     
@@ -53,7 +41,7 @@ public class CineplexUI {
         }
         if (selection == 4)
             return false;
-                   
+
         mC.currCineplex = mC.cinPlex.get(selection-1);
         return true;
     }

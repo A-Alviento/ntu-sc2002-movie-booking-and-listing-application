@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import model.*;
+import io.*;
 
 /*
  * This represents the main logic coordinator of the UI subclasses
@@ -25,6 +26,13 @@ public class MainController {
     protected AdminMenuUI admin;
     protected UserMenuUI user;
     protected MovieUI movie;
+    
+    /*
+     * UI Controllers
+     * 
+     */
+    protected AccManager accMan;
+    protected MovieController movCont;
     
     /*
      * Components related to entity  classes
@@ -49,40 +57,59 @@ public class MainController {
      * Constructor; Initializes all default components
      * 
      */
-    public MainController() {
+    public MainController(ModelDatabaseController mdc, AppEntry appEnt) {
         
         /*
-         * Ensures all UI components has an association
+         * Ensures this MainController has a reference back
+         * to the current instance of AppEntry; allows appEntry 
+         * to terminate app
+         * 
+         */
+        this.appEnt = appEnt;
+        
+        /*
+         * Ensures all UI components has a reference
          * back to this instance of MainController
          * 
          */
-        cineplex.setMainController(this);
+        cineplex = new CineplexUI(this);
         admin.setMainController(this);
-        user.setMainController(this);
-        movie.setMainController(this);
+        user = new UserMenuUI(this);
+        movie = new MovieUI(this);
+        
+        
+        accMan = new AccManager(this);
+        movCont = new MovieController(this);
         
         cusAcc = new ArrayList<>();
         movList = new ArrayList<>();
         cinPlex = new ArrayList<>();
         
+        /*
+         * Initialises cineplexes and their opening time
+         * 
+         */
         for (int i = 0; i < 3; i++)
             cinPlex.add(new Cineplexes("Location " + i, 8));
- 
+        
+        
+        /*
+         * TODO:
+         * Extract from DB movies, customers, and cineplexes
+         * 
+         */
+        
+        
+        /*
+         * When app first started, we have no current movie,
+         * account or cineplex chosen
+         * 
+         */
         currAcc = null;
         currMov = null;
         currCineplex = null;
     }
    
-    
-    
-    /*
-     * TODO:
-     * IMPLEMENT OR INTEGRATE METHOD TO EXTRACT
-     * LIST OF MOVIES FROM DB INTO AN ARRAYLIST
-     * 
-     */
-    
-
     
     /*
      * Takes in user input for LoginUI and from there onwards
@@ -97,7 +124,7 @@ public class MainController {
             case 1:
                 // authenticates customer login
                 while(!auth)
-                    auth = this.authenticateUserAccount();
+                    auth = accMan.authenticateUserAccount();
                 auth = false;
                 
                 // once authenticated, move on 
@@ -121,12 +148,26 @@ public class MainController {
                 
                 // once account created, go back to login page
                 return -1;
+                // case for user sign up
+                
+            // case for guest user
+            case 3:
+                if (!cineplex.displayCineplexUI()) {
+                    currAcc = null;
+                    return -1;
+                }
+                if (!user.displayMainUI()) {
+                    currAcc = null;
+                    return -1;
+                }
+                
+                return 1;
                 
             //case for admin login
-            case 3:
+            case 4:
                 // authenticates admin login
                 while(!auth)
-                    auth = this.authenticateAdminAccount();
+                    auth = accMan.authenticateAdminAccount();
                 auth = false;
                 
                 // once authenticated, move on
@@ -136,7 +177,7 @@ public class MainController {
                 return 1;
             
             // case to stop app
-            case 4:
+            case 5:
                 appEnt.stop();
                 return 1;
         }
@@ -145,61 +186,5 @@ public class MainController {
         return -1;
     }
     
-    /*
-     * authenticates customer account by checking with list 
-     * of accounts stored in cusAcc arraylist
-     * 
-     */
-    public boolean authenticateUserAccount() {
-        System.out.println("Enter Email: ");
-        String userID = sc.next();
-        System.out.println("Enter Password: ");
-        String userPass = sc.next();
-        
-        int len = cusAcc.size();
-        
-        for (int i = 0; i < len; i++) {
-            if (userID.equals(cusAcc.get(i).getEmail())) {
-                if (userPass.equals(cusAcc.get(i).getPassword()))
-                    this.currAcc = cusAcc.get(i);
-                    System.out.println("Successfully logged in");
-                    return true;
-            }
-            
-        }
-        System.out.println("Invalid, try again");
-        return false;
-    }
-    
-    /*
-     * authenticates admin account by checking with pre
-     * determined list of authorised accounts
-     * 
-     */
-    public boolean authenticateAdminAccount() {
-        System.out.println("Enter Email: ");
-        String userID = sc.next();
-        System.out.println("Enter Password: ");
-        String userPass = sc.next();
-        
-        if(userID.equals("DummyID")) {
-            if(userPass.equals("Password123"))
-                System.out.println("Successfully logged in");
-                return true;
-        }
-        
-        System.out.println("Invalid, try again");
-        return false;
-    }
-
-    
-    /*
-     * allows appEntry to terminate app
-     * 
-     */
-    public void setObject(AppEntry appEnt) {
-        
-        this.appEnt = appEnt; 
-    }
     
 }

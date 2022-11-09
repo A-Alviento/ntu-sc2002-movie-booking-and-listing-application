@@ -13,11 +13,9 @@ public class AppEntry {
     public AppEntry() {
         
         stop = false;
-        login = new LoginUI();
-        mC = new MainController();
+        mC = new MainController(o, this);
+        login = new LoginUI(mC);
         
-        login.setMainController(mC);
-        mC.setObject(this);
     }
     
     /*

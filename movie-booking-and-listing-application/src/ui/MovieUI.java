@@ -2,9 +2,6 @@ package ui;
 
 import java.util.Scanner;
 
-import model.Movie;
-import model.Review;
-
 /*
  * This represents the movie options UI
  * 
@@ -14,7 +11,7 @@ public class MovieUI {
     static Scanner sc = new Scanner(System.in);
     private MainController mC;
     
-    public void setMainController(MainController mC) {
+    public MovieUI(MainController mC) {
         
         this.mC = mC;
     }
@@ -45,8 +42,6 @@ public class MovieUI {
         
         boolean repeat = true;
         int selection;
-
-        Movie mov = mC.currMov;
         
         do {
             
@@ -61,26 +56,15 @@ public class MovieUI {
             switch(selection) {
                 
                 case 1:
-                    System.out.println("Title: " + mov.getTitle());
-                    System.out.println("Status: " + mov.getMovieStatus());
-                    System.out.println("Parental Guidance: " + mov.getCensorship());
-                    System.out.println("Synopsis: " + mov.getSynopsis());
-                    System.out.println("Director: " + mov.getDirector());
-                    System.out.println("Cast: " + mov.getCasts());
-                    System.out.println("Rating: " + mov.getRating());
-                    System.out.println("Reviews: " + mov.getReviews());
+                    mC.movCont.viewMovDetails();
                     break;
                     
                 case 2:
-                    int len = mov.getReviews().size();
-                    
-                    for (int i = 0; i < len; i++) {
-                        System.out.println("Review " + i + ": " + mov.getReviews().get(i));
-                        System.out.println("--------------------------------------------------------------------------------------------------");
-                    }
+                    mC.movCont.viewMovReviews();
                     break;
                     
                 case 3:
+                    
                     /*
                      * TODO:
                      * ASK USER TO SELECT A CINEMA FROM THE CURRENT CINEPLEX. FROM THERE, ACCESS 
@@ -100,12 +84,7 @@ public class MovieUI {
                     break;
                     
                 case 4:
-                    System.out.println("Input your rating out of 5:\n");
-                    int rating = sc.nextInt();
-                    System.out.println("Input your review:\n");
-                    String review = sc.next();
-                    Review r = new Review(review, rating);
-                    mov.addReview(r);
+                    mC.movCont.inputReview();
                     break; 
                     
                 case 5:

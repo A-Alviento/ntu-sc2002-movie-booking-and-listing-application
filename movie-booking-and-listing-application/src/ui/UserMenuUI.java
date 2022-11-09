@@ -10,10 +10,14 @@ public class UserMenuUI {
     
     static Scanner sc = new Scanner(System.in);
     private MainController mC;
+    private boolean isSortSales;
+    private boolean isSortRatings;
     
-    public void setMainController(MainController mC) {
+    public UserMenuUI(MainController mC) {
         
         this.mC = mC;
+        isSortSales = true;
+        isSortRatings = true;
     }
     
     /*
@@ -56,58 +60,88 @@ public class UserMenuUI {
             switch(selection){
 
                 case 1:
-                    /*
-                     * TODO:
-                     * FIRST LIST MOVIE USING MOVIE LIST FROM MAINCONTROLLER
-                     * ASK FOR USER INPUT TO INDICATE SELECTED MOVIE
-                     * COPY THE SELECTED MOVIE TO CURRMOV IN MAIN CONTROLLER
-                     * GO TO MOVIEUI 
-                     * 
-                     */
+                    mC.movCont.listMovies();
+                    System.out.println("Please select a movie by indicating it's number: ");
+                    
+                    // exception
+                    int movieSelected = sc.nextInt();
+                    
+                    // sets the selected movie
+                    while (!mC.movCont.setCurrMovie(movieSelected)) {
+                        System.out.println("Please select from the options.");
+                        movieSelected = sc.nextInt();
+                    }
+                    
+                    
                     if (!mC.movie.displayMovieUI()) {
                         return false;
                     }
                     
                     break;
+                    
                 case 2:
-                    /*
-                     * TODO:
-                     * FIRST TAKE INPUT OF MOVIE TITLE FROM USER
-                     * FIND MATCHING MOVIE TITLE FROM MOVIE LIST IN MAINCONTROLLER
-                     * IF MATCH FOUND, COPY TO CURRMOV AND GO TO MOVIEUI
-                     * ELSE PROMPT USER TO TRY AGAIN
-                     * 
-                     */
+                    System.out.println("Key in a movie title:");
+                    // exception
+                    String movieSearch = sc.next();
+                    int movieLocation = mC.movCont.searchMovies(movieSearch);
+                    if (movieLocation == -1) {
+                        System.out.println("Movie not found");
+                        break;
+                    }
+                    
+                    mC.movCont.setCurrMovie(movieLocation);
+                    
                     if (!mC.movie.displayMovieUI()) {
                         return false;
                     }
                     
                     break;
+                    
                 case 3:
+                    if (mC.currAcc == null) {
+                        System.out.println("Please go back to the main page and login to view booking history.");
+                        break;
+                    }
+                    
                     /*
                      * TODO:
-                     * SIMPLY EXTRACT FROM THE CURRUSER IN MAINCONTROLLER AND PRINT OUT
+                     * wait for customerAccount implementation of bookings
                      * 
                      */
                     break;
+                    
                 case 4:
-                    /*
-                     * TODO:
-                     * FROM THE MOVIE LIST, SORT IN DESCENDING ORDER
-                     * ACCORDING TO SALES, THEN EXTRACT AND PRINT 
-                     * FIRST 5 ELEMENTS
-                     * 
-                     */
+                    if (!this.isSortSales) {
+                        System.out.println("Not authorised to access");
+                        break;
+                    }
+                    
+                    int sortSize = mC.movCont.sortMovSales();
+                    if (sortSize == 0) {
+                        System.out.println("No movies to show.");
+                        break;
+                    }
+                    for (int i = mC.movList.size()-1; i < sortSize; i--) {
+                        System.out.println(i + ". " + mC.movList.get(i).getTitle() + " " + mC.movList.get(i).getTicketSale() + " sales.");
+                    }
                     break;
+                    
                 case 5:
-                    /*
-                     * TODO:
-                     * FROM THE MOVIE LIST, SORT IN DESCENDING ORDER
-                     * ACCORDING TO RATING, THEN EXTRACT AND PRINT 
-                     * FIRST 5 ELEMENTS
-                     * 
-                     */
+                    if (!this.isSortRatings) {
+                        System.out.println("Not authorised to access");
+                        break;
+                    }
+                    
+                    int sortSize1 = mC.movCont.sortMovRatings();
+                    if (sortSize1 == 0) {
+                        System.out.println("No movies to show.");
+                        break;
+                    }
+                    for (int i = mC.movList.size()-1; i < sortSize1; i--) {
+                        System.out.println(i + ". " + mC.movList.get(i).getTitle() + " " + mC.movList.get(i).getRating() + " rating.");
+                    }
                     break;
+                    
                 case 6:
                     if(!mC.cineplex.displayCineplexUI())
                         return false;
@@ -115,5 +149,36 @@ public class UserMenuUI {
         }while(repeat = true);    
         
         return true;
+    }
+    
+    
+    
+    /*
+     * Setter methods for admin to give access rights to
+     * filter
+     * 
+     */
+    public void setSortSales() {
+        
+        if (this.isSortSales) {
+            this.isSortSales = false;
+            System.out.println("Users can no longer sort by ticket sales.");
+        }
+        else {
+            this.isSortSales = true;
+            System.out.println("Users can now view sort by ticket sales");
+        }
+    }
+    
+    public void setSortRatings() {
+        
+        if (this.isSortRatings) {
+            this.isSortRatings = false;
+            System.out.println("Users can no longer sort by ratings.");
+        }
+        else {
+            this.isSortRatings = true;
+            System.out.println("Users can now view sort by ratings");
+        }
     }
 }
