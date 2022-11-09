@@ -9,12 +9,12 @@ public class Booking {
 	private String movieTitle;
 	private String transectionID = "";
 	
-	public Booking(String name, String code, int[] seat, double price, String movieTitle, String cinemaCode) {
+	public Booking(int[] seat, double price, String movieTitle, String cinemaCode) {
 		this.seat = seat;
 		this.price = price;
 		this.date = LocalDate.now();
-		this.setMovie(movieTitle);
-		cinemaCode = code;
+		this.movieTitle = movieTitle;
+		this.cinemaCode = cinemaCode;
 		transectionID = createTransectionID();
 	}
 	
@@ -25,28 +25,45 @@ public class Booking {
 	public String getTransectionID() {
 		return transectionID;
 	}
+	
 	public LocalDate getBookingDate() {
 		return date;
+	}
+	
+	public void setBookingDate(LocalDate date) {
+		this.date = date;
 	}
 	
 	public int[] getSeat() {
 		return seat;
 	}
 	
+	public void setSeat(int[] seat) {
+		this.seat = seat;
+	}
+	
 	public double getPrice() {
 		return price;
 	}
 	
-	public String getCinema() {
+	public void setPrice(double price) {
+		this.price = price;
+	}
+	
+	public String getCinemaCode() {
 		return cinemaCode;
 	}
-
-	public String getMovie() {
+	
+	public void setCinemaCode(String cinemaCode) {
+		this.cinemaCode = cinemaCode;
+	}
+	
+	public String getMovieTitle() {
 		return movieTitle;
 	}
-
-	public void setMovie(String movie) {
-		this.movieTitle = movie;
+	
+	public void setMovieTitle(String movieTitle) {
+		this.movieTitle = movieTitle;
 	}
 	
 	
