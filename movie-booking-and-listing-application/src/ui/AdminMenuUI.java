@@ -10,6 +10,10 @@ public class AdminMenuUI {
     static Scanner sc = new Scanner(System.in);
     private MainController mC;
 
+    public AdminMenuUI() {
+
+    }
+
     public void setMainController(MainController mC) {
         
         this.mC = mC;

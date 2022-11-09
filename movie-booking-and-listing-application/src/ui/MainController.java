@@ -73,6 +73,7 @@ public class MainController {
          * 
          */
         cineplex = new CineplexUI(this);
+        admin = new AdminMenuUI();
         admin.setMainController(this);
         user = new UserMenuUI(this);
         movie = new MovieUI(this);

@@ -9,12 +9,14 @@ public class Main {
     private static final String configPath = "../config.txt";
     private ConfigDatabase configDatabase = null;
     private ModelDatabaseController mdc = null;
+    private AppEntry ae= null;
 
     Main() {
         try {
             this.initializeMain();
 
             // TODO
+            ae.start();
 
             this.finalizeMain();
         } catch (Exception except) {
@@ -38,9 +40,13 @@ public class Main {
                 }
             }
         }
+        
+        ae = new AppEntry(mdc);
     }
 
     private void finalizeMain() throws Exception {
+        ae = null;
+
         mdc.closeModelDatabase();
         mdc = null;
         if (configDatabase != null) {
