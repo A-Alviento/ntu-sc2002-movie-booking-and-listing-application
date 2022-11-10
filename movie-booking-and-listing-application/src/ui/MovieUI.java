@@ -10,10 +10,14 @@ public class MovieUI {
     
     static Scanner sc = new Scanner(System.in);
     private MainController mC;
+    private MovieController movCont;
+    private BookingManager bookMan;
     
     public MovieUI(MainController mC) {
         
         this.mC = mC;
+        this.movCont = new MovieController(this.mC);
+        this.bookMan = new BookingManager(this.mC);
     }
     
     /*
@@ -40,10 +44,9 @@ public class MovieUI {
      */
     public boolean displayMovieUI() {
         
-        boolean repeat = true;
         int selection;
         
-        do {
+        while(true) {
             
             this.textDisplayUI();
             selection = sc.nextInt();
@@ -56,29 +59,27 @@ public class MovieUI {
             switch(selection) {
                 
                 case 1:
-                    mC.movCont.viewMovDetails();
+                    movCont.viewMovDetails();
                     break;
                     
                 case 2:
-                    mC.movCont.viewMovReviews();
+                    movCont.viewMovReviews();
                     break;
                     
                 case 3:
-                    if(!new BookingManager(mC).displayBookingManagerUI())
+                    if(bookMan.displayBookingManagerUI())
                         return false;
                     break;
                     
                 case 4:
-                    mC.movCont.inputReview();
+                    movCont.inputReview();
                     break; 
                     
                 case 5:
                     if(!mC.user.displayMainUI())
                         return false;
             }
-        }while(repeat = true);
-        
-        return true;
+        }
     }
     
 }

@@ -4,12 +4,12 @@ import java.util.Scanner;
 
 import model.CustomerAccount;
 
-public class AccManager {
+public class AccManagerUI {
     
     static Scanner sc = new Scanner(System.in);
     private MainController mC;
     
-    public AccManager(MainController mC) {
+    public AccManagerUI(MainController mC) {
         
         this.mC = mC;
     }
@@ -74,11 +74,7 @@ public class AccManager {
         CustomerAccount c = new CustomerAccount();
         c.createAccount();
         mC.cusAcc.add(c);
-        /*
-         * TODO:
-         * Update in binary file as well
-         * 
-         */
+        
         System.out.println("Account created");
 
     }

@@ -10,12 +10,17 @@ public class UserMenuUI {
     
     static Scanner sc = new Scanner(System.in);
     private MainController mC;
+    private MovieController movCont;
+    
     private boolean isSortSales;
     private boolean isSortRatings;
+    
     
     public UserMenuUI(MainController mC) {
         
         this.mC = mC;
+        this.movCont = new MovieController(this.mC);
+        
         isSortSales = true;
         isSortRatings = true;
     }
@@ -44,10 +49,9 @@ public class UserMenuUI {
      */
     public boolean displayMainUI() {
         
-        boolean repeat = true;
         int selection;
         
-        do {
+        while(true) {
             
             this.textDisplayUI();
             selection = sc.nextInt();
@@ -60,14 +64,14 @@ public class UserMenuUI {
             switch(selection){
 
                 case 1:
-                    mC.movCont.listMovies();
+                    movCont.listMovies();
                     System.out.println("Please select a movie by indicating it's number: ");
                     
                     // exception
                     int movieSelected = sc.nextInt();
                     
                     // sets the selected movie
-                    while (!mC.movCont.setCurrMovie(movieSelected)) {
+                    while (!movCont.setCurrMovie(movieSelected)) {
                         System.out.println("Please select from the options.");
                         movieSelected = sc.nextInt();
                     }
@@ -83,13 +87,13 @@ public class UserMenuUI {
                     System.out.println("Key in a movie title:");
                     // exception
                     String movieSearch = sc.next();
-                    int movieLocation = mC.movCont.searchMovies(movieSearch);
+                    int movieLocation = movCont.searchMovies(movieSearch);
                     if (movieLocation == -1) {
                         System.out.println("Movie not found");
                         break;
                     }
                     
-                    mC.movCont.setCurrMovie(movieLocation);
+                    movCont.setCurrMovie(movieLocation);
                     
                     if (!mC.movie.displayMovieUI()) {
                         return false;
@@ -103,11 +107,20 @@ public class UserMenuUI {
                         break;
                     }
                     
-                    /*
-                     * TODO:
-                     * wait for customerAccount implementation of bookings
-                     * 
-                     */
+                    int numBook = mC.currAcc.getBookingList().size();
+                    
+                    if (numBook == 0) {
+                        System.out.println("No bookings yet.");
+                        break;
+                    }
+                    
+                    for (int i = 1; i <= numBook; i++) {
+                        System.out.println("Booking " + i + ": " + mC.currAcc.getBookingList().get(i).getMovieTitle() 
+                                + "| Cinema: " + mC.currAcc.getBookingList().get(i).getCinemaCode() + "| Transaction ID: " 
+                                + mC.currAcc.getBookingList().get(i).getTransectionID() + "| Date/Time: " 
+                                + mC.currAcc.getBookingList().get(i).getBookingDate());
+                    }
+                    
                     break;
                     
                 case 4:
@@ -116,7 +129,7 @@ public class UserMenuUI {
                         break;
                     }
                     
-                    int sortSize = mC.movCont.sortMovSales();
+                    int sortSize = movCont.sortMovSales();
                     if (sortSize == 0) {
                         System.out.println("No movies to show.");
                         break;
@@ -132,7 +145,7 @@ public class UserMenuUI {
                         break;
                     }
                     
-                    int sortSize1 = mC.movCont.sortMovRatings();
+                    int sortSize1 = movCont.sortMovRatings();
                     if (sortSize1 == 0) {
                         System.out.println("No movies to show.");
                         break;
@@ -145,17 +158,18 @@ public class UserMenuUI {
                 case 6:
                     if(!mC.cineplex.displayCineplexUI())
                         return false;
-            }     
-        }while(repeat = true);    
+                    
+            }   
+            
+        } 
         
-        return true;
     }
     
     
     
     /*
-     * Setter methods for admin to give access rights to
-     * filter
+     * Setter methods for admin to give access 
+     * rights to filter sort
      * 
      */
     public void setSortSales() {

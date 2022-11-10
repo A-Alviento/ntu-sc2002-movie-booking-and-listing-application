@@ -7,13 +7,13 @@ import java.util.Scanner;
  * as user or as admin
  * 
  */
-public class LoginUI {
+public class AppEntryUI {
     
     
     static Scanner sc = new Scanner(System.in);
     private MainController mC;
     
-    public LoginUI(MainController mC) {
+    public AppEntryUI(MainController mC) {
         
         this.mC = mC;
     }

@@ -30,17 +30,18 @@ public class BookingManager {
      */
     public boolean displayBookingManagerUI(){
         
-        int selection;
-        
+        /* display showtimes in order */
         this.displayShowTimes(mC);
         System.out.println("Select a showing: ");
         // exception
-        int showing = sc.nextInt();
-        // TODO:
-        // need to have cinema return index
-        selection = mC.currMov.getMovieShowTimes().get(showing-1).getCinema().getCinemaCode();
+        /* represents the index of movie showing selected */
+        int movShowingIndex = sc.nextInt();
         
-        this.displaySeatAllocation(selection-1, showing-1);
+        /* represents the cinema hall number */
+        int cinemaHall = mC.currMov.getMovieShowTimes().get(movShowingIndex-1).getCinema().getCinemaHall();
+        
+        /* displays seat allocation for selected showing at selected cinemaHall */
+        this.displaySeatAllocation(cinemaHall-1, movShowingIndex-1);
         
         
         while (mC.currAcc == null) {
@@ -80,9 +81,9 @@ public class BookingManager {
          * it returns a string instead of the enum; change
          * 
          */
-        String price = PriceUtil.getPrice(mC.currMov.getMovieShowTimes().get(showing-1).getMovieDate(),
-                mC.currMov.getMovieShowTimes().get(showing-1).getMovieTime(), mC.currAcc.getAge(),
-                mC.currMov.getMovieShowTimes().get(showing-1).getIs3D(), mC.currCineplex.getCinema()[selection].getCinemaClass(),
+        String price = PriceUtil.getPrice(mC.currMov.getMovieShowTimes().get(movShowingIndex-1).getMovieDate(),
+                mC.currMov.getMovieShowTimes().get(movShowingIndex-1).getMovieTime(), mC.currAcc.getAge(),
+                mC.currMov.getMovieShowTimes().get(movShowingIndex-1).getIs3D(), mC.currCineplex.getCinema()[cinemaHall].getCinemaClass(),
                 mC.currMov.isBlockbuster());
         System.out.println("The final price is " + price + " SGD");
         System.out.println("1. Book\n"
@@ -94,7 +95,7 @@ public class BookingManager {
         
         while (finalChoice < 1 ||  finalChoice > 2) {
             System.out.println("Please choose from the options\n");
-            selection = sc.nextInt();
+            cinemaHall = sc.nextInt();
         }
         
 
@@ -102,7 +103,7 @@ public class BookingManager {
             int[] seatid = {row, col};
             
             mC.currAcc.addBooking(seatid, Double.parseDouble(price), 
-                    mC.currMov.getTitle(), mC.currCineplex.getCinema()[selection].getCinemaCode());
+                    mC.currMov.getTitle(), mC.currCineplex.getCinema()[cinemaHall].getCinemaCode());
             
             /*
              * TODO:
@@ -128,7 +129,7 @@ public class BookingManager {
      * then prints them in order
      * 
      */
-    public static void displayShowTimes(MainController mC) {
+    public void displayShowTimes(MainController mC) {
         
         Collections.sort(mC.currMov.getMovieShowTimes(), new ShowTimeSort());
         
@@ -140,25 +141,50 @@ public class BookingManager {
     }
     
     /*
-     * This first sorts the showtimes for a movie
-     * then prints them in order
+     * This displays seat allocation for a movie
+     * at a particular showing
      * 
      */
     public void displaySeatAllocation(int cinemaNum, int showTimeIndex) {
         
-        int [][] seatLayout = new int [mC.currCineplex.getCinema()[cinemaNum].getSeatLayout().length][];
-        for (int i = 0; i < mC.currCineplex.getCinema()[cinemaNum].getSeatLayout().length; i++)
-            seatLayout[i] = mC.currCineplex.getCinema()[cinemaNum].getSeatLayout()[i].clone();
+//        int [][] seatLayout = new int [mC.currCineplex.getCinema()[cinemaNum].getSeatLayout().length][];
+//        for (int i = 0; i < mC.currCineplex.getCinema()[cinemaNum].getSeatLayout().length; i++)
+//            seatLayout[i] = mC.currCineplex.getCinema()[cinemaNum].getSeatLayout()[i].clone();
 
         int col;
         int row;
         
-        for (int j = 0; j < mC.currMov.getMovieShowTimes().get(showTimeIndex).getBooking().size(); j++) {
-            row = mC.currMov.getMovieShowTimes().get(showTimeIndex).getBooking().get(j).getSeat()[0];
-            col = mC.currMov.getMovieShowTimes().get(showTimeIndex).getBooking().get(j).getSeat()[1];
-            seatLayout[row][col] = 0;
+        /* 0 for aisle, 1 for seat*/
+//        for (int j = 0; j < mC.currMov.getMovieShowTimes().get(showTimeIndex).getBooking().size(); j++) {
+//            if (mC.currMov.getMovieShowTimes().get(showTimeIndex).getCinema().getCinemaHall() == cinemaNum) {
+//                row = mC.currMov.getMovieShowTimes().get(showTimeIndex).getBooking().get(j).getSeat()[0];
+//                col = mC.currMov.getMovieShowTimes().get(showTimeIndex).getBooking().get(j).getSeat()[1];
+//                seatLayout[row][col] = 2;
+//            }
+//        }
+        
+        System.out.print("    ");
+        
+        for (char c = 'A'; c < 'I'; c++) {
+            if (Character.compare(c, 'E') == 0)
+                System.out.print("  ");
+            System.out.print(c + " ");
+        }
+        System.out.println("\n");
+
+        
+        for (int i = 0; i < 9; i++) {
+            System.out.print(i+1 + "   ");
+            for (int j = 0; j < 9; j++) {
+                if ([i][j] == 1)
+                    System.out.print("O ");
+                else
+                    System.out.print("  ");
+            }
+            System.out.println();
         }
         
+        // ---------------------- //
         System.out.print("  ");
         for (int k = 0; k < mC.currCineplex.getCinema()[cinemaNum].getSeatLayout()[0].length; k++) {
             System.out.print(k + " ");

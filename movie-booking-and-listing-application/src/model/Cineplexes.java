@@ -6,17 +6,19 @@ public class Cineplexes extends Model{
 	private String location;
 	private int openingTime;
 	private Cinema[] cinemaList;
+	private int cineplexNum;
 	
-	public Cineplexes(String location, int openingTime, char id, CinemaClass type) {
+	public Cineplexes(String location, int openingTime, char id, CinemaClass type, int cineplexNum) {
 	    cinemaList = new Cinema[3];
 	    
 		this.location = location;
 		this.openingTime = openingTime;
+		this.cineplexNum = cineplexNum;
 		
 		int cinemaCount = 0;
 		for (char c = 'A'; c < 'D'; ++c) {
 		    String s = new StringBuilder(Character.toString(id)).append(Character.toString(c)).toString();
-		    this.cinemaList[cinemaCount] = new Cinema(s, type);
+		    this.cinemaList[cinemaCount] = new Cinema(s, type, cinemaCount);
 		    cinemaCount++;
 		}
 		    
@@ -36,5 +38,8 @@ public class Cineplexes extends Model{
 	}
 	public Cinema[] getCinema() {
 	    return this.cinemaList;
+	}
+	public int getCineplexNum() {
+	    return this.cineplexNum;
 	}
 }

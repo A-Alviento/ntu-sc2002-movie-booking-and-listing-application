@@ -9,16 +9,14 @@ import io.ModelDatabaseController;
 public class AppEntry {
     
     private boolean stop;
-    private LoginUI login;
+    private AppEntryUI login;
     private MainController mC;
-    private ModelDatabaseController mdc;
     
     public AppEntry(ModelDatabaseController mdc) throws Exception {
         
-        this.mdc = mdc;
         stop = false;
         mC = new MainController(mdc, this);
-        login = new LoginUI(mC);
+        login = new AppEntryUI(mC);
         
     }
     
