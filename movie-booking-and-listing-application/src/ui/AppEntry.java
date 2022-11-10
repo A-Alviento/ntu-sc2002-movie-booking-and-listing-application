@@ -13,7 +13,7 @@ public class AppEntry {
     private MainController mC;
     private ModelDatabaseController mdc;
     
-    public AppEntry(ModelDatabaseController mdc) {
+    public AppEntry(ModelDatabaseController mdc) throws Exception {
         
         this.mdc = mdc;
         stop = false;

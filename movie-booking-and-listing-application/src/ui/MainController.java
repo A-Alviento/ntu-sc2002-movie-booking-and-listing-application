@@ -6,6 +6,8 @@ import java.util.Scanner;
 import model.*;
 import io.*;
 
+import ui.Helper;
+
 /*
  * This represents the main logic coordinator of the UI subclasses
  * It coordinates the different UI classes and presents them in the form of
@@ -57,7 +59,7 @@ public class MainController {
      * Constructor; Initializes all default components
      * 
      */
-    public MainController(ModelDatabaseController mdc, AppEntry appEnt) {
+    public MainController(ModelDatabaseController mdc, AppEntry appEnt) throws Exception {
         
         /*
          * Ensures this MainController has a reference back
@@ -99,6 +101,9 @@ public class MainController {
          * Extract from DB movies, customers, and cineplexes
          * 
          */
+        cusAcc = Helper.castArrayList(mdc.getArrayList("customeraccount"));
+        movList = Helper.castArrayList(mdc.getArrayList("movie"));
+        cinPlex = Helper.castArrayList(mdc.getArrayList("cineplexes"));
         
         
         /*

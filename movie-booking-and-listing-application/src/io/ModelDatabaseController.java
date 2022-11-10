@@ -57,11 +57,10 @@ public class ModelDatabaseController {
         hm.get(modelKeyword).remove(m);
     }
 
-    @SuppressWarnings("unchecked")
     public ArrayList<Model> getArrayList(String modelKeyword) throws Exception{
         if (!ModelDatabase.isKeywordValid(modelKeyword)) {
             throw new Exception("Invalid model keyword.");
         }
-        return (ArrayList<Model>) hm.get(modelKeyword).clone();
+        return (ArrayList<Model>) hm.get(modelKeyword);
     }
 }

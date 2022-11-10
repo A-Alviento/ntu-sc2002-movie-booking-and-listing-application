@@ -60,7 +60,7 @@ public class MovieController {
      * 
      */
     public boolean setCurrMovie(int selection) {
-        if (selection < 0 || selection > mc.movList.size())
+        if (selection < 0 || selection > mC.movList.size())
             return false;
         mC.currMov = mC.movList.get(selection);
         
