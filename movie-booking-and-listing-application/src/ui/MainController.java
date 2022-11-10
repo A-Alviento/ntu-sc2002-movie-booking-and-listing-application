@@ -10,11 +10,11 @@ import ui.Helper;
 
 /*
  * This represents the main logic coordinator of the UI subclasses
- * It coordinates the different UI classes and presents them in the form of
- * text-based UI for the user;
+ * It coordinates the different UI classes as well as the various
+ * model classes and presents them in the form of text-based UI for 
+ * the user;
  * 
  */
-
 public class MainController {
     
     static Scanner sc = new Scanner(System.in);
@@ -89,15 +89,6 @@ public class MainController {
         cinPlex = new ArrayList<>();
         
         /*
-         * Initialises cineplexes and their opening time
-         * 
-         */
-        for (int i = 0; i < 3; i++)
-            cinPlex.add(new Cineplexes("Location " + i, 8));
-        
-        
-        /*
-         * TODO:
          * Extract from DB movies, customers, and cineplexes
          * 
          */
@@ -105,6 +96,17 @@ public class MainController {
         movList = Helper.castArrayList(mdc.getArrayList("movie"));
         cinPlex = Helper.castArrayList(mdc.getArrayList("cineplexes"));
         
+        /*
+         * Initialises cineplexes and their opening time
+         * 
+         */
+        if (this.cinPlex.size() == 0) {
+            int cinPlexCount = 1;
+            for (char c = 'A'; c < 'D'; ++c) {
+                cinPlex.add(new Cineplexes("Location " + cinPlexCount, 8, c, CinemaClass.values()[cinPlexCount-1]));
+                cinPlexCount++;
+            }
+        }
         
         /*
          * When app first started, we have no current movie,
@@ -181,6 +183,7 @@ public class MainController {
             
             // case to stop app
             case 5:
+
                 appEnt.stop();
                 return 1;
         }

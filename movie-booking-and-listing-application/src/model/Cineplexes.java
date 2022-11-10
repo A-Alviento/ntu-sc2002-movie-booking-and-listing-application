@@ -7,15 +7,19 @@ public class Cineplexes extends Model{
 	private int openingTime;
 	private Cinema[] cinemaList;
 	
-	public Cineplexes() {
-		Cinema[] cinemaList = new Cinema[3];
-	}
-	
-	public Cineplexes(String location, int openingTime, String id, int[][] seatLayout, CinemaClass type) {
+	public Cineplexes(String location, int openingTime, char id, CinemaClass type) {
+	    cinemaList = new Cinema[3];
+	    
 		this.location = location;
 		this.openingTime = openingTime;
-		for (int i = 0; i < 3; i++)
-		    cinemaList[i] = new Cinema(id, seatLayout, type);
+		
+		int cinemaCount = 0;
+		for (char c = 'A'; c < 'D'; ++c) {
+		    String s = new StringBuilder(Character.toString(id)).append(Character.toString(c)).toString();
+		    this.cinemaList[cinemaCount] = new Cinema(s, type);
+		    cinemaCount++;
+		}
+		    
 	}
 	
 	public String getLocation() {

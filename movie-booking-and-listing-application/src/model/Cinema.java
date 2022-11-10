@@ -6,10 +6,20 @@ public class Cinema extends Model {
 	private int[][] seatLayout;
 	private CinemaClass cinemaType;
 	
-	public Cinema(String id, int[][] seatLayout, CinemaClass type) {
+	public Cinema(String id, CinemaClass type) {
 		this.cinemaID = id;
-		this.seatLayout = seatLayout;
 		this.cinemaType = type;
+		
+		this.seatLayout = new int[9][9];
+		
+		for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                if (j == 4)
+                    seatLayout[i][j] = 0;
+                else
+                    seatLayout[i][j] = 1;
+            }
+        }
 	}
 	
 	public String getCinemaCode() {
