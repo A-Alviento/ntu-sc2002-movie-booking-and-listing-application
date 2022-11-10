@@ -32,13 +32,13 @@ public class BookingManager {
         
         int selection;
         
-        this.displayShowTimes();
+        this.displayShowTimes(mC);
         System.out.println("Select a showing: ");
         // exception
         int showing = sc.nextInt();
         // TODO:
         // need to have cinema return index
-        selection = mC.currMov.getMovieShowTimes().get(showing-1).getCinema().getId();
+        selection = mC.currMov.getMovieShowTimes().get(showing-1).getCinema().getCinemaCode();
         
         this.displaySeatAllocation(selection-1, showing-1);
         
@@ -100,20 +100,10 @@ public class BookingManager {
 
         if (finalChoice == 1) {
             int[] seatid = {row, col};
-            /*
-             * TODO:
-             * Cinema class needs getId method that returns string
-             * and what is String name in the constructor for
-             * Booking
-             * 
-             */
-            Booking booking = new Booking("name" , seatid, Double.parseDouble(price), 
-                    mC.currMov.getTitle(), mC.currCineplex.getCinema()[selection].getId());
-            ;
-            /*
-             * TODO:
-             * CustomerAccount need booking class to update
-             */
+            
+            mC.currAcc.addBooking(seatid, Double.parseDouble(price), 
+                    mC.currMov.getTitle(), mC.currCineplex.getCinema()[selection].getCinemaCode());
+            
             /*
              * TODO:
              * Update in binary file as well
@@ -138,13 +128,13 @@ public class BookingManager {
      * then prints them in order
      * 
      */
-    public static void displayShowTimes() {
+    public static void displayShowTimes(MainController mC) {
         
         Collections.sort(mC.currMov.getMovieShowTimes(), new ShowTimeSort());
         
         for (int i = 1; i <= mC.currMov.getMovieShowTimes().size(); i++) {
             
-            System.out.println(i + ". " + "Date: " + mC.currMov.getMovieShowTimes().get(i).getMovieDate() + " Time: " + mC.currMov.getMovieShowTimes().get(i).getMovieTime() + " at cinema " + mC.currMov.getMovieShowTimes().get(i).getCinema().getId());
+            System.out.println(i + ". " + "Date: " + mC.currMov.getMovieShowTimes().get(i).getMovieDate() + " Time: " + mC.currMov.getMovieShowTimes().get(i).getMovieTime() + " at cinema " + mC.currMov.getMovieShowTimes().get(i).getCinema().getCinemaCode());
         }
         
     }

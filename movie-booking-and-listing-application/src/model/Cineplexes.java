@@ -11,10 +11,11 @@ public class Cineplexes extends Model{
 		Cinema[] cinemaList = new Cinema[3];
 	}
 	
-	public Cineplexes(String location, int openingTime) {
+	public Cineplexes(String location, int openingTime, String id, int[][] seatLayout, CinemaClass type) {
 		this.location = location;
 		this.openingTime = openingTime;
-		Cinema[] cinemaList = new Cinema[3];
+		for (int i = 0; i < 3; i++)
+		    cinemaList[i] = new Cinema(id, seatLayout, type);
 	}
 	
 	public String getLocation() {
