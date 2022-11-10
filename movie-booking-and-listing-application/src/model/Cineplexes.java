@@ -18,7 +18,7 @@ public class Cineplexes extends Model{
 		int cinemaCount = 0;
 		for (char c = 'A'; c < 'D'; ++c) {
 		    String s = new StringBuilder(Character.toString(id)).append(Character.toString(c)).toString();
-		    this.cinemaList[cinemaCount] = new Cinema(s, type, cinemaCount);
+		    this.cinemaList[cinemaCount] = new Cinema(s, type, cinemaCount, cineplexNum);
 		    cinemaCount++;
 		}
 		    

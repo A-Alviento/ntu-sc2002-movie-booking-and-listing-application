@@ -1,8 +1,12 @@
 package ui;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 import model.Movie;
+import model.MovieShowTime;
 import model.MovieStatus;
 
 public class MovieControllerAdmin {
@@ -183,6 +187,27 @@ public class MovieControllerAdmin {
         }
     }
     
+    public void addShowTime(int cineplexNum, int cinemaNum) {
+        
+        System.out.println("Enter date (yyyy-mm-dd): ");
+        LocalDate newDate = dateInput("Enter a date: ");
+        
+        System.out.println("Enter time (hh:mm): ");
+        LocalTime newTime = timeInput("Enter time (hh:mm): ");
+        
+        System.out.println("Is the movie 3D or not (0 - No ; 1 - Yes): ");
+        // exception
+        boolean is3D;
+        int select3D = sc.nextInt();
+        if (select3D == 1)
+            is3D = true;
+        else
+            is3D = false;
+        
+        MovieShowTime movShowTime = new MovieShowTime(mC.cinPlex.get(cineplexNum).getCinema()[cinemaNum], newDate, newTime, is3D);
+        mC.currMov.getMovieShowTimes().add(movShowTime);
+    }
+    
     public void updateShowTime(int showTimeIndex) {
         boolean loop = true;
         
@@ -197,24 +222,24 @@ public class MovieControllerAdmin {
                 
                 case 1:
                     System.out.println("Enter date (yyyy-mm-dd): ");
-                    String str = sc.next();
+                    LocalDate newDate = dateInput("Enter a date: ");
                     
                     System.out.println("Enter time (hh:mm): ");
-                    String str1 = sc.next();
-                    // TODO: 
-                    // input date and time
+                    LocalTime newTime = timeInput("Enter time (hh:mm): ");
                     
-                   // update binary file too
-                    
+                    mC.currMov.getMovieShowTimes().get(showTimeIndex).setMovieDate(newDate);
+                    mC.currMov.getMovieShowTimes().get(showTimeIndex).setMovieTime(newTime);
                     break;
                     
                 case 2:
+                    System.out.println("Enter Cineplex (1, 2, 3) : ");
+                    // exception
+                    int cineplexNum = sc.nextInt();
                     System.out.println("Enter Cinema (1, 2, 3) : ");
                     // exception
                     int cinemaNum = sc.nextInt();
                     
-                    mC.currMov.getMovieShowTimes().get(showTimeIndex).setCinema(mC.currCineplex.getCinema()[cinemaNum-1]);
-                    // update binary file too
+                    mC.currMov.getMovieShowTimes().get(showTimeIndex).setCinema(mC.cinPlex.get(cineplexNum-1).getCinema()[cinemaNum-1]);
                     break;
                     
                 case 3:
@@ -225,7 +250,7 @@ public class MovieControllerAdmin {
                         mC.currMov.getMovieShowTimes().get(showTimeIndex).setIs3D(true);
                     else
                         mC.currMov.getMovieShowTimes().get(showTimeIndex).setIs3D(false);
-                    // update binary file too
+
                     break;
                     
                     
@@ -238,4 +263,22 @@ public class MovieControllerAdmin {
             }
         }
     }
+    
+    public LocalDate dateInput(String userInput) {
+        
+        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-mm-dd");
+        LocalDate date = LocalDate.parse(userInput, dateFormat);
+        
+        System.out.println(date);
+        return date ;
+    }
+    
+    public LocalTime timeInput(String userInput) {
+            
+            DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("hh:mm");
+            LocalTime time = LocalTime.parse(userInput, dateFormat);
+            
+            System.out.println(time);
+            return time ;
+        }
 }

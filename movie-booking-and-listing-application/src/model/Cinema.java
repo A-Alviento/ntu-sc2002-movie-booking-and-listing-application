@@ -6,11 +6,13 @@ public class Cinema extends Model {
 	private int[][] seatLayout;
 	private CinemaClass cinemaType;
 	private int cinemaHall;
+	private int cineplexNum;
 	
-	public Cinema(String id, CinemaClass type, int CinemaHall) {
+	public Cinema(String id, CinemaClass type, int cinemaHall, int cineplexNum) {
 		this.cinemaID = id;
 		this.cinemaType = type;
-		this.cinemaHall = CinemaHall;
+		this.cinemaHall = cinemaHall;
+		this.cineplexNum = cineplexNum;
 		
 		this.seatLayout = new int[9][9];
 		
@@ -47,6 +49,10 @@ public class Cinema extends Model {
 	
 	public int getCinemaHall() {
 	    return this.cinemaHall;
+	}
+	
+	public int getCineplexNum() {
+	    return this.cineplexNum;
 	}
 //	public String getCinemaClass() {
 //		return cinemaClass;

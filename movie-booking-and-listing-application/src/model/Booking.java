@@ -8,14 +8,16 @@ public class Booking {
 	private String cinemaCode;
 	private String movieTitle;
 	private String transectionID = "";
+	private Cinema cinema;
 	
-	public Booking(int[] seat, double price, String movieTitle, String cinemaCode) {
+	public Booking(int[] seat, double price, String movieTitle, String cinemaCode, Cinema cinema) {
 		this.seat = seat;
 		this.price = price;
 		this.date = LocalDate.now();
 		this.movieTitle = movieTitle;
 		this.cinemaCode = cinemaCode;
 		transectionID = createTransectionID();
+		this.cinema = cinema;
 	}
 	
 	private String createTransectionID() {
@@ -66,5 +68,8 @@ public class Booking {
 		this.movieTitle = movieTitle;
 	}
 	
+	public Cinema getCinema() {
+	    return this.cinema;
+	}
 	
 }

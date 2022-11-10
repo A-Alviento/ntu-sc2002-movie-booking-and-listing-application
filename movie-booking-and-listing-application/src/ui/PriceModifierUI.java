@@ -1,5 +1,7 @@
 package ui;
 
+import model.PriceUtil;
+
 public class PriceModifierUI {
 	public static void printStartingDisplay() {
 		 System.out.println("\n**************************************************************************************************");

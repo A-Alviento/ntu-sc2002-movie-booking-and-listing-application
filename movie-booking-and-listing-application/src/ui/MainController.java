@@ -61,8 +61,7 @@ public class MainController {
         /* Ensures all UI components has a reference 
            back to this instance of MainController */
         cineplex = new CineplexUI(this);
-        admin = new AdminMenuUI();
-        admin.setMainController(this);
+        admin = new AdminMenuUI(this);
         user = new UserMenuUI(this);
         movie = new MovieUI(this);
         accMan = new AccManagerUI(this);

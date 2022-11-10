@@ -9,14 +9,17 @@ public class AdminMenuUI {
     
     static Scanner sc = new Scanner(System.in);
     private MainController mC;
+    private MovieController movCont;
+    private BookingManager bookMan;
+    private MovieControllerAdmin movContAdm;
 
-    public AdminMenuUI() {
 
-    }
-
-    public void setMainController(MainController mC) {
+    public AdminMenuUI(MainController mC) {
         
         this.mC = mC;
+        this.movCont = new MovieController(this.mC);
+        this.bookMan = new BookingManager(this.mC);
+        this.movContAdm = new MovieControllerAdmin(this.mC);
     }
     
     /*
@@ -27,7 +30,7 @@ public class AdminMenuUI {
         System.out.println("**************************************************************************************************");
         System.out.println("1. Create Movie Listing.\n"
                 + "2. Update/Remove Movie Listing.\n"
-                + "3. Create Cinema Showtime.\n"
+                + "3. Create Movie Showtime.\n"
                 + "4. Update/Remove Cinema Showtime.\n"
                 + "5. Configure system settings.\n"
                 + "6. Logout.");
@@ -43,12 +46,12 @@ public class AdminMenuUI {
      */
     public boolean displayAdminUI() {
         
-        MovieControllerAdmin movContAdm = new MovieControllerAdmin(this.mC);
-        
-        boolean repeat = true;
         int selection;
+        int cineplexNum;
+        int cinemaNum;
+        int movieSelected;
         
-        do {
+        while(true) {
             
             this.textDisplayUI();
             selection = sc.nextInt();
@@ -63,12 +66,12 @@ public class AdminMenuUI {
                     movContAdm.addMov();
                     break;
                 case 2:
-                    mC.movCont.listMovies();
+                    movCont.listMovies();
                     System.out.println("Please select a movie by indicating it's number: ");
                     
                     // exception
                     int movie = sc.nextInt();
-                    mC.movCont.setCurrMovie(movie-1);
+                    movCont.setCurrMovie(movie-1);
                     
                     movContAdm.updateMovie(movie-1);
 
@@ -76,36 +79,33 @@ public class AdminMenuUI {
                     
                 case 3:
                     
-                    mC.movCont.listMovies();
+                    movCont.listMovies();
                     System.out.println("Please select a movie by indicating it's number: ");
                     
                     // exception
-                    int movieSelected = sc.nextInt();
-                    mC.movCont.setCurrMovie(movieSelected-1);
+                    movieSelected = sc.nextInt();
+                    movCont.setCurrMovie(movieSelected-1);
                     
-                    mC.cineplex.displayCineplexUI();
-                    
-                    System.out.println("Select a cinema (1, 2, 3)");
+                    System.out.println("Enter Cineplex (1, 2, 3) : ");
                     // exception
-                    int cinema = sc.nextInt();
+                    cineplexNum = sc.nextInt();
+                    System.out.println("Enter Cinema (1, 2, 3) : ");
+                    // exception
+                    cinemaNum = sc.nextInt();
                     
-                    // TODO:
-                    // need method in Movie class to add a showtime
-                    
+                    movContAdm.addShowTime(cineplexNum - 1, cinemaNum - 1);
                     
                     break;
                     
                 case 4:
-                    mC.movCont.listMovies();
+                    movCont.listMovies();
                     System.out.println("Please select a movie by indicating it's number: ");
                     
                     // exception
-                    int movieSelected1 = sc.nextInt();
-                    mC.movCont.setCurrMovie(movieSelected1-1);
+                    movieSelected = sc.nextInt();
+                    movCont.setCurrMovie(movieSelected-1);
                     
-                    mC.cineplex.displayCineplexUI();
-                    
-                    BookingManager.displayShowTimes();
+                    bookMan.displayShowTimes();
                     
                     System.out.println("Please select a showtime by indicating it's number: ");
                     // exception
@@ -125,10 +125,11 @@ public class AdminMenuUI {
                 case 6:
                     return false;
             }
-        }while(repeat = true);
         
-        return true;
+        }
+        
     }
+
 }
 
 
