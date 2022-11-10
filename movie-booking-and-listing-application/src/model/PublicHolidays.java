@@ -30,4 +30,22 @@ public class PublicHolidays extends Model {
 		return publicHolidayList;
 	}
 	
+		/*
+	 * Remove public holidays from the list.
+	 * @return  int 0 - if Entered date is not in the list
+	 * 			int 1 - if entered date is removed.
+	 */
+	public static int removePublicHoliday(LocalDate date) {
+		Iterator <LocalDate> itr = publicHolidayList.iterator();
+		LocalDate temp;
+		while(itr.hasNext()) {
+			temp = itr.next();
+			if(date.isEqual(temp) ) {
+				itr.remove();
+				return 1;
+			}
+		}
+		return 0;
+	}
+	
 }
