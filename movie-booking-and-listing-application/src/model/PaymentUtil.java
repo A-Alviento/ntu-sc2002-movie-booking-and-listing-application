@@ -1,6 +1,6 @@
 package model;
 
-/*
+/**
  * Payment Utility are methods used for a customer to purchase a movie ticket.  
  */
 import java.time.LocalDateTime;
@@ -20,7 +20,7 @@ public class PaymentUtil {
 		return formattedDate;
 	}
 	
-	/*
+	/**
 	 * @param cinemaCode Cinema's unique code
 	 * @return The transaction ID for the purchase
 	 */

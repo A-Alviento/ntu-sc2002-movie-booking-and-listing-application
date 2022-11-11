@@ -5,7 +5,7 @@ package model;
  */
 
 public enum Censorship {
-	/*
+	/**
 	 * There is 4 different censorship for a movie:
 	 * 		General (G) , Parental Guidance (PG) , Mature 18 (M18) and Restricted 21 (R21)
 	 * Integer represents the minimum Age needed by the customer to watch that movie.
@@ -21,7 +21,7 @@ public enum Censorship {
 		this.minAge = age;
 	}
 	
-	/*
+	/**
 	 * @return the minimum Age needed for a customer to watch that movie. 
 	 */
 	public int getMinAge() {

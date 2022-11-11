@@ -2,7 +2,7 @@ package ui;
 
 import java.util.Scanner;
 
-/*
+/**
  * This represents app entry UI component for user to 
  * begin using the app
  * 
@@ -19,7 +19,7 @@ public class AppEntryUI {
         this.mC = mC;
     }
     
-    /*
+    /**
      * display the login UI and process user input
      * 
      */

@@ -3,7 +3,7 @@ import java.io.File;
 import io.*;
 import ui.*;
 
-/*
+/**
 * Main entry point into the program.
 */
 public class Main {

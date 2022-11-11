@@ -9,7 +9,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-/*
+/**
  * For object(byte) based database files on local storage.
  * 
  * @author Min Khant
@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class ObjectLocalDatabase<S extends Serializable> extends LocalDatabase<S, S> {
 
     
-    /*
+    /**
      * Use this constructor if you don't want to change the object
      * before serializing.
      * 
@@ -27,7 +27,7 @@ public class ObjectLocalDatabase<S extends Serializable> extends LocalDatabase<S
         super(filePath, new IdentitySerializer<S>());
     }
 
-    /*
+    /**
      * Use this constructor if you want to change the object before
      * serializing.
      *
@@ -39,7 +39,7 @@ public class ObjectLocalDatabase<S extends Serializable> extends LocalDatabase<S
         super(filePath, serializer);
     }
 
-    /*
+    /**
      * Will create a new file if it does not exist.
      */
     @Override
@@ -71,7 +71,7 @@ public class ObjectLocalDatabase<S extends Serializable> extends LocalDatabase<S
         
     }
 
-    /*
+    /**
      * Write everything from the array list back to the source file.
      */
     @Override
@@ -94,7 +94,7 @@ public class ObjectLocalDatabase<S extends Serializable> extends LocalDatabase<S
     }
 }
 
-/*
+/**
  * Serializer which just returns the object passed to it.
  */
 class IdentitySerializer<S extends Serializable> implements ISerializer<S, S> {

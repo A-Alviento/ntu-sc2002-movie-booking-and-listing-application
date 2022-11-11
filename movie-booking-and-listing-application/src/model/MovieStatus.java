@@ -10,7 +10,7 @@ public enum MovieStatus {
 	END_OF_SHOWING("End of Showing");
 	
 	private String movieStatus;
-	/*
+	/**
 	 * Create the movie status of a movie
 	 * @param movieStatus the movie's status
 	 */
@@ -19,7 +19,7 @@ public enum MovieStatus {
 	}
 	
 	
-	/*
+	/**
 	 * To format the constants into a string
 	 * @return movie's status
 	 */

@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 import model.Movie;
 
-/*
+/**
  * Serves as the logic for Movie functions 
  * 
  */
@@ -20,7 +20,7 @@ public class MovieController {
         this.mC = mC;
     }
     
-    /*
+    /**
      * This method list the available movies
      * 
      */
@@ -36,7 +36,7 @@ public class MovieController {
         return true;
     }
     
-    /*
+    /**
      * This method takes a string and matches with a movie title
      * return index of where the movie is located in the array
      * of movies or -1 if no match found
@@ -56,7 +56,7 @@ public class MovieController {
         return location;
     }
     
-    /*
+    /**
      * This method sets the current movie to selected one
      * 
      */
@@ -68,7 +68,7 @@ public class MovieController {
         return true;
     }
     
-    /*
+    /**
      * This method sorts the movie list in ascending order 
      * of sales
      * 
@@ -85,7 +85,7 @@ public class MovieController {
         return numMov;
     }
     
-    /*
+    /**
      * This method sorts the movie list in ascending order 
      * of ratings
      * 
@@ -102,7 +102,7 @@ public class MovieController {
         return numMov;
     }
     
-    /*
+    /**
      * This method prints out current movie details
      * 
      */
@@ -118,7 +118,7 @@ public class MovieController {
     }
     
     
-    /*
+    /**
      * This method prints out current movie details
      * 
      */
@@ -130,7 +130,7 @@ public class MovieController {
         }
     }
     
-    /*
+    /**
      * This method records a review and a rating
      * 
      */

@@ -2,7 +2,7 @@ package ui;
 
 import java.util.Scanner;
 
-/*
+/**
  * Serves as UI Menu for users or guest after login
  * 
  */
@@ -25,7 +25,7 @@ public class UserMenuUI {
         isSortRatings = true;
     }
     
-    /*
+    /**
      * This method prints the options for users after login
      * 
      */
@@ -42,7 +42,7 @@ public class UserMenuUI {
         System.out.println("\nPlease choose an option from the menu:");
     }
     
-    /*
+    /**
      * This method uses textDisplayUI to print options and
      * process user input 
      * 
@@ -172,7 +172,7 @@ public class UserMenuUI {
     
     
     
-    /*
+    /**
      * Setter methods for admin to give access 
      * rights to filter sort
      * 

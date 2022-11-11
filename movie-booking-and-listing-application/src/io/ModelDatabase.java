@@ -5,13 +5,18 @@ import java.util.HashMap;
 
 import model.Model;
 
+/**
+ * For text based database files on local storage.
+ * 
+ * @author Min Khant
+ */
 public class ModelDatabase extends ObjectLocalDatabase<HashMap<String, ArrayList<Model>>> {
     public static String[] modelKeywords = {
         "booking", "cinema", "cineplexes", "customeraccount", "movie",
         "movieshowing", "review", "publicholiday"
     };
 
-    /*
+    /**
      * Check if a keyword is valid i.e. keyword is in the list of modelKeywords
      * @param   keywords    The target keyword
      */
@@ -24,7 +29,7 @@ public class ModelDatabase extends ObjectLocalDatabase<HashMap<String, ArrayList
         return false;
     }
 
-    /*
+    /**
      * Keyword is used to uniquely identify the model database from other databases.
      * @param   filePath    The path of the database
      */

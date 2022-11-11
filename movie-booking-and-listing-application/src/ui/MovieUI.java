@@ -2,7 +2,7 @@ package ui;
 
 import java.util.Scanner;
 
-/*
+/**
  * This represents the movie options UI
  * 
  */
@@ -20,7 +20,7 @@ public class MovieUI {
         this.bookMan = new BookingManager(this.mC);
     }
     
-    /*
+    /**
      * This method prints the movie options
      * 
      */
@@ -37,7 +37,7 @@ public class MovieUI {
         System.out.println();
     }
     
-    /*
+    /**
      * This method uses textDisplayUI to print movie 
      * options for users and process user input
      * 

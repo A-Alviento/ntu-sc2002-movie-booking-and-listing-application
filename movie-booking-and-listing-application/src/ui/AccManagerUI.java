@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import model.CustomerAccount;
 
-/*
+/**
  * Serves as the UI element for users or
  * admin to login
  * 
@@ -19,7 +19,7 @@ public class AccManagerUI {
         this.mC = mC;
     }
     
-    /*
+    /**
      * authenticates customer account by checking with list 
      * of accounts stored in cusAcc arraylist
      * 
@@ -45,7 +45,7 @@ public class AccManagerUI {
         return false;
     }
     
-    /*
+    /**
      * authenticates admin account by checking with pre
      * determined list of authorised accounts
      * 
@@ -68,7 +68,7 @@ public class AccManagerUI {
 
     }
     
-    /*
+    /**
      * create user account
      * 
      */

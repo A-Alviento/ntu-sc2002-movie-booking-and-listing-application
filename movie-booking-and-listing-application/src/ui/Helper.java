@@ -3,7 +3,7 @@ package ui;
 import java.util.ArrayList;
 
 public class Helper {
-    /*
+    /**
      * Cast an array list of object into an array list of another type
      */
     @SuppressWarnings("unchecked")
