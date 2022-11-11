@@ -63,10 +63,8 @@ public class BookingManager {
             }
         }
         
-        System.out.println("Enter the row number ");
-        
         /** represents row selected by user */
-        int row = CheckUserInput.loopUntilValidInt("Enter the row number: ", 1, mC.cinPlex.get(cineplexNum-1).getCinema()[cinemaHall-1].getSeatLayout().length);
+        int row = CheckUserInput.loopUntilValidInt("Enter the row number: ", 1, mC.cinPlex.get(cineplexNum).getCinema()[cinemaHall].getSeatLayout().length);
         
         System.out.println("Enter the column letter ");
         
