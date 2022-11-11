@@ -65,7 +65,7 @@ public class BookingManager {
         // exception
         /* represents row selected by user */
         int row = sc.nextInt();
-        while (row > mC.currCineplex.getCinema()[0].getSeatLayout().length || row < 0) {
+        while (row > mC.cinPlex.get(cineplexNum-1).getCinema()[cinemaHall-1].getSeatLayout().length || row < 0) {
             System.out.println("Invalid row number, try again: ");
             row = sc.nextInt();
         }

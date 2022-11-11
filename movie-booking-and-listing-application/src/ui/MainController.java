@@ -22,7 +22,6 @@ public class MainController {
      * 
      */
     protected AppEntry appEnt;
-    protected CineplexUI cineplex;
     protected AdminMenuUI admin;
     protected UserMenuUI user;
     protected MovieUI movie;
@@ -44,7 +43,6 @@ public class MainController {
      */
     protected CustomerAccount currAcc;
     protected Movie currMov;
-    protected Cineplexes currCineplex;
     
     
     /*
@@ -61,7 +59,6 @@ public class MainController {
         
         /* Ensures all UI components has a reference 
            back to this instance of MainController */
-        cineplex = new CineplexUI(this);
         admin = new AdminMenuUI(this);
         user = new UserMenuUI(this);
         movie = new MovieUI(this);
@@ -92,7 +89,6 @@ public class MainController {
         /* When app first started, we have no current movie, account or cineplex chosen */
         currAcc = null;
         currMov = null;
-        currCineplex = null;
     }
    
     
@@ -112,11 +108,6 @@ public class MainController {
                     auth = accMan.authenticateUserAccount();
                 auth = false;
                 
-                /* once authenticated, move on */
-                if (!cineplex.displayCineplexUI()) {
-                    currAcc = null;
-                    return -1;
-                }
                 if (!user.displayMainUI()) {
                     currAcc = null;
                     return -1;
@@ -134,10 +125,6 @@ public class MainController {
                 
             /* case for guest user */
             case 3:
-                if (!cineplex.displayCineplexUI()) {
-                    currAcc = null;
-                    return -1;
-                }
                 if (!user.displayMainUI()) {
                     currAcc = null;
                     return -1;

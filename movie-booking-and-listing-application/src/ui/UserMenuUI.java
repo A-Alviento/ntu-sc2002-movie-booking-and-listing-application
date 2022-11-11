@@ -157,7 +157,6 @@ public class UserMenuUI {
                     break;
                     
                 case 6:
-                    if(!mC.cineplex.displayCineplexUI())
                         return false;
                     
             }   
