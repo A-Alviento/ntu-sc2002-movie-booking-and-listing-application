@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Scanner;
 
+import model.Censorship;
 import model.Movie;
 import model.MovieShowTime;
 import model.MovieStatus;
@@ -74,6 +75,24 @@ public class MovieControllerAdmin {
         else
             newMov.setBlockbuster(true);
         
+        System.out.println("1. G(0)\n2. PG(0)\n3. M18(18)\n4.R21(21)");
+        
+        int cenIndex = CheckUserInput.loopUntilValidInt("Enter movie parental rating: \n", 1, 4);
+        
+        switch(cenIndex){
+            case 1:
+                newMov.setCensorship(Censorship.G);
+                break;
+            case 2:
+                newMov.setCensorship(Censorship.G);
+                break;
+            case 3:
+                newMov.setCensorship(Censorship.G);
+                break;
+            case 4:
+                newMov.setCensorship(Censorship.G);
+        }
+        
         mC.movList.add(newMov);
         
     }
@@ -89,7 +108,8 @@ public class MovieControllerAdmin {
             System.out.println("4. Update Movie Synopsis");
             System.out.println("5. Update Movie Status");
             System.out.println("6. Update Movie Blockbuster Status");
-            System.out.println("7. Done");
+            System.out.println("7. Update Movie Maturity Rating");
+            System.out.println("8. Done");
             
             int selection = CheckUserInput.loopUntilValidInt("Select from the option: \n", 1, 7);
             
@@ -136,8 +156,6 @@ public class MovieControllerAdmin {
                             mC.movList.remove(movieIndex);
                             System.out.println("Movie removed.");
                             return;
-                        default:
-                                
                     }        
                     break;
                     
@@ -150,8 +168,27 @@ public class MovieControllerAdmin {
                         mC.currMov.setBlockbuster(true);
         
                     break;
-                    
                 case 7:
+                    System.out.println("1. G(0)\n2. PG(0)\n3. M18(18)\n4.R21(21)");
+                    
+                    int cenIndex = CheckUserInput.loopUntilValidInt("Enter movie parental rating: \n", 1, 4);
+                    
+                    switch(cenIndex){
+                        case 1:
+                            mC.currMov.setCensorship(Censorship.G);
+                            break;
+                        case 2:
+                            mC.currMov.setCensorship(Censorship.G);
+                            break;
+                        case 3:
+                            mC.currMov.setCensorship(Censorship.G);
+                            break;
+                        case 4:
+                            mC.currMov.setCensorship(Censorship.G);
+                    }
+                    break;
+                    
+                case 8:
                     loop = false;
                     return;
                     
