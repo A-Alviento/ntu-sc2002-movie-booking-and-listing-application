@@ -13,7 +13,7 @@ public class DateTimeInputController {
     
     public static LocalDate dateInput(String userInput) {
         
-            DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-mm-dd");
+            DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             LocalDate date = LocalDate.parse(userInput, dateFormat);
             
             System.out.println(date);
@@ -22,7 +22,7 @@ public class DateTimeInputController {
     
     public static LocalTime timeInput(String userInput) {
             
-            DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("hh:mm");
+            DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("HH:mm");
             LocalTime time = LocalTime.parse(userInput, dateFormat);
             
             System.out.println(time);

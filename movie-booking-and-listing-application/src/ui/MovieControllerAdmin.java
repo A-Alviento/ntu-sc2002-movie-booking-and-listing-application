@@ -200,8 +200,8 @@ public class MovieControllerAdmin {
     
     public void addShowTime(int cineplexNum, int cinemaNum) {
 
-        LocalDate newDate = DateTimeInputController.dateInput("Enter a date (yyyy-mm-dd) : ");
-        LocalTime newTime = DateTimeInputController.timeInput("Enter time (hh:mm) : ");
+        LocalDate newDate = DateTimeInputController.dateInput(CheckUserInput.loopUntilValidString("Enter a date (yyyy-mm-dd) : \n", 0));
+        LocalTime newTime = DateTimeInputController.timeInput(CheckUserInput.loopUntilValidString("Enter time (hh:mm) : \n", 0));
         
         boolean is3D;
         int select3D = CheckUserInput.loopUntilValidInt("Is the movie 3D or not (0 - No ; 1 - Yes): \n", 0, 1);
@@ -229,8 +229,8 @@ public class MovieControllerAdmin {
             switch(selection) {
                 
                 case 1:
-                    LocalDate newDate = DateTimeInputController.dateInput("Enter a date (yyyy-mm-dd) : ");
-                    LocalTime newTime = DateTimeInputController.timeInput("Enter time (hh:mm) : ");
+                    LocalDate newDate = DateTimeInputController.dateInput(CheckUserInput.loopUntilValidString("Enter a date (yyyy-mm-dd) : \n", 0));
+                    LocalTime newTime = DateTimeInputController.timeInput(CheckUserInput.loopUntilValidString("Enter time (hh:mm) : \n", 0));
                     
                     mC.currMov.getMovieShowTimes().get(showTimeIndex).setMovieDate(newDate);
                     mC.currMov.getMovieShowTimes().get(showTimeIndex).setMovieTime(newTime);
