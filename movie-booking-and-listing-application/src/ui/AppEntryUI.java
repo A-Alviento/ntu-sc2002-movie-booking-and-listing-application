@@ -12,6 +12,7 @@ public class AppEntryUI {
     
     static Scanner sc = new Scanner(System.in);
     private MainController mC;
+    private int selection;
     
     public AppEntryUI(MainController mC) {
         
@@ -24,7 +25,6 @@ public class AppEntryUI {
      */
     public void displayLoginUI() {
         
-        int selection;
         System.out.println("MOBLIMA\n");
         
         do {
