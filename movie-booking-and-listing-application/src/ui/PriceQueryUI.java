@@ -1,4 +1,7 @@
 package ui;
+
+import model.PriceUtil;
+
 public class PriceQueryUI {
 	public static void printStartingDisplay() {
 		 System.out.println("\n**************************************************************************************************");
