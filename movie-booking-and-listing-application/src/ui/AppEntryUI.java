@@ -36,8 +36,8 @@ public class AppEntryUI {
                     + "5. Quit.");
             System.out.println("**************************************************************************************************");
             System.out.println("**************************************************************************************************");
-            System.out.println("\nPlease choose an option:");
-            selection = sc.nextInt();
+            System.out.println();
+            selection = CheckUserInput.loopUntilValidInt("Please choose an option: ", 1, 5);
             sc.nextLine();
         }while(mC.login(selection) == -1);
     }

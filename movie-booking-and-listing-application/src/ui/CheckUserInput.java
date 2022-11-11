@@ -53,4 +53,5 @@ public final class CheckUserInput {
 		}
 		return input;
 	}
+	
 }
