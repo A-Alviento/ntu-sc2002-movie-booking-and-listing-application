@@ -13,7 +13,7 @@ public class FillDatabaseMain extends Main{
         ArrayList<Cineplexes> cineplexes = mdc.getEphemeralArrayList("cineplexes");
         ArrayList<Cinema> cinemas = new ArrayList<>();
         ArrayList<Movie> movies = new ArrayList<>();
-        ArrayList<CustomerAccount> customers = new ArrayList<>();
+        ArrayList<MovieShowTime> movieShowTimes = new ArrayList<>();
 
 
         // Create 3 cinemas for each cineplex
@@ -43,7 +43,10 @@ public class FillDatabaseMain extends Main{
             movies.add(movie);
         }
 
-        // Create movie showing
+        // For each movie create 2 movie showing at 2 cinemas
+        for (Movie m : movies) {
+            //MovieShowTime ms = new MovieShowTime(0, 0);
+        }
     }
 
     public static void main(String args[]) {
