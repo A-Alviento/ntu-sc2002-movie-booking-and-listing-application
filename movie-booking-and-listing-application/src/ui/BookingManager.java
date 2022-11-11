@@ -32,12 +32,10 @@ public class BookingManager {
         
         /* display showtimes in order */
         this.displayShowTimes();
-        System.out.println("Select a showing: ");
+        System.out.println();
         
-        // exception
         /* represents the index of movie showing selected */
-        int movShowingIndex = sc.nextInt();
-        sc.nextLine();
+        int movShowingIndex = CheckUserInput.loopUntilValidInt("Select a showing by typing its number: ", 1, mC.currMov.getMovieShowTimes().size());
         
         /* represents the cinema hall number */
         int cinemaHall = mC.currMov.getMovieShowTimes().get(movShowingIndex-1).getCinema().getCinemaHall();
@@ -51,8 +49,8 @@ public class BookingManager {
             System.out.println("To book:\n"
                     + "1. login.\n"
                     + "2. create an account \n");
-            int choice = sc.nextInt();
-            sc.nextLine();
+            
+            int choice = CheckUserInput.loopUntilValidInt("Please choose an option: ", 1, 2);
             if (choice == 1) {
                 mC.accMan.authenticateUserAccount();
             }
@@ -65,25 +63,17 @@ public class BookingManager {
         
         System.out.println("Enter the row number ");
         
-        // exception
         /* represents row selected by user */
-        int row = sc.nextInt();
-        sc.nextLine();
-        while (row > mC.cinPlex.get(cineplexNum-1).getCinema()[cinemaHall-1].getSeatLayout().length || row < 0) {
-            System.out.println("Invalid row number, try again: ");
-            row = sc.nextInt();
-            sc.nextLine();
-        }
+        int row = CheckUserInput.loopUntilValidInt("Enter the row number: ", 1, mC.cinPlex.get(cineplexNum-1).getCinema()[cinemaHall-1].getSeatLayout().length);
         
         System.out.println("Enter the column letter ");
         
-        // exception
-        String s = sc.nextLine().toUpperCase();
+        String s = CheckUserInput.loopUntilValidString("Enter the column letter: ", 1).toUpperCase();
         char c = s.charAt(0);
         
         while (c < 'A' || c > 'H') {
             System.out.println("Invalid column (Only A-H), try again: ");
-            s = sc.nextLine().toUpperCase();
+            s = CheckUserInput.loopUntilValidString("Enter the column letter: ", 1).toUpperCase();
             c = s.charAt(0);
         }
         
@@ -118,18 +108,8 @@ public class BookingManager {
         
         System.out.println("1. Book\n"
                 + "2. Cancel\n");
-        System.out.println("Please choose an option:");
         
-        // exception
-        int finalChoice = sc.nextInt();
-        sc.nextLine();
-        
-        while (finalChoice < 1 ||  finalChoice > 2) {
-            System.out.println("Please choose from the options\n");
-            cinemaHall = sc.nextInt();
-            sc.nextLine();
-        }
-        
+        int finalChoice = CheckUserInput.loopUntilValidInt("Please choose an option: ", 1, 2);
         
         if (finalChoice == 1) {
             int[] seatid = {row - 1, col};

@@ -54,4 +54,28 @@ public final class CheckUserInput {
 		return input;
 	}
 	
+	private static void withinRangeStringLength(String s, int length) {
+	    if (s.length() != length) {
+	        throw new IllegalArgumentException("Please enter a string of " + length + " characters only!");
+	    }
+	}
+	
+	// enter length = 0 if length can be anything
+	public static String loopUntilValidString(String str, int length) {
+	    String s = new String();
+	    
+	    while(true) {
+	        try {
+	            System.out.print(str);
+	            s = sc.nextLine();
+	            withinRangeStringLength(s, length);
+	        }catch(InputMismatchException e) {
+	            System.out.println("You did not enter an input of type String.\n");
+	        }catch(IllegalArgumentException ex) {
+	            System.err.print(ex);
+	            System.out.println("");
+	        }
+	    }
+	}
+	
 }
