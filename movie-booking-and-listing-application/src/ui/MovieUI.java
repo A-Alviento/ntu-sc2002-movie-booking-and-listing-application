@@ -34,7 +34,7 @@ public class MovieUI {
                 + "5. Back.");
         System.out.println("**************************************************************************************************");
         System.out.println("**************************************************************************************************");
-        System.out.println("\nPlease choose an option from the menu:");
+        System.out.println();
     }
     
     /*
@@ -49,15 +49,8 @@ public class MovieUI {
         while(true) {
             
             this.textDisplayUI();
-            selection = sc.nextInt();
-            sc.nextLine();
+            selection = CheckUserInput.loopUntilValidInt("Please choose an option from the menu: \n ", 1, 5);
             
-            while (selection < 1 || selection >5) {
-                System.out.println("Please choose from the options\n");
-                selection = sc.nextInt();
-                sc.nextLine();
-                
-            }
             switch(selection) {
                 
                 case 1:
