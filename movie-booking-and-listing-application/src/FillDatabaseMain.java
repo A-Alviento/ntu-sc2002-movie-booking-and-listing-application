@@ -9,6 +9,10 @@ import model.*;
 public class FillDatabaseMain extends Main{
     @Override
     public void mainBody() throws Exception {
+        Cineplexes c1 = (Cineplexes)mdc.getArrayList("cineplexes").get(0);
+        Cineplexes c2 = (Cineplexes)mdc.getArrayList("cineplexes").get(1);
+        Cineplexes c3 = (Cineplexes)mdc.getArrayList("cineplexes").get(2);
+
         Movie m1 = new Movie("Movie 1");
         m1.setDirector("Director 1");
         m1.addCast("Cast A1");

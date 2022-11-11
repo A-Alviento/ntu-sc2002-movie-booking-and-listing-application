@@ -2,13 +2,15 @@ package model;
 /**
  * Represents a customer Account stored in the db
  */
-import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 
 public class CustomerAccount extends Account {
     
 	public static final long serialVersionUID = 73L;
+
+	static Scanner sc = new Scanner(System.in);
 	/**
 	 * Name and password variables to be inherited from Account class
 	 */
@@ -49,6 +51,25 @@ public class CustomerAccount extends Account {
 		this.password = password;
 		this.age = age;
 		bookingList = new ArrayList<Booking>();
+	}
+	
+	/**
+	 * Creating a Customer account by asking for their name, number, email, age and password.
+	 * To be depreciated once its not used.
+	 */
+	public void createAccount() {
+		System.out.print("Enter your name: ");
+		name = sc.nextLine();
+		System.out.print("Enter phone number: ");
+		phoneNum = sc.nextLine();
+		System.out.print("Enter your email: ");
+		email = sc.nextLine();
+		System.out.print("Enter your age: ");
+		age = sc.nextInt();
+		sc.nextLine();
+		System.out.print("Enter your password: ");
+		password = sc.nextLine();
+
 	}
 	
 	/**
