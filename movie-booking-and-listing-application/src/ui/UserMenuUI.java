@@ -34,8 +34,8 @@ public class UserMenuUI {
         System.out.println("1. List movies.\n"
                 + "2. Search for a specific movie.\n"
                 + "3. View booking history \n"
-                + "4. List top 5 ranking by sales"
-                + "5. List top 5 ranking by ratings"
+                + "4. List top 5 ranking by sales\n"
+                + "5. List top 5 ranking by ratings\n"
                 + "6. back.");
         System.out.println("**************************************************************************************************");
         System.out.println("**************************************************************************************************");
