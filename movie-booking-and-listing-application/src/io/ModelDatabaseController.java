@@ -6,8 +6,8 @@ import java.util.HashMap;
 import model.*;
 
 
-/*
- * Main intrface to handle dataface.
+/**
+ * Main interface to handle database.
  * To use: create a new controller, add and open databases to the controller,
  * use addToDatabase, deleteFromDatabase, getIterator, ... . When finished,
  * use closeAllDatabase to persist the databases.
@@ -18,7 +18,7 @@ public class ModelDatabaseController {
     private ModelDatabase database;
     private HashMap<String, ArrayList<Model>> hm = null;
 
-    /*
+    /**
      * Create a new model database controller. This, by itself, doesn't do
      * anything.
      * @param   filePath    The path of the database
@@ -27,7 +27,7 @@ public class ModelDatabaseController {
         database = new ModelDatabase(filePath);
     }
 
-    /*
+    /**
      * Open the model database.
      */
     public void openModelDatabase() throws Exception{
@@ -35,7 +35,7 @@ public class ModelDatabaseController {
         hm = database.arraylist().get(0);
     }
 
-    /*
+    /**
      * Close the database, which will persist changes to the database.
      */
     public void closeModelDatabase() throws Exception {

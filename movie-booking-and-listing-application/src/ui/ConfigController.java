@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 import model.PublicHolidays;
 
-/*
+/**
  * Serves as logic controller for admins 
  * to modify configuarations
  * 

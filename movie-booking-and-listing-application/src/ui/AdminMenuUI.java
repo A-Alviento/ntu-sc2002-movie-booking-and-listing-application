@@ -2,7 +2,7 @@ package ui;
 
 import java.util.Scanner;
 
-/*
+/**
  * Serves as UI Menu for admins after login
  * 
  */
@@ -25,7 +25,7 @@ public class AdminMenuUI {
         this.confCont = new ConfigController();
     }
     
-    /*
+    /**
      * This method prints the options for admins after login
      * 
      */
@@ -42,7 +42,7 @@ public class AdminMenuUI {
         System.out.println("\nPlease choose an option from the menu:");
     }
     
-    /*
+    /**
      * This method uses textDisplayUI to print options and
      * process user input 
      * 

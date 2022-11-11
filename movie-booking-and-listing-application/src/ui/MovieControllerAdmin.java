@@ -8,7 +8,7 @@ import model.Movie;
 import model.MovieShowTime;
 import model.MovieStatus;
 
-/*
+/**
  * Serves as the logic for Movie functions concerning 
  * an admin user
  * 
@@ -135,7 +135,15 @@ public class MovieControllerAdmin {
                         case 4:
                             mC.currMov.setMovieStatus(MovieStatus.END_OF_SHOWING);
                             mC.movList.remove(movieIndex);
+<<<<<<< HEAD
                             
+=======
+                            /**
+                             * TODO:
+                             * Update in binary file as well
+                             * 
+                             */
+>>>>>>> fa6be7d (Fixed comments)
                             System.out.println("Movie removed.");
                             return;
                         default:
@@ -155,6 +163,14 @@ public class MovieControllerAdmin {
                     
                 case 7:
                     loop = false;
+<<<<<<< HEAD
+=======
+                    /**
+                     * TODO:
+                     * Update all changes in binary file as well
+                     * 
+                     */
+>>>>>>> fa6be7d (Fixed comments)
                     return;
                     
                 default:

@@ -6,7 +6,7 @@ import java.io.PrintWriter;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-/*
+/**
  * For text based database files on local storage.
  * 
  * @author Min Khant
@@ -16,7 +16,7 @@ public abstract class TextLocalDatabase<S extends Serializable> extends LocalDat
         super(filePath, serializer);
     }
 
-    /*
+    /**
      * Read everything from the source file and put into array list.
      */
     @Override
@@ -36,7 +36,7 @@ public abstract class TextLocalDatabase<S extends Serializable> extends LocalDat
     }
 
 
-    /*
+    /**
      * Write everything from the array list back to the source file.
      */
     @Override

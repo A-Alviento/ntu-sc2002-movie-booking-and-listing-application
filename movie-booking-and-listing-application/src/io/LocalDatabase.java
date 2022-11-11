@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-/*
+/**
  * The database source is a file on the local computer. This won't attempt
  * to optimize opening/closing - will read/write everything from/to the source
  * file. Will be inefficient for large databases.
@@ -28,7 +28,7 @@ public abstract class LocalDatabase<T, S extends Serializable> implements IDatab
         database.remove(obj);
     }
 
-    /*
+    /**
      * Return an iterator to the arraylist of models in the database. Keep in mind
      * that this is pass by reference. So if you modify the array or modify the
      * objects in the array, it will also modify the database.
@@ -38,7 +38,7 @@ public abstract class LocalDatabase<T, S extends Serializable> implements IDatab
     }
 
 
-    /*
+    /**
      * Return the arraylist of models in the database. Keep in mind
      * that this is pass by reference. So if you modify the array or modify the
      * objects in the array, it will also modify the database.

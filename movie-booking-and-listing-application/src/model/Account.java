@@ -6,12 +6,12 @@ package model;
  */
 
 public abstract class Account extends Model{
-	/*
+	/**
 	 * The name of the account
 	 */
 	protected String name;
 	
-	/*
+	/**
 	 * The password of that account
 	 */
 	protected String password;

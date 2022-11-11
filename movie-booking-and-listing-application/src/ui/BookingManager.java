@@ -7,7 +7,7 @@ import java.util.Scanner;
 import model.MovieShowTime;
 import model.PriceUtil;
 
-/*
+/**
  * This represents the booking logic to book
  * a ticket
  * 
@@ -24,27 +24,27 @@ public class BookingManager {
     
     
     
-    /*
+    /**
      * This prints the UI and processes user input
      * 
      */
     public boolean displayBookingManagerUI(){
         
-        /* display showtimes in order */
+        /** display showtimes in order */
         this.displayShowTimes();
         System.out.println();
         
-        /* represents the index of movie showing selected */
+        /** represents the index of movie showing selected */
         int movShowingIndex = CheckUserInput.loopUntilValidInt("Select a showing by typing its number: ", 1, mC.currMov.getMovieShowTimes().size());
         
-        /* represents the cinema hall number */
+        /** represents the cinema hall number */
         int cinemaHall = mC.currMov.getMovieShowTimes().get(movShowingIndex-1).getCinema().getCinemaHall();
         int cineplexNum = mC.currMov.getMovieShowTimes().get(movShowingIndex-1).getCinema().getCineplexNum();
         
-        /* displays seat allocation for selected showing at selected cinemaHall */
+        /** displays seat allocation for selected showing at selected cinemaHall */
         this.displaySeatAllocation(cinemaHall, cineplexNum, movShowingIndex-1);
         
-        /* if user not logged in, prompt login */
+        /** if user not logged in, prompt login */
         while (mC.currAcc == null) {
             System.out.println("To book:\n"
                     + "1. login.\n"
@@ -63,7 +63,7 @@ public class BookingManager {
         
         System.out.println("Enter the row number ");
         
-        /* represents row selected by user */
+        /** represents row selected by user */
         int row = CheckUserInput.loopUntilValidInt("Enter the row number: ", 1, mC.cinPlex.get(cineplexNum-1).getCinema()[cinemaHall-1].getSeatLayout().length);
         
         System.out.println("Enter the column letter ");
@@ -77,7 +77,7 @@ public class BookingManager {
             c = s.charAt(0);
         }
         
-        /* represents column selected by user */
+        /** represents column selected by user */
         int col = 0;
         
         if (c == 'A')
@@ -97,7 +97,7 @@ public class BookingManager {
         else if (c == 'H')
             col = 8;
             
-        /* gets the price */
+        /** gets the price */
         String price = PriceUtil.getPrice(mC.currMov.getMovieShowTimes().get(movShowingIndex-1).getMovieDate(),
                 mC.currMov.getMovieShowTimes().get(movShowingIndex-1).getMovieTime(), mC.currAcc.getAge(),
                 mC.currMov.getMovieShowTimes().get(movShowingIndex-1).getIs3D(), 
@@ -114,13 +114,13 @@ public class BookingManager {
         if (finalChoice == 1) {
             int[] seatid = {row - 1, col};
             
-            /* update the booking history of current user */
+            /** update the booking history of current user */
             mC.currAcc.addBooking(seatid, Double.parseDouble(price), 
                     mC.currMov.getTitle(), 
                     mC.currMov.getMovieShowTimes().get(movShowingIndex-1).getCinema().getCinemaCode(),
                     mC.currMov.getMovieShowTimes().get(movShowingIndex-1).getCinema());
             
-            /* increment ticket sale of the movie */
+            /** increment ticket sale of the movie */
             mC.currMov.incTicketSale();
             
             System.out.println("Booking successful, you can check your booking history.");
@@ -129,7 +129,7 @@ public class BookingManager {
         
     }
     
-    /*
+    /**
      * This first sorts the showtimes for a movie
      * then prints them in order
      * 
@@ -145,7 +145,7 @@ public class BookingManager {
         
     }
     
-    /*
+    /**
      * This displays seat allocation for a movie
      * at a particular showing
      * 
@@ -160,7 +160,7 @@ public class BookingManager {
         int row;
         
         
-        /* 0 for aisle, 1 for vacant seat, 2 for non-vacant seat*/
+        /** 0 for aisle, 1 for vacant seat, 2 for non-vacant seat*/
         for (int j = 0; j < mC.currMov.getMovieShowTimes().get(showTimeIndex).getBooking().size(); j++) {
             if (mC.currMov.getMovieShowTimes().get(showTimeIndex).getBooking().get(j).getCinema().getCinemaHall() == cinemaNum &&
                     mC.currMov.getMovieShowTimes().get(showTimeIndex).getBooking().get(j).getCinema().getCineplexNum() == cinePlexNum) {

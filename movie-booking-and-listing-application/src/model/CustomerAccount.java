@@ -10,28 +10,28 @@ public class CustomerAccount extends Account {
     
     static Scanner sc = new Scanner(System.in);
 	public static final long serialVersionUID = 73L;
-	/*
+	/**
 	 * Name and password variables to be inherited from Account class
 	 */
 	
-	/*
+	/**
 	 * Cusomter's email 
 	 */
 	private String email;
-	/*
+	/**
 	 * Customer's phone number
 	 */
 	private String phoneNum;
-	/*
+	/**
 	 * Customer's age
 	 */
 	private int age;
-	/*
+	/**
 	 * Cusotmer's list of past bookings
 	 */
 	private ArrayList<Booking> bookingList;
 	
-	/*
+	/**
 	 * Default constructor for a customer account
 	 */
 	public CustomerAccount() {
@@ -50,7 +50,7 @@ public class CustomerAccount extends Account {
 		bookingList = new ArrayList<Booking>();
 	}
 	
-	/*
+	/**
 	 * Creating a Customer account by asking for their name, number, email, age and password.
 	 * To be depreciated once its not used.
 	 */
@@ -83,7 +83,7 @@ public class CustomerAccount extends Account {
 	public ArrayList<Booking> getBookingList() {
 		return this.bookingList;
 	}
-	/*
+	/**
 	 * Get phone number of the account
 	 * @return customer's phone number
 	 */
@@ -91,7 +91,7 @@ public class CustomerAccount extends Account {
 		return phoneNum;
 	}
 	
-	/*
+	/**
 	 * Get phone name of the account
 	 * @return customer's name
 	 */
@@ -99,7 +99,7 @@ public class CustomerAccount extends Account {
 		return name;
 	}
 	
-	/*
+	/**
 	 * Get email of the account
 	 * @return customer's email
 	 */
@@ -107,7 +107,7 @@ public class CustomerAccount extends Account {
 		return email;
 	}
 	
-	/*
+	/**
 	 * Get password of the account
 	 * @return customer's password
 	 */
@@ -115,7 +115,7 @@ public class CustomerAccount extends Account {
 		return password;
 	}
 	
-	/*
+	/**
 	 * Get age of the account
 	 * @return customer's age
 	 */

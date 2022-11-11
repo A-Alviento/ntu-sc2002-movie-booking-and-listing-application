@@ -2,7 +2,7 @@ package ui;
 
 import io.ModelDatabaseController;
 
-/*
+/**
  * Serves as CLI entry point
  * 
  */
@@ -20,7 +20,7 @@ public class AppEntry {
         
     }
     
-    /*
+    /**
      * start the application
      * 
      */
@@ -30,7 +30,7 @@ public class AppEntry {
         }
     }
     
-    /*
+    /**
      * stop the application
      * 
      */
