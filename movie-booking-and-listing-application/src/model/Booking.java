@@ -1,7 +1,8 @@
 package model;
 import java.time.LocalDate;
 
-public class Booking {
+public class Booking extends Model{
+	public static final long serialVersionUID = 711L;
 	private int[] seat = new int[2];
 	private double price;
 	private LocalDate date;	

@@ -74,4 +74,23 @@ public class ModelDatabaseController {
 
         return al;
     }
+
+    public <M extends Model> ArrayList<M> getEphemeralArrayList(String modelKeyword) throws Exception {
+        if (!ModelDatabase.isKeywordValid(modelKeyword)) {
+            throw new Exception("Invalid model keyword.");
+        }
+
+        return castArrayList(hm.get(modelKeyword));
+    }
+
+    @SuppressWarnings("unchecked")
+    public static <T,S> ArrayList<T> castArrayList(ArrayList<S> al) {
+        ArrayList<T> ret = new ArrayList<>();
+
+        for (S o : al) {
+            ret.add((T)o);
+        }
+
+        return ret;
+    }
 }

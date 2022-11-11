@@ -6,22 +6,18 @@ public class Cineplexes extends Model{
 	private String location;
 	private int openingTime;
 	private Cinema[] cinemaList;
+	private int i = 0;		// iterator for cinemaList
 	private int cineplexNum;
+	private int id;
 	
-	public Cineplexes(String location, int openingTime, char id, CinemaClass type, int cineplexNum) {
+	public Cineplexes(String location, int openingTime, char id, int cineplexNum) {
 	    cinemaList = new Cinema[3];
 	    
 		this.location = location;
 		this.openingTime = openingTime;
 		this.cineplexNum = cineplexNum;
-		
-		int cinemaCount = 0;
-		for (char c = 'A'; c < 'D'; ++c) {
-		    String s = new StringBuilder(Character.toString(id)).append(Character.toString(c)).toString();
-		    this.cinemaList[cinemaCount] = new Cinema(s, type, cinemaCount, cineplexNum);
-		    cinemaCount++;
-		}
-		    
+		this.id = id;
+
 	}
 	
 	public String getLocation() {
@@ -36,10 +32,18 @@ public class Cineplexes extends Model{
 	public void setOpeningTime(int openingTime) {
 		this.openingTime = openingTime;
 	}
+
+	public void addCinema(Cinema c){
+		this.cinemaList[i++] = c;
+	}
 	public Cinema[] getCinema() {
 	    return this.cinemaList;
 	}
 	public int getCineplexNum() {
 	    return this.cineplexNum;
+	}
+
+	public int getId() {
+		return this.id;
 	}
 }

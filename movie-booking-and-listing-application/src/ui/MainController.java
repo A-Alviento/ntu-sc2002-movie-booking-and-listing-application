@@ -85,7 +85,7 @@ public class MainController {
         if (this.cinPlex.size() == 0) {
             int cinPlexCount = 1;
             for (char c = 'A'; c < 'D'; ++c) {
-                cinPlex.add(new Cineplexes("Location " + cinPlexCount, 8, c, CinemaClass.values()[cinPlexCount-1], cinPlexCount - 1));
+                cinPlex.add(new Cineplexes("Location " + cinPlexCount, 8, c, cinPlexCount - 1));
                 cinPlexCount++;
             }
         }
