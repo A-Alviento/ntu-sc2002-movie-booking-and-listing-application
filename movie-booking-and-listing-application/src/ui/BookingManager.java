@@ -36,6 +36,7 @@ public class BookingManager {
         // exception
         /* represents the index of movie showing selected */
         int movShowingIndex = sc.nextInt();
+        sc.nextLine();
         
         /* represents the cinema hall number */
         int cinemaHall = mC.currMov.getMovieShowTimes().get(movShowingIndex-1).getCinema().getCinemaHall();
@@ -50,6 +51,7 @@ public class BookingManager {
                     + "1. login.\n"
                     + "2. create an account \n");
             int choice = sc.nextInt();
+            sc.nextLine();
             if (choice == 1) {
                 mC.accMan.authenticateUserAccount();
             }
@@ -65,9 +67,11 @@ public class BookingManager {
         // exception
         /* represents row selected by user */
         int row = sc.nextInt();
+        sc.nextLine();
         while (row > mC.cinPlex.get(cineplexNum-1).getCinema()[cinemaHall-1].getSeatLayout().length || row < 0) {
             System.out.println("Invalid row number, try again: ");
             row = sc.nextInt();
+            sc.nextLine();
         }
         
         System.out.println("Enter the column letter ");
@@ -117,10 +121,12 @@ public class BookingManager {
         
         // exception
         int finalChoice = sc.nextInt();
+        sc.nextLine();
         
         while (finalChoice < 1 ||  finalChoice > 2) {
             System.out.println("Please choose from the options\n");
             cinemaHall = sc.nextInt();
+            sc.nextLine();
         }
         
         
