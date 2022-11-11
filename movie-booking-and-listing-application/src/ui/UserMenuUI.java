@@ -12,8 +12,8 @@ public class UserMenuUI {
     private MainController mC;
     private MovieController movCont;
     
-    private boolean isSortSales;
-    private boolean isSortRatings;
+    public static boolean isSortSales;
+    public static boolean isSortRatings;
     
     
     public UserMenuUI(MainController mC) {
@@ -124,7 +124,7 @@ public class UserMenuUI {
                     break;
                     
                 case 4:
-                    if (!this.isSortSales) {
+                    if (!UserMenuUI.isSortSales) {
                         System.out.println("Not authorised to access");
                         break;
                     }
@@ -140,7 +140,7 @@ public class UserMenuUI {
                     break;
                     
                 case 5:
-                    if (!this.isSortRatings) {
+                    if (!UserMenuUI.isSortRatings) {
                         System.out.println("Not authorised to access");
                         break;
                     }
@@ -174,24 +174,24 @@ public class UserMenuUI {
      */
     public void setSortSales() {
         
-        if (this.isSortSales) {
-            this.isSortSales = false;
+        if (UserMenuUI.isSortSales) {
+            UserMenuUI.isSortSales = false;
             System.out.println("Users can no longer sort by ticket sales.");
         }
         else {
-            this.isSortSales = true;
+            UserMenuUI.isSortSales = true;
             System.out.println("Users can now view sort by ticket sales");
         }
     }
     
     public void setSortRatings() {
         
-        if (this.isSortRatings) {
-            this.isSortRatings = false;
+        if (UserMenuUI.isSortRatings) {
+            UserMenuUI.isSortRatings = false;
             System.out.println("Users can no longer sort by ratings.");
         }
         else {
-            this.isSortRatings = true;
+            UserMenuUI.isSortRatings = true;
             System.out.println("Users can now view sort by ratings");
         }
     }

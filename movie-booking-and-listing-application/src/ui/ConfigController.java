@@ -8,24 +8,31 @@ import model.PublicHolidays;
 public class ConfigController {
     
     static Scanner sc = new Scanner(System.in);
-    private MainController mC;
     
-    public ConfigController(MainController mC, int selection) {
+    public boolean configEntry(int selection) {
         
-        this.mC = mC;
         switch(selection) {
             case 1:
+                this.updateTicketPrice();
+                break;
             case 2:
+                while(this.updateHolidays());
+                break;
             case 3:
+                
+                break;
             case 4:
+                return false;
         }
+        return true;
     }
+    
     
     public void updateTicketPrice() {
         PriceModifierUI.display();
     }
     
-    public void updateHolidays() {
+    public boolean updateHolidays() {
         System.out.println("Select an option: ");
         System.out.println("1. Add Holiday");
         System.out.println("2. Remove Holiday");
@@ -37,7 +44,6 @@ public class ConfigController {
                 LocalDate newDate = DateTimeInputController.dateInput("Enter a date (yyyy-mm-dd) : ");
                 PublicHolidays.addPublicHoliday(newDate);
                 System.out.println("Holiday added successfully");
-                
                 break;
                 
             case 2:
@@ -49,12 +55,41 @@ public class ConfigController {
                 }
                 System.out.print("Select the date you wish to remove by entering it's number: ");
                 // exception
+                int holidayIndex = sc.nextInt();
+                
+                if (PublicHolidays.removePublicHoliday(PublicHolidays.getPublicHolidays().get(holidayIndex-1)) == 0) {
+                    System.out.println("Entered date is not a holiday.");
+                    return false;
+                }
+                System.out.println("Removed.");
+                break;
                 
         }
         
+        return true;
     }
     
     public void updateSortAccess() {
+        int isSale, isRating;
+        
+        System.out.print("Authorise access for users to sort by ticket sales? (1 - yes ; 0 - no): ");
+        // exception
+        isSale = sc.nextInt();
+        
+        System.out.print("Authorise access for users to sort by movie rating? (1 - yes ; 0 - no): ");
+        // exception
+        isRating = sc.nextInt();
+        
+        if(isSale == 0)
+            UserMenuUI.isSortRatings = false;
+        else 
+            UserMenuUI.isSortRatings = true;
+        
+        if(isRating == 0)
+            UserMenuUI.isSortRatings = false;
+        else
+            UserMenuUI.isSortSales = true;
+        
         
     }
     

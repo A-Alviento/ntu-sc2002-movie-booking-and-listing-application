@@ -9,6 +9,7 @@ public class AdminMenuUI {
     private MovieController movCont;
     private BookingManager bookMan;
     private MovieControllerAdmin movContAdm;
+    private ConfigController confCont;
 
 
     public AdminMenuUI(MainController mC) {
@@ -17,6 +18,7 @@ public class AdminMenuUI {
         this.movCont = new MovieController(this.mC);
         this.bookMan = new BookingManager(this.mC);
         this.movContAdm = new MovieControllerAdmin(this.mC);
+        this.confCont = new ConfigController();
     }
     
     /*
@@ -113,18 +115,20 @@ public class AdminMenuUI {
                     break;
                     
                 case 5:
-                    /*
-                     * TODO:
-                     * 
-                     */
-                    System.out.println("Please select an option to configure: ");
-                    System.out.println("1. Update Ticket Prices");
-                    System.out.println("2. Update Holidays");
-                    System.out.println("3. Update Top 5 Sorting Access Rights");
-                    System.out.println("4. Back");
                     
-                    // exception
-                    int option = sc.nextInt();
+                    int option;
+                    
+                    do {
+                        System.out.println("Please select an option to configure: ");
+                        System.out.println("1. Update Ticket Prices");
+                        System.out.println("2. Update Holidays");
+                        System.out.println("3. Update Top 5 Sorting Access Rights");
+                        System.out.println("4. Back");
+                        
+                        // exception
+                        option = sc.nextInt();
+                        
+                    } while (this.confCont.configEntry(option));
                     
                     break;
                     
