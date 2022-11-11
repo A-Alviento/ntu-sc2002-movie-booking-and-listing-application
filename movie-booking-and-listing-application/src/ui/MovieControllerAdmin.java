@@ -2,7 +2,6 @@ package ui;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 import model.Movie;
@@ -188,12 +187,9 @@ public class MovieControllerAdmin {
     }
     
     public void addShowTime(int cineplexNum, int cinemaNum) {
-        
-        System.out.println("Enter date (yyyy-mm-dd): ");
-        LocalDate newDate = dateInput("Enter a date: ");
-        
-        System.out.println("Enter time (hh:mm): ");
-        LocalTime newTime = timeInput("Enter time (hh:mm): ");
+
+        LocalDate newDate = DateTimeInputController.dateInput("Enter a date (yyyy-mm-dd) : ");
+        LocalTime newTime = DateTimeInputController.timeInput("Enter time (hh:mm) : ");
         
         System.out.println("Is the movie 3D or not (0 - No ; 1 - Yes): ");
         // exception
@@ -221,11 +217,8 @@ public class MovieControllerAdmin {
             switch(sc.nextInt()) {
                 
                 case 1:
-                    System.out.println("Enter date (yyyy-mm-dd): ");
-                    LocalDate newDate = dateInput("Enter a date: ");
-                    
-                    System.out.println("Enter time (hh:mm): ");
-                    LocalTime newTime = timeInput("Enter time (hh:mm): ");
+                    LocalDate newDate = DateTimeInputController.dateInput("Enter a date (yyyy-mm-dd) : ");
+                    LocalTime newTime = DateTimeInputController.timeInput("Enter time (hh:mm) : ");
                     
                     mC.currMov.getMovieShowTimes().get(showTimeIndex).setMovieDate(newDate);
                     mC.currMov.getMovieShowTimes().get(showTimeIndex).setMovieTime(newTime);
@@ -263,22 +256,4 @@ public class MovieControllerAdmin {
             }
         }
     }
-    
-    public LocalDate dateInput(String userInput) {
-        
-        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-mm-dd");
-        LocalDate date = LocalDate.parse(userInput, dateFormat);
-        
-        System.out.println(date);
-        return date ;
-    }
-    
-    public LocalTime timeInput(String userInput) {
-            
-            DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("hh:mm");
-            LocalTime time = LocalTime.parse(userInput, dateFormat);
-            
-            System.out.println(time);
-            return time ;
-        }
 }
