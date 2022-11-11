@@ -36,7 +36,7 @@ public class MainController {
     protected ArrayList<CustomerAccount> cusAcc;
     protected ArrayList<Movie> movList;
     protected ArrayList<Cineplexes> cinPlex;
-    protected ArrayList<LocalDate> publicHolidayList;
+    protected PublicHolidays publicHolidays;
     
     /*
      * Stores the current account being used
@@ -73,13 +73,13 @@ public class MainController {
         cusAcc = new ArrayList<>();
         movList = new ArrayList<>();
         cinPlex = new ArrayList<>();
-        publicHolidayList = new ArrayList<>();
+        
         
         /* Extract from DB movies, customers, and cineplexes */
         cusAcc = Helper.castArrayList(mdc.getArrayList("customeraccount"));
         movList = Helper.castArrayList(mdc.getArrayList("movie"));
         cinPlex = Helper.castArrayList(mdc.getArrayList("cineplexes"));
-        publicHolidayList = Helper.castArrayList(mdc.getArrayList("publicholiday"));
+        publicHolidays = new PublicHolidays(Helper.castArrayList(mdc.getArrayList("publicholiday")));
         
         /* Initialises cineplexes and their opening time, as well as their cinemas */
         if (this.cinPlex.size() == 0) {

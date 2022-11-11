@@ -5,6 +5,7 @@ package model;
  */
 import java.util.ArrayList;
 import java.util.Iterator;
+
 import java.time.LocalDate;
 
 public class PublicHolidays extends Model {
@@ -13,7 +14,12 @@ public class PublicHolidays extends Model {
 	/*
 	 * Array of the public holidays
 	 */
-	private static ArrayList<LocalDate> publicHolidayList = new ArrayList<LocalDate>();
+	private static ArrayList<LocalDate> publicHolidayList;
+	
+	public PublicHolidays(ArrayList<LocalDate> list) {
+	    
+	    publicHolidayList = list;
+	}
 	
 	/*
 	 * Add a date into the list of public Holiday
