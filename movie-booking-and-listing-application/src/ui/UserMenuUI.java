@@ -123,7 +123,7 @@ public class UserMenuUI {
                         break;
                     }
                     for (int i = mC.movList.size(); i > mC.movList.size() - sortSize; i--) {
-                        System.out.println(++count + ". " + mC.movList.get(i-1).getTitle() + " " + mC.movList.get(i-1).getTicketSale() + " sales.");
+                        System.out.println(count++ + ". " + mC.movList.get(i-1).getTitle() + " " + mC.movList.get(i-1).getTicketSale() + " sales.");
                     }
                     break;
                     
@@ -140,7 +140,7 @@ public class UserMenuUI {
                         break;
                     }
                     for (int i = mC.movList.size(); i > mC.movList.size() - sortSize1; i--) {
-                        System.out.println(++count1 + ". " + mC.movList.get(i-1).getTitle() + " " + mC.movList.get(i-1).getRating() + " rating.");
+                        System.out.println(count1++ + ". " + mC.movList.get(i-1).getTitle() + " " + mC.movList.get(i-1).getRating() + " rating.");
                     }
                     break;
                     
