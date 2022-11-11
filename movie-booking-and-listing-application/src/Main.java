@@ -1,3 +1,5 @@
+import java.io.File;
+
 import io.*;
 import ui.*;
 
@@ -5,12 +7,15 @@ import ui.*;
 * Main entry point into the program.
 */
 public class Main {
-    private static String MODELDATABASEPATH = "../data/modeldatabase.ser";
+    private static String MODELDATABASEPATH = "data/modeldatabase.ser";
     private ModelDatabaseController mdc = null;
     private AppEntry ae= null;
 
     Main() {
         try {
+            File currentDirFile = new File(".");
+            String helper = currentDirFile.getAbsolutePath();
+            System.out.println(helper);
             this.initializeMain();
 
             // TODO
