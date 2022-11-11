@@ -147,7 +147,7 @@ public class BookingManager {
         
         for (int i = 1; i <= mC.currMov.getMovieShowTimes().size(); i++) {
             
-            System.out.println(i + ". " + "Date: " + mC.currMov.getMovieShowTimes().get(i).getMovieDate() + " Time: " + mC.currMov.getMovieShowTimes().get(i).getMovieTime() + " at cinema " + mC.currMov.getMovieShowTimes().get(i).getCinema().getCinemaCode());
+            System.out.println(i + ". " + "Date: " + mC.currMov.getMovieShowTimes().get(i-1).getMovieDate() + " Time: " + mC.currMov.getMovieShowTimes().get(i-1).getMovieTime() + " at cinema " + mC.currMov.getMovieShowTimes().get(i-1).getCinema().getCinemaCode());
         }
         return true;
         
