@@ -75,7 +75,11 @@ public class MainController {
         cusAcc = mdc.getArrayList("customeraccount");
         movList = mdc.getArrayList("movie");
         cinPlex = mdc.getArrayList("cineplexes");
-        publicHolidays = new PublicHolidays(mdc.getArrayList("publicholiday"));
+        if (mdc.getArrayList("publicholiday").size() == 0) {
+            mdc.addToDatabase("publicholiday", new PublicHolidays(new ArrayList<>()));
+        }
+        publicHolidays = (PublicHolidays) mdc.getArrayList("publicholiday").get(0);
+        // publicHolidays = new PublicHolidays(mdc.getArrayList("publicholiday"));
         
         /** Initialises cineplexes and their opening time, as well as their cinemas */
         if (this.cinPlex.size() == 0) {
