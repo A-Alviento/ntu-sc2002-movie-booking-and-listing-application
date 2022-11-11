@@ -57,10 +57,21 @@ public class ModelDatabaseController {
         hm.get(modelKeyword).remove(m);
     }
 
-    public ArrayList<Model> getArrayList(String modelKeyword) throws Exception{
+    @SuppressWarnings("unchecked")
+    public <M extends Model> ArrayList<M> getArrayList(String modelKeyword) throws Exception{
         if (!ModelDatabase.isKeywordValid(modelKeyword)) {
             throw new Exception("Invalid model keyword.");
         }
-        return (ArrayList<Model>) hm.get(modelKeyword);
+        
+        // Workaround for linking database with arraylist
+        // Only works for one concurrent database
+        ArrayList<M> al = new ArrayList<>();
+        for (Model m : hm.get(modelKeyword)) {
+            al.add((M)m);
+        }
+
+        hm.put(modelKeyword, (ArrayList<Model>) al);
+
+        return al;
     }
 }

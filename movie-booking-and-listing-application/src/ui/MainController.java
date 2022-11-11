@@ -72,10 +72,10 @@ public class MainController {
         
         
         /** Extract from DB movies, customers, and cineplexes */
-        cusAcc = Helper.castArrayList(mdc.getArrayList("customeraccount"));
-        movList = Helper.castArrayList(mdc.getArrayList("movie"));
-        cinPlex = Helper.castArrayList(mdc.getArrayList("cineplexes"));
-        publicHolidays = new PublicHolidays(Helper.castArrayList(mdc.getArrayList("publicholiday")));
+        cusAcc = mdc.getArrayList("customeraccount");
+        movList = mdc.getArrayList("movie");
+        cinPlex = mdc.getArrayList("cineplexes");
+        publicHolidays = new PublicHolidays(mdc.getArrayList("publicholiday"));
         
         /** Initialises cineplexes and their opening time, as well as their cinemas */
         if (this.cinPlex.size() == 0) {
