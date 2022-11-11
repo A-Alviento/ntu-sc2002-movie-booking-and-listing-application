@@ -4,6 +4,11 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
+/*
+ * Serves as the class to take input of date and time 
+ * from user as string and process it to a LocalDate/LocalTime 
+ * 
+ */
 public class DateTimeInputController {
     
     public static LocalDate dateInput(String userInput) {

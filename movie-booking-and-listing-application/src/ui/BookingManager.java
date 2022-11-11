@@ -8,7 +8,8 @@ import model.MovieShowTime;
 import model.PriceUtil;
 
 /*
- * This represents the booking logic
+ * This represents the booking logic to book
+ * a ticket
  * 
  */
 public class BookingManager {

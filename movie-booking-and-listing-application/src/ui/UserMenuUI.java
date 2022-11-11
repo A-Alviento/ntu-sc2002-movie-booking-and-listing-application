@@ -3,7 +3,7 @@ package ui;
 import java.util.Scanner;
 
 /*
- * This represents the menu for users after login
+ * Serves as UI Menu for users or guest after login
  * 
  */
 public class UserMenuUI {

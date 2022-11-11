@@ -5,6 +5,11 @@ import java.util.Scanner;
 
 import model.PublicHolidays;
 
+/*
+ * Serves as logic controller for admins 
+ * to modify configuarations
+ * 
+ */
 public class ConfigController {
     
     static Scanner sc = new Scanner(System.in);

@@ -3,8 +3,8 @@ package ui;
 import java.util.Scanner;
 
 /*
- * This represents login UI component for user to login 
- * as user or as admin
+ * This represents app entry UI component for user to 
+ * begin using the app
  * 
  */
 public class AppEntryUI {

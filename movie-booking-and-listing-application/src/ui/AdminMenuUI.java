@@ -2,6 +2,10 @@ package ui;
 
 import java.util.Scanner;
 
+/*
+ * Serves as UI Menu for admins after login
+ * 
+ */
 public class AdminMenuUI {
     
     static Scanner sc = new Scanner(System.in);

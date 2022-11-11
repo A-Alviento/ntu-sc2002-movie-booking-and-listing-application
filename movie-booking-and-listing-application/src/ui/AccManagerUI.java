@@ -4,6 +4,11 @@ import java.util.Scanner;
 
 import model.CustomerAccount;
 
+/*
+ * Serves as the UI element for users or
+ * admin to login
+ * 
+ */
 public class AccManagerUI {
     
     static Scanner sc = new Scanner(System.in);

@@ -7,7 +7,7 @@ import java.util.Scanner;
 import model.Movie;
 
 /*
- * This class is concerned with the logic for movie related UI
+ * Serves as the logic for Movie functions 
  * 
  */
 public class MovieController {
