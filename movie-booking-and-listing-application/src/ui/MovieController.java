@@ -167,8 +167,19 @@ class MovieRatingsSort implements Comparator<Movie>{
 
     @Override
     public int compare(Movie o1, Movie o2) {
+        double a, b;
         
-        return (int) (Double.parseDouble(o1.getRating()) - Double.parseDouble(o2.getRating()));
+        if (o1.getRating().equals("NA"))
+            a = 0;
+        else
+            a = Double.parseDouble(o1.getRating());
+        
+        if (o2.getRating().equals("NA"))
+            b = 0;
+        else
+            b = Double.parseDouble(o2.getRating());
+        
+        return (int) (a - b);
     }
 
 }
