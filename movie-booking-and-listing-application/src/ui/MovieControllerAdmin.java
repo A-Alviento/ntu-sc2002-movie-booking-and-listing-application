@@ -111,7 +111,7 @@ public class MovieControllerAdmin {
             System.out.println("7. Update Movie Maturity Rating");
             System.out.println("8. Done");
             
-            int selection = CheckUserInput.loopUntilValidInt("Select from the option: \n", 1, 7);
+            int selection = CheckUserInput.loopUntilValidInt("Select from the option: \n", 1, 8);
             
             switch(selection) {
                 
@@ -137,7 +137,7 @@ public class MovieControllerAdmin {
                     break;
                     
                 case 5:
-                    System.out.println("1. Coming Soon\n2. Now Showing\n3. Preview\n4.End of Showing");
+                    System.out.println("1. Coming Soon\n2. Now Showing\n3. Preview\n4. End of Showing");
               
                     int choice = CheckUserInput.loopUntilValidInt("Enter movie status: \n", 1, 4);
                     
