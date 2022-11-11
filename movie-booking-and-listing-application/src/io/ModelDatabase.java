@@ -13,7 +13,7 @@ import model.Model;
 public class ModelDatabase extends ObjectLocalDatabase<HashMap<String, ArrayList<Model>>> {
     public static String[] modelKeywords = {
         "booking", "cinema", "cineplexes", "customeraccount", "movie",
-        "movieshowing", "review", "publicholiday"
+        "movieshowtime", "review", "publicholiday"
     };
 
     /**

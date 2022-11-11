@@ -10,7 +10,7 @@ public class TestDatabaseMain extends Main{
     @Override
     public void mainBody() throws Exception {
         // "booking", "cinema", "cineplexes", "customeraccount", "movie",
-        // "movieshowing", "review", "publicholiday"
+        // "movieshowtime", "review", "publicholiday"
 
         System.out.println("List of models and respective database size:");
         System.out.println("--------------------------------------------");
