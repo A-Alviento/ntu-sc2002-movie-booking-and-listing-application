@@ -77,12 +77,12 @@ public class BookingManager {
         System.out.println("Enter the column letter ");
         
         // exception
-        String s = sc.next().toUpperCase();
+        String s = sc.nextLine().toUpperCase();
         char c = s.charAt(0);
         
         while (c < 'A' || c > 'H') {
             System.out.println("Invalid column (Only A-H), try again: ");
-            s = sc.next().toUpperCase();
+            s = sc.nextLine().toUpperCase();
             c = s.charAt(0);
         }
         
