@@ -8,15 +8,13 @@ public class Cineplexes extends Model{
 	private Cinema[] cinemaList;
 	private int i = 0;		// iterator for cinemaList
 	private int cineplexNum;
-	private int id;
 	
-	public Cineplexes(String location, int openingTime, char id, int cineplexNum) {
+	public Cineplexes(String location, int openingTime, int cineplexNum) {
 	    cinemaList = new Cinema[3];
 	    
 		this.location = location;
 		this.openingTime = openingTime;
 		this.cineplexNum = cineplexNum;
-		this.id = id;
 
 	}
 	
@@ -41,9 +39,5 @@ public class Cineplexes extends Model{
 	}
 	public int getCineplexNum() {
 	    return this.cineplexNum;
-	}
-
-	public int getId() {
-		return this.id;
 	}
 }

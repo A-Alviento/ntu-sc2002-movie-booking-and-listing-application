@@ -19,7 +19,7 @@ public class FillDatabaseMain extends Main{
         for (Cineplexes cp : cineplexes) {
             int cinemaCount = 0;
             for (char c = 'A'; c < 'D'; ++c) {
-                int cineplexId = cp.getId();
+                int cineplexId = cp.getCineplexNum();
                 String s = new StringBuilder(Character.toString(cineplexId)).append(Character.toString(c)).toString();
                 Cinema cinema = new Cinema(s, CinemaClass.values()[cinemaCount], cinemaCount, cineplexId);
                 mdc.addToDatabase("cinema", cinema);
