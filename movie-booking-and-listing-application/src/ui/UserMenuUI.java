@@ -64,24 +64,24 @@ public class UserMenuUI {
             switch(selection){
 
                 case 1:
-                    if(movCont.listMovies())
-                        break;
-                    System.out.println("Please select a movie by indicating it's number: ");
-                    
-                    // exception
-                    int movieSelected = sc.nextInt();
-                    
-                    // sets the selected movie
-                    while (!movCont.setCurrMovie(movieSelected)) {
-                        System.out.println("Please select from the options.");
-                        movieSelected = sc.nextInt();
+                    if(movCont.listMovies()) {
+                        System.out.println("Please select a movie by indicating it's number: ");
+                        
+                        // exception
+                        int movieSelected = sc.nextInt();
+                        
+                        // sets the selected movie
+                        while (!movCont.setCurrMovie(movieSelected)) {
+                            System.out.println("Please select from the options.");
+                            movieSelected = sc.nextInt();
+                        }
+                        
+                        
+                        if (!mC.movie.displayMovieUI()) {
+                            return false;
+                        }
                     }
-                    
-                    
-                    if (!mC.movie.displayMovieUI()) {
-                        return false;
-                    }
-                    
+
                     break;
                     
                 case 2:

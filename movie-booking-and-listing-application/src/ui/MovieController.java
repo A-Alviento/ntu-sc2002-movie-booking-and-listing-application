@@ -25,7 +25,7 @@ public class MovieController {
      * 
      */
     public boolean listMovies() {
-        
+
         if (mC.movList.size() == 0) {
             System.out.println("No movies available.");
             return false;
