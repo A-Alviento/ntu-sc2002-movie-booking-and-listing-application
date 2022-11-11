@@ -79,6 +79,7 @@ public class MainController {
         cusAcc = Helper.castArrayList(mdc.getArrayList("customeraccount"));
         movList = Helper.castArrayList(mdc.getArrayList("movie"));
         cinPlex = Helper.castArrayList(mdc.getArrayList("cineplexes"));
+        publicHolidayList = Helper.castArrayList(mdc.getArrayList("publicholiday"));
         
         /* Initialises cineplexes and their opening time, as well as their cinemas */
         if (this.cinPlex.size() == 0) {
