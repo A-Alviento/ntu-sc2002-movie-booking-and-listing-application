@@ -129,8 +129,9 @@ public class MovieController {
             return;
         }
         
-        for (int i = 0; i < mC.currMov.getReviews().size(); i++) {
-            System.out.println("Review " + i + ": " + mC.currMov.getReviews().get(i));
+        for (int i = 1; i <= mC.currMov.getReviews().size(); i++) {
+            System.out.println("Review " + i + ": " + mC.currMov.getReviews().get(i-1).getRating() + "/5 - " 
+                        + mC.currMov.getReviews().get(i-1).getComment());
             System.out.println("--------------------------------------------------------------------------------------------------");
         }
     }
