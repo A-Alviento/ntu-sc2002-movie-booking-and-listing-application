@@ -22,9 +22,9 @@ public class AccManagerUI {
     public boolean authenticateUserAccount() {
         
         System.out.println("Enter Email: ");
-        String userID = sc.next();
+        String userID = sc.nextLine();
         System.out.println("Enter Password: ");
-        String userPass = sc.next();
+        String userPass = sc.nextLine();
         
         int len = mC.cusAcc.size();
         
@@ -49,9 +49,9 @@ public class AccManagerUI {
     public boolean authenticateAdminAccount() {
         
         System.out.println("Enter Email: ");
-        String userID = sc.next();
+        String userID = sc.nextLine();
         System.out.println("Enter Password: ");
-        String userPass = sc.next();
+        String userPass = sc.nextLine();
         
         if(userID.equals("DummyID")) {
             if(userPass.equals("Password123"))
