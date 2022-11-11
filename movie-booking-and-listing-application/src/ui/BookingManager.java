@@ -31,8 +31,10 @@ public class BookingManager {
     public boolean displayBookingManagerUI(){
         
         /** display showtimes in order */
-        this.displayShowTimes();
+        if(!this.displayShowTimes())
+            return false;
         System.out.println();
+
         
         /** represents the index of movie showing selected */
         int movShowingIndex = CheckUserInput.loopUntilValidInt("Select a showing by typing its number: ", 1, mC.currMov.getMovieShowTimes().size());
@@ -134,14 +136,20 @@ public class BookingManager {
      * then prints them in order
      * 
      */
-    public void displayShowTimes() {
+    public boolean displayShowTimes() {
         
         Collections.sort(mC.currMov.getMovieShowTimes(), new ShowTimeSort());
+        
+        if (mC.currMov.getMovieShowTimes().size() == 0) {
+            System.out.println("No showtimes available.");
+            return false;
+        }
         
         for (int i = 1; i <= mC.currMov.getMovieShowTimes().size(); i++) {
             
             System.out.println(i + ". " + "Date: " + mC.currMov.getMovieShowTimes().get(i).getMovieDate() + " Time: " + mC.currMov.getMovieShowTimes().get(i).getMovieTime() + " at cinema " + mC.currMov.getMovieShowTimes().get(i).getCinema().getCinemaCode());
         }
+        return true;
         
     }
     

@@ -121,8 +121,8 @@ public class UserMenuUI {
                         System.out.println("No movies to show.");
                         break;
                     }
-                    for (int i = mC.movList.size()-1; i < sortSize; i--) {
-                        System.out.println(i + ". " + mC.movList.get(i).getTitle() + " " + mC.movList.get(i).getTicketSale() + " sales.");
+                    for (int i = mC.movList.size(); i > mC.movList.size() - sortSize; i--) {
+                        System.out.println(i + ". " + mC.movList.get(i-1).getTitle() + " " + mC.movList.get(i-1).getTicketSale() + " sales.");
                     }
                     break;
                     
@@ -137,8 +137,8 @@ public class UserMenuUI {
                         System.out.println("No movies to show.");
                         break;
                     }
-                    for (int i = mC.movList.size()-1; i < sortSize1; i--) {
-                        System.out.println(i + ". " + mC.movList.get(i).getTitle() + " " + mC.movList.get(i).getRating() + " rating.");
+                    for (int i = mC.movList.size(); i > mC.movList.size() - sortSize1; i--) {
+                        System.out.println(i + ". " + mC.movList.get(i-1).getTitle() + " " + mC.movList.get(i-1).getRating() + " rating.");
                     }
                     break;
                     
