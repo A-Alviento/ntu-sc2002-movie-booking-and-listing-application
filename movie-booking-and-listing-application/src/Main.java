@@ -7,7 +7,11 @@ import ui.*;
 * Main entry point into the program.
 */
 public class Main {
-    private static String MODELDATABASEPATH = "data/modeldatabase.ser";
+    // Temporary workaround for different project path, if one doesn't work
+    // try the other
+    //private static String MODELDATABASEPATH = "data/modeldatabase.ser";
+    private static String MODELDATABASEPATH = "movie-booking-and-listing-application/data/modeldatabase.ser";
+
     private ModelDatabaseController mdc = null;
     private AppEntry ae= null;
 

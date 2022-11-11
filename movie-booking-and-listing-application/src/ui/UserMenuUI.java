@@ -36,7 +36,7 @@ public class UserMenuUI {
                 + "3. View booking history \n"
                 + "4. List top 5 ranking by sales\n"
                 + "5. List top 5 ranking by ratings\n"
-                + "6. back.");
+                + "6. Back.");
         System.out.println("**************************************************************************************************");
         System.out.println("**************************************************************************************************");
         System.out.println("\nPlease choose an option from the menu:");
