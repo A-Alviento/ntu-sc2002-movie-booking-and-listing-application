@@ -6,7 +6,7 @@ import java.util.HashMap;
 import model.Model;
 
 /**
- * For text based database files on local storage.
+ * Database for models.
  * 
  * @author Min Khant
  */

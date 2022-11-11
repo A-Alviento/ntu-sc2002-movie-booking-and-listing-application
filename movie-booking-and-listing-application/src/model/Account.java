@@ -16,7 +16,7 @@ public abstract class Account extends Model{
 	 */
 	protected String password;
 
-	/*
+	/**
 	 * A default constructor 
 	 */
 	public Account() {
@@ -24,7 +24,7 @@ public abstract class Account extends Model{
 		password = "password";
 	}
 	
-	/*
+	/**
 	 * An abstract method to be implemented by child classes to create their account.  
 	 */
 	public abstract void createAccount() ;

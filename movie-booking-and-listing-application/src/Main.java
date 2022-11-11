@@ -1,5 +1,3 @@
-import java.io.File;
-
 import io.*;
 import ui.*;
 
@@ -17,9 +15,6 @@ public class Main {
 
     Main() {
         try {
-            File currentDirFile = new File(".");
-            String helper = currentDirFile.getAbsolutePath();
-            System.out.println(helper);
             this.initializeMain();
 
             // TODO
@@ -39,7 +34,6 @@ public class Main {
 
     private void finalizeMain() throws Exception {
         ae = null;
-
         mdc.closeModelDatabase();
         mdc = null;
     }
