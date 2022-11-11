@@ -39,7 +39,7 @@ public class AdminMenuUI {
                 + "6. Logout.");
         System.out.println("**************************************************************************************************");
         System.out.println("**************************************************************************************************");
-        System.out.println("\nPlease choose an option from the menu:");
+        System.out.println();
     }
     
     /**
@@ -57,14 +57,7 @@ public class AdminMenuUI {
         while(true) {
             
             this.textDisplayUI();
-            selection = sc.nextInt();
-            sc.nextLine();
-            
-            while (selection < 1 || selection > 6) {
-                System.out.println("Please choose from the options\n");
-                selection = sc.nextInt();
-                sc.nextLine();
-            }
+            selection = CheckUserInput.loopUntilValidInt("Please choose an option from the menu: \n", 1, 6);
 
             switch(selection){
                 case 1:
@@ -72,11 +65,8 @@ public class AdminMenuUI {
                     break;
                 case 2:
                     movCont.listMovies();
-                    System.out.println("Please select a movie by indicating it's number: ");
-                    
-                    // exception
-                    int movie = sc.nextInt();
-                    sc.nextLine();
+
+                    int movie = CheckUserInput.loopUntilValidInt("Please select a movie by indicating it's number: \n", 1, mC.movList.size());
                     
                     movCont.setCurrMovie(movie-1);
                     
@@ -87,23 +77,13 @@ public class AdminMenuUI {
                 case 3:
                     
                     movCont.listMovies();
-                    System.out.println("Please select a movie by indicating it's number: ");
-                    
-                    // exception
-                    movieSelected = sc.nextInt();
-                    sc.nextLine();
+
+                    movieSelected = CheckUserInput.loopUntilValidInt("Please select a movie by indicating it's number: \n", 1, mC.movList.size());
                     
                     movCont.setCurrMovie(movieSelected-1);
                     
-                    System.out.println("Enter Cineplex (1, 2, 3) : ");
-                    // exception
-                    cineplexNum = sc.nextInt();
-                    sc.nextLine();
-                    
-                    System.out.println("Enter Cinema (1, 2, 3) : ");
-                    // exception
-                    cinemaNum = sc.nextInt();
-                    sc.nextLine();
+                    cineplexNum = CheckUserInput.loopUntilValidInt("Enter Cineplex (1, 2, 3): \n", 1, 3);
+                    cinemaNum = CheckUserInput.loopUntilValidInt("Enter Cinema Hall (1, 2, 3): \n", 1, 3);
                     
                     movContAdm.addShowTime(cineplexNum - 1, cinemaNum - 1);
                     
@@ -111,20 +91,14 @@ public class AdminMenuUI {
                     
                 case 4:
                     movCont.listMovies();
-                    System.out.println("Please select a movie by indicating it's number: ");
                     
-                    // exception
-                    movieSelected = sc.nextInt();
-                    sc.nextLine();
+                    movieSelected = CheckUserInput.loopUntilValidInt("Please select a movie by indicating it's number: \n", 1, mC.movList.size());
                     
                     movCont.setCurrMovie(movieSelected-1);
                     
                     bookMan.displayShowTimes();
                     
-                    System.out.println("Please select a showtime by indicating it's number: ");
-                    // exception
-                    int showTime = sc.nextInt();
-                    sc.nextLine();
+                    int showTime = CheckUserInput.loopUntilValidInt("Please select a showtime by indicating it's number: \n", 1, mC.currMov.getMovieShowTimes().size());
                     
                     movContAdm.updateShowTime(showTime-1);                    
                     
@@ -135,14 +109,13 @@ public class AdminMenuUI {
                     int option;
                     
                     do {
-                        System.out.println("Please select an option to configure: ");
                         System.out.println("1. Update Ticket Prices");
                         System.out.println("2. Update Holidays");
                         System.out.println("3. Update Top 5 Sorting Access Rights");
                         System.out.println("4. Back");
-                        
-                        // exception
-                        option = sc.nextInt();
+                        System.out.println("");
+
+                        option = CheckUserInput.loopUntilValidInt("Please select an option to configure: \n", 1, 4);
                         sc.nextLine();
                         
                     } while (this.confCont.configEntry(option));

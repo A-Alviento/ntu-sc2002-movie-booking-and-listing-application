@@ -72,7 +72,7 @@ public class UserMenuUI {
                     break;
                     
                 case 2:
-                    String movieSearch = CheckUserInput.loopUntilValidString("Key in a movie title: \n", 0);
+                    String movieSearch = CheckUserInput.loopUntilValidString("Key in a movie title: \n", 0).toLowerCase();
                     
                     int movieLocation = movCont.searchMovies(movieSearch);
                     if (movieLocation == -1) {
