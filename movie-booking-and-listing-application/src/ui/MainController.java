@@ -73,6 +73,7 @@ public class MainController {
         cusAcc = new ArrayList<>();
         movList = new ArrayList<>();
         cinPlex = new ArrayList<>();
+        publicHolidayList = new ArrayList<>();
         
         /* Extract from DB movies, customers, and cineplexes */
         cusAcc = Helper.castArrayList(mdc.getArrayList("customeraccount"));
