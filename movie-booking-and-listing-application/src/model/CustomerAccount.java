@@ -73,8 +73,8 @@ public class CustomerAccount extends Account {
 	}
 	
 
-	public void addBooking(int[] seat, double price, String movieTitle, String cinemaCode) {
-		Booking temp = new Booking( seat,  price,  movieTitle,  cinemaCode);
+	public void addBooking(int[] seat, double price, String movieTitle, String cinemaCode, Cinema cinema) {
+		Booking temp = new Booking( seat,  price,  movieTitle,  cinemaCode, cinema);
 		this.bookingList.add(0, temp);
 	}
 	

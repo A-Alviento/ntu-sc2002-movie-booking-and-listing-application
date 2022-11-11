@@ -129,7 +129,9 @@ public class BookingManager {
             
             /* update the booking history of current user */
             mC.currAcc.addBooking(seatid, Double.parseDouble(price), 
-                    mC.currMov.getTitle(), mC.currCineplex.getCinema()[cinemaHall].getCinemaCode());
+                    mC.currMov.getTitle(), 
+                    mC.currMov.getMovieShowTimes().get(movShowingIndex-1).getCinema().getCinemaCode(),
+                    mC.currMov.getMovieShowTimes().get(movShowingIndex-1).getCinema());
             
             /* increment ticket sale of the movie */
             mC.currMov.incTicketSale();
