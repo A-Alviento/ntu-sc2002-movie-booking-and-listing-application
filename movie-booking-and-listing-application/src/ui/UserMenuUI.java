@@ -55,10 +55,12 @@ public class UserMenuUI {
             
             this.textDisplayUI();
             selection = sc.nextInt();
+            sc.nextLine();
             
             while (selection < 1 || selection > 6) {
                 System.out.println("Please choose from the options\n");
                 selection = sc.nextInt();
+                sc.nextLine();
             }
             
             switch(selection){
@@ -87,7 +89,8 @@ public class UserMenuUI {
                 case 2:
                     System.out.println("Key in a movie title:");
                     // exception
-                    String movieSearch = sc.next();
+                    String movieSearch = sc.nextLine();
+                    
                     int movieLocation = movCont.searchMovies(movieSearch);
                     if (movieLocation == -1) {
                         System.out.println("Movie not found");
