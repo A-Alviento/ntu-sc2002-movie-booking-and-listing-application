@@ -50,10 +50,12 @@ public class MovieUI {
             
             this.textDisplayUI();
             selection = sc.nextInt();
+            sc.nextLine();
             
             while (selection < 1 || selection >5) {
                 System.out.println("Please choose from the options\n");
                 selection = sc.nextInt();
+                sc.nextLine();
                 
             }
             switch(selection) {

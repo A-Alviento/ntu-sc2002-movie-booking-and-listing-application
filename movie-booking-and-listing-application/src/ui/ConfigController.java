@@ -39,6 +39,8 @@ public class ConfigController {
         
         // exception
         int selection = sc.nextInt();
+        sc.nextLine();
+        
         switch(selection) {
             case 1:
                 LocalDate newDate = DateTimeInputController.dateInput("Enter a date (yyyy-mm-dd) : ");
@@ -56,6 +58,7 @@ public class ConfigController {
                 System.out.print("Select the date you wish to remove by entering it's number: ");
                 // exception
                 int holidayIndex = sc.nextInt();
+                sc.nextLine();
                 
                 if (PublicHolidays.removePublicHoliday(PublicHolidays.getPublicHolidays().get(holidayIndex-1)) == 0) {
                     System.out.println("Entered date is not a holiday.");
@@ -75,10 +78,12 @@ public class ConfigController {
         System.out.print("Authorise access for users to sort by ticket sales? (1 - yes ; 0 - no): ");
         // exception
         isSale = sc.nextInt();
+        sc.nextLine();
         
         System.out.print("Authorise access for users to sort by movie rating? (1 - yes ; 0 - no): ");
         // exception
         isRating = sc.nextInt();
+        sc.nextLine();
         
         if(isSale == 0)
             UserMenuUI.isSortRatings = false;

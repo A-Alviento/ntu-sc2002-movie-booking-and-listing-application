@@ -138,6 +138,8 @@ public class MovieController {
         
         System.out.println("Input your rating out of 5:\n");
         int rating = sc.nextInt();
+        sc.nextLine();
+        
         System.out.println("Input your review:\n");
         String review = sc.next();
         mC.currMov.addReview(review, rating);

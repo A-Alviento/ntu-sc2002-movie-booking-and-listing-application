@@ -38,6 +38,7 @@ public class AppEntryUI {
             System.out.println("**************************************************************************************************");
             System.out.println("\nPlease choose an option:");
             selection = sc.nextInt();
+            sc.nextLine();
         }while(mC.login(selection) == -1);
     }
 }

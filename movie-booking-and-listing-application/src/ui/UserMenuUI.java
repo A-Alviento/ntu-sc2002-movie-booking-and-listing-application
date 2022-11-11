@@ -71,11 +71,13 @@ public class UserMenuUI {
                         
                         // exception
                         int movieSelected = sc.nextInt();
+                        sc.nextLine();
                         
                         // sets the selected movie
                         while (!movCont.setCurrMovie(movieSelected)) {
                             System.out.println("Please select from the options.");
                             movieSelected = sc.nextInt();
+                            sc.nextLine();
                         }
                         
                         

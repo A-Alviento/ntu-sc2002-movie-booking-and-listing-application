@@ -30,6 +30,8 @@ public class MovieControllerAdmin {
         
         System.out.println("Enter number of cast: ");
         int castSize = sc.nextInt();
+        sc.nextLine();
+        
         for (int i = 0; i < castSize; i++) {
             System.out.println("Enter Cast " + i +": ");
             newMov.addCast(sc.nextLine()); 
@@ -43,7 +45,10 @@ public class MovieControllerAdmin {
         boolean loop = true;
         
         while(loop) {
-            switch(sc.nextInt()){
+            int selection = sc.nextInt();
+            sc.nextLine();
+            
+            switch(selection){
                 case 1:
                     newMov.setMovieStatus(MovieStatus.COMING_SOON);
                     loop = false;
@@ -66,17 +71,16 @@ public class MovieControllerAdmin {
         }
         
         System.out.println("Is the movie a blockbuster? (0 - No ; 1 - Yes) ");
-        if(sc.nextInt() == 0)
+        int option = sc.nextInt();
+        sc.nextLine();
+        
+        if(option == 0)
             newMov.setBlockbuster(false);
         else
             newMov.setBlockbuster(true);
         
         mC.movList.add(newMov);
-        /*
-         * TODO:
-         * Update in binary file as well
-         * 
-         */
+        
     }
     
     public void updateMovie(int movieIndex) {
@@ -93,7 +97,10 @@ public class MovieControllerAdmin {
             System.out.println("7. Done");
             
             // exception
-            switch(sc.nextInt()) {
+            int selection = sc.nextInt();
+            sc.nextLine();
+            
+            switch(selection) {
                 
                 case 1:
                     System.out.println("Enter movie title: ");
@@ -108,6 +115,8 @@ public class MovieControllerAdmin {
                 case 3:
                     System.out.println("Enter number of cast: ");
                     int size = sc.nextInt();
+                    sc.nextLine();
+                    
                     for (int i = 0; i < size; i++) {
                         System.out.println("Enter Cast " + i +": ");
                         mC.currMov.addCast(sc.nextLine()); 
@@ -125,9 +134,12 @@ public class MovieControllerAdmin {
                     
                     // exception
                     int choice = sc.nextInt();
+                    sc.nextLine();
+                    
                     while (choice < 1 || choice > 4) {
                         System.out.println("Please choose from the options\n");
                         choice = sc.nextInt();
+                        sc.nextLine();
                     }
                     
                     switch(choice){
@@ -159,10 +171,12 @@ public class MovieControllerAdmin {
                     System.out.println("Is the movie a blockbuster? (0 - No ; 1 - Yes) ");
                     // exception
                     int option = sc.nextInt();
+                    sc.nextLine();
                     
                     while (option < 1 || option> 2) {
                         System.out.println("Please choose from the options\n");
                         option = sc.nextInt();
+                        sc.nextLine();
                     }
                     if (option == 0)
                         mC.currMov.setBlockbuster(false);
@@ -195,6 +209,8 @@ public class MovieControllerAdmin {
         // exception
         boolean is3D;
         int select3D = sc.nextInt();
+        sc.nextLine();
+        
         if (select3D == 1)
             is3D = true;
         else
@@ -214,7 +230,10 @@ public class MovieControllerAdmin {
             System.out.println("4. Done");
             
             // exception
-            switch(sc.nextInt()) {
+            int selection = sc.nextInt();
+            sc.nextLine();
+            
+            switch(selection) {
                 
                 case 1:
                     LocalDate newDate = DateTimeInputController.dateInput("Enter a date (yyyy-mm-dd) : ");
@@ -228,9 +247,11 @@ public class MovieControllerAdmin {
                     System.out.println("Enter Cineplex (1, 2, 3) : ");
                     // exception
                     int cineplexNum = sc.nextInt();
+                    sc.nextLine();
                     System.out.println("Enter Cinema (1, 2, 3) : ");
                     // exception
                     int cinemaNum = sc.nextInt();
+                    sc.nextLine();
                     
                     mC.currMov.getMovieShowTimes().get(showTimeIndex).setCinema(mC.cinPlex.get(cineplexNum-1).getCinema()[cinemaNum-1]);
                     break;
@@ -239,6 +260,8 @@ public class MovieControllerAdmin {
                     System.out.println("Is the movie 3D or not (0 - No ; 1 - Yes): ");
                     // exception
                     int is3D = sc.nextInt();
+                    sc.nextLine();
+                    
                     if (is3D == 1)
                         mC.currMov.getMovieShowTimes().get(showTimeIndex).setIs3D(true);
                     else

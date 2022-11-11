@@ -54,10 +54,12 @@ public class AdminMenuUI {
             
             this.textDisplayUI();
             selection = sc.nextInt();
+            sc.nextLine();
             
             while (selection < 1 || selection > 6) {
                 System.out.println("Please choose from the options\n");
                 selection = sc.nextInt();
+                sc.nextLine();
             }
 
             switch(selection){
@@ -70,6 +72,8 @@ public class AdminMenuUI {
                     
                     // exception
                     int movie = sc.nextInt();
+                    sc.nextLine();
+                    
                     movCont.setCurrMovie(movie-1);
                     
                     movContAdm.updateMovie(movie-1);
@@ -83,14 +87,19 @@ public class AdminMenuUI {
                     
                     // exception
                     movieSelected = sc.nextInt();
+                    sc.nextLine();
+                    
                     movCont.setCurrMovie(movieSelected-1);
                     
                     System.out.println("Enter Cineplex (1, 2, 3) : ");
                     // exception
                     cineplexNum = sc.nextInt();
+                    sc.nextLine();
+                    
                     System.out.println("Enter Cinema (1, 2, 3) : ");
                     // exception
                     cinemaNum = sc.nextInt();
+                    sc.nextLine();
                     
                     movContAdm.addShowTime(cineplexNum - 1, cinemaNum - 1);
                     
@@ -102,6 +111,8 @@ public class AdminMenuUI {
                     
                     // exception
                     movieSelected = sc.nextInt();
+                    sc.nextLine();
+                    
                     movCont.setCurrMovie(movieSelected-1);
                     
                     bookMan.displayShowTimes();
@@ -109,6 +120,7 @@ public class AdminMenuUI {
                     System.out.println("Please select a showtime by indicating it's number: ");
                     // exception
                     int showTime = sc.nextInt();
+                    sc.nextLine();
                     
                     movContAdm.updateShowTime(showTime-1);                    
                     
@@ -127,6 +139,7 @@ public class AdminMenuUI {
                         
                         // exception
                         option = sc.nextInt();
+                        sc.nextLine();
                         
                     } while (this.confCont.configEntry(option));
                     
