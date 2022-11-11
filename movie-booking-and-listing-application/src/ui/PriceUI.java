@@ -19,7 +19,7 @@ public final class PriceUI {
 				case 2: PriceModifierUI.display(); break;
 				case 3: return;
 				default: 
-					System.out.println("Soemthing went wrong. Help Please.");
+					System.out.println("Something went wrong. Help Please.");
 					break;
 			}
 		}
