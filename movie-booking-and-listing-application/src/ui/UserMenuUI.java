@@ -39,7 +39,7 @@ public class UserMenuUI {
                 + "6. Back.");
         System.out.println("**************************************************************************************************");
         System.out.println("**************************************************************************************************");
-        System.out.println("\nPlease choose an option from the menu:");
+        System.out.println();
     }
     
     /**
@@ -54,32 +54,15 @@ public class UserMenuUI {
         while(true) {
             
             this.textDisplayUI();
-            selection = sc.nextInt();
-            sc.nextLine();
-            
-            while (selection < 1 || selection > 6) {
-                System.out.println("Please choose from the options\n");
-                selection = sc.nextInt();
-                sc.nextLine();
-            }
+            selection = CheckUserInput.loopUntilValidInt("Please choose an option from the menu: \n", 1, 6);
+
             
             switch(selection){
 
                 case 1:
                     if(movCont.listMovies()) {
-                        System.out.println("Please select a movie by indicating it's number: ");
-                        
-                        // exception
-                        int movieSelected = sc.nextInt();
-                        sc.nextLine();
-                        
-                        // sets the selected movie
-                        while (!movCont.setCurrMovie(movieSelected)) {
-                            System.out.println("Please select from the options.");
-                            movieSelected = sc.nextInt();
-                            sc.nextLine();
-                        }
-                        
+                        int movieSelected = CheckUserInput.loopUntilValidInt("Please select a movie by indicating it's number: \n", 1, mC.movList.size());
+                        movCont.setCurrMovie(movieSelected);
                         
                         if (!mC.movie.displayMovieUI()) {
                             return false;
@@ -90,7 +73,7 @@ public class UserMenuUI {
                     
                 case 2:
                     System.out.println("Key in a movie title:");
-                    // exception
+                    
                     String movieSearch = sc.nextLine();
                     
                     int movieLocation = movCont.searchMovies(movieSearch);
