@@ -13,15 +13,15 @@ public class FillDatabaseMain extends Main{
         ArrayList<Cineplexes> cineplexes = mdc.getEphemeralArrayList("cineplexes");
         ArrayList<Cinema> cinemas = new ArrayList<>();
         ArrayList<Movie> movies = new ArrayList<>();
+        ArrayList<CustomerAccount> customers = new ArrayList<>();
 
 
         // Create 3 cinemas for each cineplex
         for (Cineplexes cp : cineplexes) {
             int cinemaCount = 0;
             for (char c = 'A'; c < 'D'; ++c) {
-                int cineplexId = cp.getCineplexNum();
-                String s = new StringBuilder(Character.toString(cineplexId)).append(Character.toString(c)).toString();
-                Cinema cinema = new Cinema(s, CinemaClass.values()[cinemaCount], cinemaCount, cineplexId);
+                String s = new StringBuilder(Character.toString(cp.getCineplexNum())).append(Character.toString(c)).toString();
+                Cinema cinema = new Cinema(s, CinemaClass.values()[cinemaCount], cinemaCount, cp.getCineplexNum());
                 mdc.addToDatabase("cinema", cinema);
                 cp.addCinema(cinema);
                 cinemas.add(cinema);
@@ -44,7 +44,6 @@ public class FillDatabaseMain extends Main{
         }
 
         // Create movie showing
-
     }
 
     public static void main(String args[]) {
