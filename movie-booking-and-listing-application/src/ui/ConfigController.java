@@ -19,7 +19,7 @@ public class ConfigController {
     }
     
     public void updateTicketPrice() {
-        
+        PriceModifierUI.display();
     }
     
     public void updateHolidays() {

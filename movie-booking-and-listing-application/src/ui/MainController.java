@@ -1,5 +1,6 @@
 package ui;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -35,6 +36,7 @@ public class MainController {
     protected ArrayList<CustomerAccount> cusAcc;
     protected ArrayList<Movie> movList;
     protected ArrayList<Cineplexes> cinPlex;
+    protected ArrayList<LocalDate> publicHolidayList;
     
     /*
      * Stores the current account being used
