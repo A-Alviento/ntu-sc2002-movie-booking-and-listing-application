@@ -1,4 +1,5 @@
 package model;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -137,7 +138,7 @@ public final class PriceUtil {
 			price *= elderlyMultuipler;
 			return;
 		}else {
-			if (CheckDate.isFriday(date)) {
+			if (date.getDayOfWeek() == DayOfWeek.FRIDAY) {
 				price *= adultFridayMultipler;
 			}
 			return;

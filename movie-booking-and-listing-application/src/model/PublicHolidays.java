@@ -5,7 +5,10 @@ package model;
  */
 import java.util.ArrayList;
 import java.util.Iterator;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8db0f11 (Made some changes.)
 import java.time.LocalDate;
 
 public class PublicHolidays extends Model {
