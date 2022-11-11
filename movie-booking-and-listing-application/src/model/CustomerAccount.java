@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 public class CustomerAccount extends Account {
     
-    static Scanner sc = new Scanner(System.in);
 	public static final long serialVersionUID = 73L;
 	/**
 	 * Name and password variables to be inherited from Account class
@@ -40,7 +39,9 @@ public class CustomerAccount extends Account {
 		phoneNum = "69696969";
 		bookingList = new ArrayList<Booking>();
 	}
-	
+	/**
+	 *  constructor for a customer account
+	 */
 	public CustomerAccount(String name, String email, String phoneNum, String password, int age ) {
 		this.name = name;
 		this.email = email;
@@ -51,24 +52,8 @@ public class CustomerAccount extends Account {
 	}
 	
 	/**
-	 * Creating a Customer account by asking for their name, number, email, age and password.
-	 * To be depreciated once its not used.
-	 */
-	public void createAccount() {
-		
-		System.out.print("Enter your name: ");
-		name = sc.nextLine();
-		System.out.print("Enter phone number: ");
-		phoneNum = sc.nextLine();
-		System.out.print("Enter your email: ");
-		email = sc.nextLine();
-		System.out.print("Enter your age: ");
-		age = sc.nextInt();
-		sc.nextLine();
-		System.out.print("Enter your password: ");
-		password = sc.nextLine();
-		
-	}
+	* Setter for customer Name
+	*/ 
 	
 	public void setName(String name) {
 		this.name = name;
@@ -122,17 +107,27 @@ public class CustomerAccount extends Account {
 	public int getAge() {
 		return age;
 	}	
-	
+	/**
+	* Setter for customer phone number
+	*/
 	public void setPhoneNum(String phoneNum) {
 		this.phoneNum = phoneNum;
 	}
-	
+	/**
+	* Setter for customer age
+	*/
 	public void setAge(int age) {
 		this.age = age;
 	}
+	/**
+	* Setter for customer email
+	*/
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	/**
+	* Setter for customer password
+	*/
 	public void setPassword(String pw) {
 		password = pw;
 	}
