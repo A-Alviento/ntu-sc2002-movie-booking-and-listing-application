@@ -46,6 +46,7 @@ public class MovieUI {
         
         int selection;
         
+        
         while(true) {
             
             this.textDisplayUI();
