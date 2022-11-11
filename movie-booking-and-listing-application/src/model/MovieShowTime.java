@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-public class MovieShowTime {
+public class MovieShowTime extends Model{
 	private Cinema cinema;
 	private ArrayList<Booking> Bookings;
 	LocalDate movieDate;

@@ -15,13 +15,19 @@ public class FillDatabaseMain extends Main{
         ArrayList<Movie> movies = new ArrayList<>();
         ArrayList<CustomerAccount> customers = new ArrayList<>();
 
-
+        
         // Create 3 cinemas for each cineplex
         for (Cineplexes cp : cineplexes) {
             int cinemaCount = 0;
             for (char c = 'A'; c < 'D'; ++c) {
-                String s = new StringBuilder(Character.toString(cp.getCineplexNum())).append(Character.toString(c)).toString();
-                Cinema cinema = new Cinema(s, CinemaClass.values()[cinemaCount], cinemaCount, cp.getCineplexNum());
+                String s;
+                if(cp.getCineplexNum() == 0)
+                    s = "A";
+                else if (cp.getCineplexNum() == 1)
+                    s = "B";
+                else
+                    s = "C";
+                Cinema cinema = new Cinema(s + c, CinemaClass.values()[cinemaCount], cinemaCount, cp.getCineplexNum());
                 mdc.addToDatabase("cinema", cinema);
                 cp.addCinema(cinema);
                 cinemas.add(cinema);
