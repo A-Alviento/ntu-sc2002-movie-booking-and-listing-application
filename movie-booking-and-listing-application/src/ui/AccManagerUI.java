@@ -57,9 +57,10 @@ public class AccManagerUI {
         String userPass = CheckUserInput.loopUntilValidString("Enter Password: \n", 0);
         
         if(userID.equals("DummyID")) {
-            if(userPass.equals("Password123"))
+            if(userPass.equals("123")) {
                 System.out.println("Successfully logged in");
                 return true;
+            }
         }
         
         System.out.println("Invalid, try again");
