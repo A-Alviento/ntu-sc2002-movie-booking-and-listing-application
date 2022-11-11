@@ -1,4 +1,6 @@
 import java.io.File;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 import model.*;
@@ -14,6 +16,7 @@ public class FillDatabaseMain extends Main{
         ArrayList<Cinema> cinemas = new ArrayList<>();
         ArrayList<Movie> movies = new ArrayList<>();
         ArrayList<MovieShowTime> movieShowTimes = new ArrayList<>();
+        int k;
 
         
         // Create 3 cinemas for each cineplex
@@ -50,8 +53,26 @@ public class FillDatabaseMain extends Main{
         }
 
         // For each movie create 2 movie showing at 2 cinemas
+        k = 0;
+        int movieSize = cinemas.size();
         for (Movie m : movies) {
-            //MovieShowTime ms = new MovieShowTime(0, 0);
+            MovieShowTime ms = new MovieShowTime(
+                                            cinemas.get(k++ % movieSize),
+                                            LocalDate.of(2022,6, k%28),
+                                            LocalTime.of(6,30),
+                                            k%2==0);
+            m.addMovieShowTime(ms);
+            mdc.addToDatabase("movieshowtime", ms);
+            movieShowTimes.add(ms);
+
+            ms = new MovieShowTime(
+                                            cinemas.get(k++ % movieSize),
+                                            LocalDate.of(2030,6, k%28),
+                                            LocalTime.of(8,30),
+                                            k%2==0);
+            m.addMovieShowTime(ms);
+            mdc.addToDatabase("movieshowtime", ms);
+            movieShowTimes.add(ms);
         }
     }
 
