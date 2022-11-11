@@ -97,7 +97,7 @@ public class MovieControllerAdmin {
             switch(selection) {
                 
                 case 1:
-                    mC.currMov.setTitle(CheckUserInput.loopUntilValidString("Enter movie title: \n", 0));
+                    mC.currMov.setTitle(CheckUserInput.loopUntilValidString("Enter movie title: \n", 0).toLowerCase());
                     break;
                     
                 case 2:
