@@ -7,7 +7,7 @@ import ui.*;
 public class Main {
     // Temporary workaround for different project path, if one doesn't work
     // try the other
-    private static String MODELDATABASEPATH = "data/modeldatabase.ser";
+    protected static String MODELDATABASEPATH = "data/modeldatabase.ser";
     // protected static String MODELDATABASEPATH = "movie-booking-and-listing-application/data/modeldatabase.ser";
 
     protected ModelDatabaseController mdc = null;
