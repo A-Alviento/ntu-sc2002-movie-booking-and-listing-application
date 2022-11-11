@@ -66,8 +66,6 @@ public class BookingManager {
         /** represents row selected by user */
         int row = CheckUserInput.loopUntilValidInt("Enter the row number: ", 1, mC.cinPlex.get(cineplexNum).getCinema()[cinemaHall].getSeatLayout().length);
         
-        System.out.println("Enter the column letter ");
-        
         String s = CheckUserInput.loopUntilValidString("Enter the column letter: ", 1).toUpperCase();
         char c = s.charAt(0);
         

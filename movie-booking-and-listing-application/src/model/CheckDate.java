@@ -29,6 +29,9 @@ public class CheckDate {
 	 */
 	public static boolean isPublicHoliday(LocalDate date) {
 		ArrayList<LocalDate> publicHolidayList = PublicHolidays.getPublicHolidays();
+		if (publicHolidayList == null){
+		    return false;
+		}
 		return publicHolidayList.contains(date);
 	}
 	
