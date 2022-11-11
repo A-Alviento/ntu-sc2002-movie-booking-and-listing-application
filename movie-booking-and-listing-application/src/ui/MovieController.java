@@ -24,15 +24,16 @@ public class MovieController {
      * This method list the available movies
      * 
      */
-    public void listMovies() {
+    public boolean listMovies() {
         
         if (mC.movList.size() == 0) {
             System.out.println("No movies available.");
-            return;
+            return false;
         }
         
         for (int i = 0; i < mC.movList.size(); i++)
             System.out.println(i + ". " + mC.movList.get(i).getTitle());
+        return true;
     }
     
     /*

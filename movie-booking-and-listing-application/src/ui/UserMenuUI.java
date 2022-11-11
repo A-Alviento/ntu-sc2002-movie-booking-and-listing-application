@@ -64,7 +64,8 @@ public class UserMenuUI {
             switch(selection){
 
                 case 1:
-                    movCont.listMovies();
+                    if(movCont.listMovies())
+                        break;
                     System.out.println("Please select a movie by indicating it's number: ");
                     
                     // exception
