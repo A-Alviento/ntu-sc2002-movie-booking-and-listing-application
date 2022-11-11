@@ -136,12 +136,10 @@ public class MovieController {
      */
     public void inputReview() {
         
-        System.out.println("Input your rating out of 5:\n");
-        int rating = sc.nextInt();
-        sc.nextLine();
+        int rating = CheckUserInput.loopUntilValidInt("Input your rating out of 5: ", 1, 5);
         
-        System.out.println("Input your review:\n");
-        String review = sc.next();
+        String review = CheckUserInput.loopUntilValidString("Input your review: ", 0);
+        
         mC.currMov.addReview(review, rating);
         mC.currMov.updateRating();
     }

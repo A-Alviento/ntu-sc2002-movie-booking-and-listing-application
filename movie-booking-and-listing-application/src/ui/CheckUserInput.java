@@ -68,7 +68,9 @@ public final class CheckUserInput {
 	        try {
 	            System.out.print(str);
 	            s = sc.nextLine();
-	            withinRangeStringLength(s, length);
+	            if (length != 0)
+	                withinRangeStringLength(s, length);
+	            break;
 	        }catch(InputMismatchException e) {
 	            System.out.println("You did not enter an input of type String.\n");
 	        }catch(IllegalArgumentException ex) {
@@ -76,6 +78,8 @@ public final class CheckUserInput {
 	            System.out.println("");
 	        }
 	    }
+	    
+	    return s;
 	}
 	
 }

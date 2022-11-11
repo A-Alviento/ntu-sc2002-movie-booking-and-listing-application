@@ -25,35 +25,27 @@ public class MovieControllerAdmin {
     
     public void addMov() {
         
-        System.out.println("Enter movie title: ");
-        String title = sc.nextLine();
+        String title = CheckUserInput.loopUntilValidString("Enter movie title: ", 0);
         Movie newMov = new Movie(title);
         
-        System.out.println("Enter movie director: ");
-        String director = sc.nextLine();
+        String director = CheckUserInput.loopUntilValidString("Enter movie director: ", 0);
         newMov.setDirector(director);
         
-        System.out.println("Enter number of cast: ");
-        int castSize = sc.nextInt();
-        sc.nextLine();
+        int castSize = CheckUserInput.loopUntilValidInt("Enter movie title: ", 0, 1000);
         
         for (int i = 0; i < castSize; i++) {
             System.out.println("Enter Cast " + i +": ");
             newMov.addCast(sc.nextLine()); 
         }
         
-        System.out.println("Enter Synopsis: ");
-        newMov.setSynopsis(sc.nextLine());
+        newMov.setSynopsis(CheckUserInput.loopUntilValidString("Enter Synopsis: ", 0));
         
-        System.out.println("Enter movieStatus: ");
-        System.out.println("1. Coming Soon\n2. Now Showing\n3. Preview\n4.End of Showing");
+        System.out.println("1. Coming Soon\n2. Now Showing\n3. Preview\n4.End of Showing\n");
         boolean loop = true;
         
         while(loop) {
-            int selection = sc.nextInt();
-            sc.nextLine();
             
-            switch(selection){
+            switch(CheckUserInput.loopUntilValidInt("Enter movie Status:  \n", 1, 4)){
                 case 1:
                     newMov.setMovieStatus(MovieStatus.COMING_SOON);
                     loop = false;
@@ -76,8 +68,7 @@ public class MovieControllerAdmin {
         }
         
         System.out.println("Is the movie a blockbuster? (0 - No ; 1 - Yes) ");
-        int option = sc.nextInt();
-        sc.nextLine();
+        int option = CheckUserInput.loopUntilValidInt("Is the movie a blockbuster? (0 - No ; 1 - Yes) \n", 0, 1);
         
         if(option == 0)
             newMov.setBlockbuster(false);
@@ -101,51 +92,35 @@ public class MovieControllerAdmin {
             System.out.println("6. Update Movie Blockbuster Status");
             System.out.println("7. Done");
             
-            // exception
-            int selection = sc.nextInt();
-            sc.nextLine();
+            int selection = CheckUserInput.loopUntilValidInt("Select from the option: \n", 1, 7);
             
             switch(selection) {
                 
                 case 1:
-                    System.out.println("Enter movie title: ");
-                    mC.currMov.setTitle(sc.nextLine());
+                    mC.currMov.setTitle(CheckUserInput.loopUntilValidString("Enter movie title: \n", 0));
                     break;
                     
                 case 2:
-                    System.out.println("Enter movie director: ");
-                    mC.currMov.setDirector(sc.nextLine());
+                    mC.currMov.setDirector(CheckUserInput.loopUntilValidString("Enter movie director: \n", 0));
                     break;
                     
                 case 3:
-                    System.out.println("Enter number of cast: ");
-                    int size = sc.nextInt();
-                    sc.nextLine();
+                    int size = CheckUserInput.loopUntilValidInt("Enter number of cast: \n", 0, 1000);
                     
                     for (int i = 0; i < size; i++) {
-                        System.out.println("Enter Cast " + i +": ");
-                        mC.currMov.addCast(sc.nextLine()); 
+                        String s = "Enter Cast " + i + ": ";
+                        mC.currMov.addCast(CheckUserInput.loopUntilValidString(s, 0));
                     }
                     break;
                     
                 case 4:
-                    System.out.println("Enter movie synopsis: ");
-                    mC.currMov.setSynopsis(sc.nextLine());
+                    mC.currMov.setSynopsis(CheckUserInput.loopUntilValidString("Enter movie synopsis: \n", 0));
                     break;
                     
                 case 5:
-                    System.out.println("Enter movieStatus: ");
                     System.out.println("1. Coming Soon\n2. Now Showing\n3. Preview\n4.End of Showing");
-                    
-                    // exception
-                    int choice = sc.nextInt();
-                    sc.nextLine();
-                    
-                    while (choice < 1 || choice > 4) {
-                        System.out.println("Please choose from the options\n");
-                        choice = sc.nextInt();
-                        sc.nextLine();
-                    }
+              
+                    int choice = CheckUserInput.loopUntilValidInt("Enter movie status: \n", 1, 4);
                     
                     switch(choice){
                         case 1:
@@ -160,11 +135,7 @@ public class MovieControllerAdmin {
                         case 4:
                             mC.currMov.setMovieStatus(MovieStatus.END_OF_SHOWING);
                             mC.movList.remove(movieIndex);
-                            /*
-                             * TODO:
-                             * Update in binary file as well
-                             * 
-                             */
+                            
                             System.out.println("Movie removed.");
                             return;
                         default:
@@ -173,16 +144,8 @@ public class MovieControllerAdmin {
                     break;
                     
                 case 6:
-                    System.out.println("Is the movie a blockbuster? (0 - No ; 1 - Yes) ");
-                    // exception
-                    int option = sc.nextInt();
-                    sc.nextLine();
-                    
-                    while (option < 1 || option> 2) {
-                        System.out.println("Please choose from the options\n");
-                        option = sc.nextInt();
-                        sc.nextLine();
-                    }
+                    int option = CheckUserInput.loopUntilValidInt("Is the movie a blockbuster? (0 - No ; 1 - Yes) \n", 0, 1);
+
                     if (option == 0)
                         mC.currMov.setBlockbuster(false);
                     else
@@ -192,11 +155,6 @@ public class MovieControllerAdmin {
                     
                 case 7:
                     loop = false;
-                    /*
-                     * TODO:
-                     * Update all changes in binary file as well
-                     * 
-                     */
                     return;
                     
                 default:
@@ -210,11 +168,8 @@ public class MovieControllerAdmin {
         LocalDate newDate = DateTimeInputController.dateInput("Enter a date (yyyy-mm-dd) : ");
         LocalTime newTime = DateTimeInputController.timeInput("Enter time (hh:mm) : ");
         
-        System.out.println("Is the movie 3D or not (0 - No ; 1 - Yes): ");
-        // exception
         boolean is3D;
-        int select3D = sc.nextInt();
-        sc.nextLine();
+        int select3D = CheckUserInput.loopUntilValidInt("Is the movie 3D or not (0 - No ; 1 - Yes): \n", 0, 1);
         
         if (select3D == 1)
             is3D = true;
@@ -234,9 +189,7 @@ public class MovieControllerAdmin {
             System.out.println("3. Update 3D");
             System.out.println("4. Done");
             
-            // exception
-            int selection = sc.nextInt();
-            sc.nextLine();
+            int selection = CheckUserInput.loopUntilValidInt("Select an option: \n", 1, 4);
             
             switch(selection) {
                 
@@ -249,23 +202,15 @@ public class MovieControllerAdmin {
                     break;
                     
                 case 2:
-                    System.out.println("Enter Cineplex (1, 2, 3) : ");
-                    // exception
-                    int cineplexNum = sc.nextInt();
-                    sc.nextLine();
-                    System.out.println("Enter Cinema (1, 2, 3) : ");
-                    // exception
-                    int cinemaNum = sc.nextInt();
-                    sc.nextLine();
+                    int cineplexNum = CheckUserInput.loopUntilValidInt("Enter Cineplex (1, 2, 3) : \n", 1, 3);
+
+                    int cinemaNum = CheckUserInput.loopUntilValidInt("Enter Cinema Hall (1, 2, 3) : \n", 1, 3);
                     
                     mC.currMov.getMovieShowTimes().get(showTimeIndex).setCinema(mC.cinPlex.get(cineplexNum-1).getCinema()[cinemaNum-1]);
                     break;
                     
                 case 3:
-                    System.out.println("Is the movie 3D or not (0 - No ; 1 - Yes): ");
-                    // exception
-                    int is3D = sc.nextInt();
-                    sc.nextLine();
+                    int is3D = CheckUserInput.loopUntilValidInt("Is the movie 3D or not (0 - No ; 1 - Yes): \n", 0, 1);
                     
                     if (is3D == 1)
                         mC.currMov.getMovieShowTimes().get(showTimeIndex).setIs3D(true);
@@ -273,7 +218,6 @@ public class MovieControllerAdmin {
                         mC.currMov.getMovieShowTimes().get(showTimeIndex).setIs3D(false);
 
                     break;
-                    
                     
                 case 4:
                     loop = false;
