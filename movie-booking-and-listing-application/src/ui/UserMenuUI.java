@@ -117,12 +117,13 @@ public class UserMenuUI {
                     }
                     
                     int sortSize = movCont.sortMovSales();
+                    int count = 1;
                     if (sortSize == 0) {
                         System.out.println("No movies to show.");
                         break;
                     }
                     for (int i = mC.movList.size(); i > mC.movList.size() - sortSize; i--) {
-                        System.out.println(i + ". " + mC.movList.get(i-1).getTitle() + " " + mC.movList.get(i-1).getTicketSale() + " sales.");
+                        System.out.println(++count + ". " + mC.movList.get(i-1).getTitle() + " " + mC.movList.get(i-1).getTicketSale() + " sales.");
                     }
                     break;
                     
@@ -133,12 +134,13 @@ public class UserMenuUI {
                     }
                     
                     int sortSize1 = movCont.sortMovRatings();
+                    int count1 = 1;
                     if (sortSize1 == 0) {
                         System.out.println("No movies to show.");
                         break;
                     }
                     for (int i = mC.movList.size(); i > mC.movList.size() - sortSize1; i--) {
-                        System.out.println(i + ". " + mC.movList.get(i-1).getTitle() + " " + mC.movList.get(i-1).getRating() + " rating.");
+                        System.out.println(++count1 + ". " + mC.movList.get(i-1).getTitle() + " " + mC.movList.get(i-1).getRating() + " rating.");
                     }
                     break;
                     
