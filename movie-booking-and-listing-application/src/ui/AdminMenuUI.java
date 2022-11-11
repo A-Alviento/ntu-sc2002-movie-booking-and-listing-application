@@ -2,9 +2,6 @@ package ui;
 
 import java.util.Scanner;
 
-import model.Movie;
-import model.MovieStatus;
-
 public class AdminMenuUI {
     
     static Scanner sc = new Scanner(System.in);
@@ -120,6 +117,15 @@ public class AdminMenuUI {
                      * TODO:
                      * 
                      */
+                    System.out.println("Please select an option to configure: ");
+                    System.out.println("1. Update Ticket Prices");
+                    System.out.println("2. Update Holidays");
+                    System.out.println("3. Update Top 5 Sorting Access Rights");
+                    System.out.println("4. Back");
+                    
+                    // exception
+                    int option = sc.nextInt();
+                    
                     break;
                     
                 case 6:
