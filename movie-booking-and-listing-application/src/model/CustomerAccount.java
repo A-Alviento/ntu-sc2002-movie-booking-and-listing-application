@@ -7,6 +7,8 @@ import java.util.ArrayList;
 
 
 public class CustomerAccount extends Account {
+    
+    static Scanner sc = new Scanner(System.in);
 	public static final long serialVersionUID = 73L;
 	/*
 	 * Name and password variables to be inherited from Account class
@@ -53,7 +55,7 @@ public class CustomerAccount extends Account {
 	 * To be depreciated once its not used.
 	 */
 	public void createAccount() {
-		Scanner sc = new Scanner(System.in) ;
+		
 		System.out.print("Enter your name: ");
 		name = sc.nextLine();
 		System.out.print("Enter phone number: ");
@@ -65,7 +67,6 @@ public class CustomerAccount extends Account {
 		sc.nextLine();
 		System.out.print("Enter your password: ");
 		password = sc.nextLine();
-		sc.close();
 		
 	}
 	
