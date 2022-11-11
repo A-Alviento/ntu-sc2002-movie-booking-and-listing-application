@@ -21,22 +21,22 @@ public class MovieControllerAdmin {
     public void addMov() {
         
         System.out.println("Enter movie title: ");
-        String title = sc.next();
+        String title = sc.nextLine();
         Movie newMov = new Movie(title);
         
         System.out.println("Enter movie director: ");
-        String director = sc.next();
+        String director = sc.nextLine();
         newMov.setDirector(director);
         
         System.out.println("Enter number of cast: ");
         int castSize = sc.nextInt();
         for (int i = 0; i < castSize; i++) {
             System.out.println("Enter Cast " + i +": ");
-            newMov.addCast(sc.next()); 
+            newMov.addCast(sc.nextLine()); 
         }
         
         System.out.println("Enter Synopsis: ");
-        newMov.setSynopsis(sc.next());
+        newMov.setSynopsis(sc.nextLine());
         
         System.out.println("Enter movieStatus: ");
         System.out.println("1. Coming Soon\n2. Now Showing\n3. Preview\n4.End of Showing");
@@ -97,12 +97,12 @@ public class MovieControllerAdmin {
                 
                 case 1:
                     System.out.println("Enter movie title: ");
-                    mC.currMov.setTitle(sc.next());
+                    mC.currMov.setTitle(sc.nextLine());
                     break;
                     
                 case 2:
                     System.out.println("Enter movie director: ");
-                    mC.currMov.setDirector(sc.next());
+                    mC.currMov.setDirector(sc.nextLine());
                     break;
                     
                 case 3:
@@ -110,13 +110,13 @@ public class MovieControllerAdmin {
                     int size = sc.nextInt();
                     for (int i = 0; i < size; i++) {
                         System.out.println("Enter Cast " + i +": ");
-                        mC.currMov.addCast(sc.next()); 
+                        mC.currMov.addCast(sc.nextLine()); 
                     }
                     break;
                     
                 case 4:
                     System.out.println("Enter movie synopsis: ");
-                    mC.currMov.setSynopsis(sc.next());
+                    mC.currMov.setSynopsis(sc.nextLine());
                     break;
                     
                 case 5:
