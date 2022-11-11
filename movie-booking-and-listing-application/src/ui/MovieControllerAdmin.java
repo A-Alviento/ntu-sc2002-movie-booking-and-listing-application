@@ -31,9 +31,9 @@ public class MovieControllerAdmin {
         String director = CheckUserInput.loopUntilValidString("Enter movie director: ", 0);
         newMov.setDirector(director);
         
-        int castSize = CheckUserInput.loopUntilValidInt("Enter movie title: ", 0, 1000);
+        int castSize = CheckUserInput.loopUntilValidInt("Enter cast size: ", 0, 1000);
         
-        for (int i = 0; i < castSize; i++) {
+        for (int i = 1; i <= castSize; i++) {
             String s = "Enter Cast " + i + ": ";
             newMov.addCast(CheckUserInput.loopUntilValidString(s, 0));
         }
@@ -67,7 +67,6 @@ public class MovieControllerAdmin {
             }        
         }
         
-        System.out.println("Is the movie a blockbuster? (0 - No ; 1 - Yes) ");
         int option = CheckUserInput.loopUntilValidInt("Is the movie a blockbuster? (0 - No ; 1 - Yes) \n", 0, 1);
         
         if(option == 0)

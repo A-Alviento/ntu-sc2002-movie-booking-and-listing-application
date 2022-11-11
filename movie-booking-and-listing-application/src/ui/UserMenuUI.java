@@ -62,7 +62,7 @@ public class UserMenuUI {
                 case 1:
                     if(movCont.listMovies()) {
                         int movieSelected = CheckUserInput.loopUntilValidInt("Please select a movie by indicating it's number: \n", 1, mC.movList.size());
-                        movCont.setCurrMovie(movieSelected);
+                        movCont.setCurrMovie(movieSelected-1);
                         
                         if (!mC.movie.displayMovieUI()) {
                             return false;

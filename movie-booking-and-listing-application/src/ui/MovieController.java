@@ -31,8 +31,8 @@ public class MovieController {
             return false;
         }
         
-        for (int i = 0; i < mC.movList.size(); i++)
-            System.out.println(i + ". " + mC.movList.get(i).getTitle());
+        for (int i = 1; i <= mC.movList.size(); i++)
+            System.out.println(i + ". " + mC.movList.get(i-1).getTitle());
         return true;
     }
     
