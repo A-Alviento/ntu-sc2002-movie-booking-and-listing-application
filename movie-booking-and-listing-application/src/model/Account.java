@@ -24,18 +24,7 @@ public abstract class Account extends Model{
 		password = "password";
 	}
 	
-	/**
-	 * An abstract method to be implemented by child classes to create their account.  
-	 */
-	public abstract void createAccount() ;
-//		System.out.println("Enter your name: ");
-//		name = sc.next();
-//		System.out.println("Enter your email: ");
-//		email = sc.next();
-//		System.out.println("Enter your age: ");
-//		age = sc.nextInt();
-//		System.out.println("Enter your password: ");
-//		password = sc.next();		
+	
 	
 
 	
