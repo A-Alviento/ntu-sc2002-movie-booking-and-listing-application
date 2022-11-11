@@ -36,4 +36,10 @@ public class CheckDate {
 	** LocalDate.of(2022,11,3) is how to create a LocalDate
 	** Alternatively, LocalDate.parse("2022-11-3") also works
 	*/
+	
+	public static boolean isFriday(LocalDate date) {
+	    if(date.getDayOfWeek() == DayOfWeek.FRIDAY)
+	        return true;
+	    return false;
+	}
 }
