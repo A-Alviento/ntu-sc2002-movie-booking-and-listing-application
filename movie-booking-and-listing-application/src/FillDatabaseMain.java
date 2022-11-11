@@ -67,7 +67,7 @@ public class FillDatabaseMain extends Main{
 
             ms = new MovieShowTime(
                                             cinemas.get(k++ % movieSize),
-                                            LocalDate.of(2022,6, k%28),
+                                            LocalDate.of(2030,6, k%28),
                                             LocalTime.of(8,30),
                                             k%2==0);
             m.addMovieShowTime(ms);
