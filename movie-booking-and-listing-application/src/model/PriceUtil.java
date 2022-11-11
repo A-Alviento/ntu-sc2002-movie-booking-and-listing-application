@@ -153,4 +153,7 @@ public final class PriceUtil {
 	    basePrice = price;
 	}
 	
+   public static double getBasePrice() {
+        return basePrice;
+    }
 }
