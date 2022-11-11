@@ -57,13 +57,14 @@ public class CustomerAccount extends Account {
 		System.out.print("Enter your name: ");
 		name = sc.nextLine();
 		System.out.print("Enter phone number: ");
-		phoneNum = sc.next();
+		phoneNum = sc.nextLine();
 		System.out.print("Enter your email: ");
-		email = sc.next();
+		email = sc.nextLine();
 		System.out.print("Enter your age: ");
 		age = sc.nextInt();
+		sc.nextLine();
 		System.out.print("Enter your password: ");
-		password = sc.next();
+		password = sc.nextLine();
 		sc.close();
 		
 	}
