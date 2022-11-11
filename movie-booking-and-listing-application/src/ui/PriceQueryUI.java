@@ -25,6 +25,7 @@ public class PriceQueryUI {
 		printStartingDisplay();
 		while(true) {
 			choice = CheckUserInput.loopUntilValidInt("Please choose an option from the menu: " , 1, 11);
+			System.out.println("");
 			switch(choice) {
 				case 1: 
 					System.out.println("Base Price is " + PriceUtil.getBasePrice() +"\n");

@@ -116,7 +116,6 @@ public class AdminMenuUI {
                         System.out.println("");
 
                         option = CheckUserInput.loopUntilValidInt("Please select an option to configure: \n", 1, 4);
-                        sc.nextLine();
                         
                     } while (this.confCont.configEntry(option));
                     
