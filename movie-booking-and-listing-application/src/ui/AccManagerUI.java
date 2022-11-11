@@ -26,10 +26,9 @@ public class AccManagerUI {
      */
     public boolean authenticateUserAccount() {
         
-        System.out.println("Enter Email: ");
-        String userID = sc.nextLine();
-        System.out.println("Enter Password: ");
-        String userPass = sc.nextLine();
+        String userID = CheckUserInput.loopUntilValidString("Enter Email: \n", 0);
+        
+        String userPass = CheckUserInput.loopUntilValidString("Enter Password: \n", 0);
         
         int len = mC.cusAcc.size();
         
@@ -53,10 +52,9 @@ public class AccManagerUI {
      */
     public boolean authenticateAdminAccount() {
         
-        System.out.println("Enter Email: ");
-        String userID = sc.nextLine();
-        System.out.println("Enter Password: ");
-        String userPass = sc.nextLine();
+        String userID = CheckUserInput.loopUntilValidString("Enter Email: \n", 0);
+
+        String userPass = CheckUserInput.loopUntilValidString("Enter Password: \n", 0);
         
         if(userID.equals("DummyID")) {
             if(userPass.equals("Password123"))
