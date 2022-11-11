@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import io.ModelDatabase;
 import model.*;
@@ -7,6 +8,9 @@ import model.*;
  * Print all items in the database, for debugging purpose.
  */
 public class TestDatabaseMain extends Main{
+    private static HashMap<String, String> hashToName = new HashMap<>();
+    private static HashMap<String, Integer> typeCount = new HashMap<>();
+
     @Override
     public void mainBody() throws Exception {
         // "booking", "cinema", "cineplexes", "customeraccount", "movie",
@@ -33,7 +37,15 @@ public class TestDatabaseMain extends Main{
 
     public static void showAttributes(String keyword, Model m) {
         ArrayList<Object> printable = new ArrayList<>();
-        printable.add("#"+Integer.toString(m.hashCode()));
+        String hash = Integer.toString(m.hashCode());
+        if (typeCount.get(keyword) == null) {
+            typeCount.put(keyword, 0);
+        }
+        String name = "#" + keyword + typeCount.get(keyword);
+        typeCount.put(keyword, typeCount.get(keyword) + 1);
+        printable.add(name);
+
+        hashToName.put(hash, name);
 
         switch(keyword) {
             case "cinema":
@@ -60,6 +72,12 @@ public class TestDatabaseMain extends Main{
                 printable.add(((Movie)m).getMovieStatus());
                 printable.add(((Movie)m).getReviews());
                 break;
+            case "movieshowtime":
+                printable.add(((MovieShowTime)m).getCinema());
+                printable.add(((MovieShowTime)m).getIs3D());
+                printable.add(((MovieShowTime)m).getMovieDate());
+                printable.add(((MovieShowTime)m).getMovieTime());
+                printable.add(((MovieShowTime)m).getBooking());
             default:
                 break;
         }
@@ -81,7 +99,7 @@ public class TestDatabaseMain extends Main{
         }
 
         if (o instanceof Model) {
-            return "#"+Integer.toString(o.hashCode());
+            return hashToName.get(Integer.toString(o.hashCode()));
         } else if (o instanceof ArrayList) {
             String ret = "ArrayList[";
             ArrayList<Object> al = (ArrayList<Object>)o;
