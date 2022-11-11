@@ -149,4 +149,8 @@ public final class PriceUtil {
 		return String.format("%.2f", price);
 	}
 	
+	public static void setBasePrice(double price) {
+	    basePrice = price;
+	}
+	
 }
