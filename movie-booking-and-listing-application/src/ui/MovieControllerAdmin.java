@@ -34,8 +34,8 @@ public class MovieControllerAdmin {
         int castSize = CheckUserInput.loopUntilValidInt("Enter movie title: ", 0, 1000);
         
         for (int i = 0; i < castSize; i++) {
-            System.out.println("Enter Cast " + i +": ");
-            newMov.addCast(sc.nextLine()); 
+            String s = "Enter Cast " + i + ": ";
+            newMov.addCast(CheckUserInput.loopUntilValidString(s, 0));
         }
         
         newMov.setSynopsis(CheckUserInput.loopUntilValidString("Enter Synopsis: ", 0));
