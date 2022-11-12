@@ -6,7 +6,7 @@ import model.CustomerAccount;
 
 /**
  * Serves as the UI element for users or
- * admin to login
+ * admin to login.
  * 
  */
 public class AccManagerUI {
@@ -20,7 +20,7 @@ public class AccManagerUI {
     }
     
     /**
-     * authenticates customer account by checking with list 
+     * Authenticates customer account by checking with list 
      * of accounts stored in cusAcc arraylist
      * 
      */
@@ -46,7 +46,7 @@ public class AccManagerUI {
     }
     
     /**
-     * authenticates admin account by checking with pre
+     * Authenticates admin account by checking with pre
      * determined list of authorised accounts
      * 
      */
@@ -70,7 +70,7 @@ public class AccManagerUI {
     }
     
     /**
-     * create user account
+     * Create user account
      * 
      */
     public void makeAccount() {

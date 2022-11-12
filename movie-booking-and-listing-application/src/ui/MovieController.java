@@ -152,6 +152,9 @@ public class MovieController {
 
 }
 
+/**
+ * Helper class implementing comparator, to sort movie sales
+ */
 class MovieSalesSort implements Comparator<Movie>{
 
     @Override
@@ -162,6 +165,9 @@ class MovieSalesSort implements Comparator<Movie>{
 
 }
 
+/**
+ * Helper class implementing comparator, to sort movie ratings.
+ */
 class MovieRatingsSort implements Comparator<Movie>{
     
     @Override
@@ -180,8 +186,6 @@ class MovieRatingsSort implements Comparator<Movie>{
             b = Double.parseDouble(o2.getRating());
         
         return (int) (a - b);
-        
     }
-
 }
 

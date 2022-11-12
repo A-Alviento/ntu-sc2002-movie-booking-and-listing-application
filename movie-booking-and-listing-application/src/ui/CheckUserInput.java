@@ -2,6 +2,9 @@ package ui;
 import java.util.Scanner;
 import java.util.InputMismatchException;
 
+/**
+ * Helper class to validate user input.
+ */
 public final class CheckUserInput {
 	private static Scanner sc = new Scanner(System.in); 
 	

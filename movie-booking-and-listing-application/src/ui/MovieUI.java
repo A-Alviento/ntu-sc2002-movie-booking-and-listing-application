@@ -3,7 +3,7 @@ package ui;
 import java.util.Scanner;
 
 /**
- * This represents the movie options UI
+ * This represents the movie options UI.
  * 
  */
 public class MovieUI {

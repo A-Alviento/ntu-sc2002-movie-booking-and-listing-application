@@ -1,5 +1,9 @@
 package ui;
 
+/**
+ * Serves as UI Menu for admin to query the ticket price and also change it, if
+ * needed.
+ */
 public final class PriceUI {
 	private static int choice;
 	private static void printStartingDisplay() {

@@ -11,7 +11,7 @@ import model.MovieStatus;
 
 /**
  * Serves as the logic for Movie functions concerning 
- * an admin user
+ * an admin user.
  * 
  */
 public class MovieControllerAdmin {

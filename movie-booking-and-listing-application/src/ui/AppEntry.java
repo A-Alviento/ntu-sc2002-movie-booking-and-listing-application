@@ -21,7 +21,7 @@ public class AppEntry {
     }
     
     /**
-     * start the application
+     * Start the application
      * 
      */
     public void start() {
@@ -31,11 +31,10 @@ public class AppEntry {
     }
     
     /**
-     * stop the application
+     * Stop the application
      * 
      */
     public void stop() {
         stop = true;
     }
-
 }

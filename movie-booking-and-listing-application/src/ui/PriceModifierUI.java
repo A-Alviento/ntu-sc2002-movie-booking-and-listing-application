@@ -2,6 +2,11 @@ package ui;
 
 import model.PriceUtil;
 
+/**
+ * Serves as UI Menu for admin to change the ticket price based on the type of 
+ * cinema, customer, etc ...
+ * 
+ */
 public class PriceModifierUI {
 	public static void printStartingDisplay() {
 		 System.out.println("\n**************************************************************************************************");

@@ -10,7 +10,7 @@ import io.*;
  * This represents the main logic coordinator of the UI subclasses
  * It coordinates the different UI classes as well as the various
  * model classes and presents them in the form of text-based UI for 
- * the user;
+ * the user.
  * 
  */
 public class MainController {

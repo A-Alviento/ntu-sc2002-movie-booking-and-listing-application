@@ -4,11 +4,10 @@ import java.util.Scanner;
 
 /**
  * This represents app entry UI component for user to 
- * begin using the app
+ * begin using the app.
  * 
  */
 public class AppEntryUI {
-    
     
     static Scanner sc = new Scanner(System.in);
     private MainController mC;
@@ -20,7 +19,7 @@ public class AppEntryUI {
     }
     
     /**
-     * display the login UI and process user input
+     * Display the login UI and process user input
      * 
      */
     public void displayLoginUI() {

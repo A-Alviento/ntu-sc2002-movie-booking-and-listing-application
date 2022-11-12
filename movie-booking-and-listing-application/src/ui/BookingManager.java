@@ -10,7 +10,7 @@ import model.PriceUtil;
 
 /**
  * This represents the booking logic to book
- * a ticket
+ * a ticket.
  * 
  */
 public class BookingManager {
@@ -22,8 +22,6 @@ public class BookingManager {
         
         this.mC = mC;
     }
-    
-    
     
     /**
      * This prints the UI and processes user input
@@ -221,6 +219,9 @@ public class BookingManager {
     }
 }
 
+/**
+ * Helper class implementing comparator, to sort show time.
+ */
 class ShowTimeSort implements Comparator<MovieShowTime>{
 
     @Override
