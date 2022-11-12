@@ -98,7 +98,7 @@ public class BookingManager {
         
         if(!isSeatValid(seatID,row-1, col)) {
             System.out.println("Seat already occupied!");
-            return true;
+            return false;
         }
         
         /** gets the price */

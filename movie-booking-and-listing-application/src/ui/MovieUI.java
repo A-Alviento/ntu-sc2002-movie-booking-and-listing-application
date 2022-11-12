@@ -63,8 +63,7 @@ public class MovieUI {
                     break;
                     
                 case 3:
-                    if(bookMan.displayBookingManagerUI())
-                        return false;
+                    bookMan.displayBookingManagerUI();
                     break;
                     
                 case 4:

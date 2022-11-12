@@ -41,7 +41,7 @@ public final class CheckUserInput {
 			try {
 				System.out.print(str);
 				input = sc.nextInt();
-				sc.nextLine();
+				sc.nextLine(); 
 				withinRangeInt(min,max,input);
 				break;
 			}catch(InputMismatchException e){
