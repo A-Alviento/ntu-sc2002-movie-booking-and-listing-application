@@ -130,8 +130,7 @@ public class MovieController {
         }
         
         for (int i = 1; i <= mC.currMov.getReviews().size(); i++) {
-            System.out.println("Review " + i + ": " + mC.currMov.getReviews().get(i-1).getRating() + "/5 - " 
-                        + mC.currMov.getReviews().get(i-1).getComment());
+            System.out.println("Review " + i + ": " + mC.currMov.getReviews().get(i-1).getComment());
             System.out.println("--------------------------------------------------------------------------------------------------");
         }
     }
@@ -167,26 +166,8 @@ class MovieRatingsSort implements Comparator<Movie>{
 
     @Override
     public int compare(Movie o1, Movie o2) {
-        double a, b;
-        String s = "NA";
-        if (o1.getRating().equals(s))
-            a = 0;
-        else
-            a = Double.parseDouble(o1.getRating());
         
-        if (o2.getRating().equals(s))
-            b = 0;
-        else
-            b = Double.parseDouble(o2.getRating());
-        
-        if (a > b) {
-            return 1;
-        } else if (a == b) {
-            return 0;
-        } else {
-            return -1;
-        }
-        // return (int) (a - b);
+        return (int) (Double.parseDouble(o1.getRating()) - Double.parseDouble(o2.getRating()));
     }
 
 }

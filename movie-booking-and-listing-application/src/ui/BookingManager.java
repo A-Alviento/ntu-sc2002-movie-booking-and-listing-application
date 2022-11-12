@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Scanner;
 
+import model.Booking;
 import model.MovieShowTime;
 import model.PriceUtil;
 
@@ -44,7 +45,7 @@ public class BookingManager {
         int cineplexNum = mC.currMov.getMovieShowTimes().get(movShowingIndex-1).getCinema().getCineplexNum();
         
         /** displays seat allocation for selected showing at selected cinemaHall */
-        this.displaySeatAllocation(cinemaHall, cineplexNum, movShowingIndex-1);
+        int[][] seatID = this.displaySeatAllocation(cinemaHall, cineplexNum, movShowingIndex-1);
         
         /** if user not logged in, prompt login */
         while (mC.currAcc == null) {
@@ -94,7 +95,12 @@ public class BookingManager {
             col = 7;
         else if (c == 'H')
             col = 8;
-            
+        
+        if(!isSeatValid(seatID,row-1, col)) {
+            System.out.println("Seat already occupied!");
+            return true;
+        }
+        
         /** gets the price */
         String price = PriceUtil.getPrice(mC.currMov.getMovieShowTimes().get(movShowingIndex-1).getMovieDate(),
                 mC.currMov.getMovieShowTimes().get(movShowingIndex-1).getMovieTime(), mC.currAcc.getAge(),
@@ -112,6 +118,11 @@ public class BookingManager {
         if (finalChoice == 1) {
             int[] seatid = {row - 1, col};
             
+            Booking book = new Booking(seatid, Double.parseDouble(price), 
+                    mC.currMov.getTitle(), 
+                    mC.currMov.getMovieShowTimes().get(movShowingIndex-1).getCinema().getCinemaCode(),
+                    mC.currMov.getMovieShowTimes().get(movShowingIndex-1).getCinema());
+            
             /** update the booking history of current user */
             mC.currAcc.addBooking(seatid, Double.parseDouble(price), 
                     mC.currMov.getTitle(), 
@@ -121,10 +132,19 @@ public class BookingManager {
             /** increment ticket sale of the movie */
             mC.currMov.incTicketSale();
             
+            mC.currMov.getMovieShowTimes().get(movShowingIndex-1).getBooking().add(book);
+            
             System.out.println("Booking successful, you can check your booking history.");
         }
         return true;
         
+    }
+    
+    public boolean isSeatValid(int[][] seatID, int row, int col) {
+        if (seatID[row][col] == 2)
+            return false;
+        return true;
+                    
     }
     
     /**
@@ -154,7 +174,7 @@ public class BookingManager {
      * at a particular showing
      * 
      */
-    public void displaySeatAllocation(int cinemaNum, int cinePlexNum, int showTimeIndex) {
+    public int[][] displaySeatAllocation(int cinemaNum, int cinePlexNum, int showTimeIndex) {
         
         int [][] seatLayout = new int [mC.cinPlex.get(cinePlexNum).getCinema()[cinemaNum].getSeatLayout().length][];
         for (int i = 0; i < mC.cinPlex.get(cinePlexNum).getCinema()[cinemaNum].getSeatLayout().length; i++)
@@ -196,6 +216,8 @@ public class BookingManager {
             }
             System.out.println();
         }
+        
+        return seatLayout;
     }
 }
 
