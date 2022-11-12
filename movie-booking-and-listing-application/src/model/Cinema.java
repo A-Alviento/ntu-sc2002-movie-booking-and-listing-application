@@ -1,4 +1,7 @@
 package model;
+/**
+ * Cinema class represents a cinema to be stored in a database
+ */
 public class Cinema extends Model {
 	public static final long serialVersionUID = 26L;
 
@@ -8,6 +11,9 @@ public class Cinema extends Model {
 	private int cinemaHall;
 	private int cineplexNum;
 	
+	/**
+	 * Constructor for Cinema class
+	 */
 	public Cinema(String id, CinemaClass type, int cinemaHall, int cineplexNum) {
 		this.cinemaID = id;
 		this.cinemaType = type;
@@ -25,32 +31,51 @@ public class Cinema extends Model {
             }
         }
 	}
-	
+	/**
+	 * Getter for cinema id
+	 */
 	public String getCinemaCode() {
 		return cinemaID;
 	}
+	/**
+	 * Setter for cinema id
+	 */
 	public void setCinemaCode(String id) {
 		this.cinemaID = id;
 	}
+	/**
+	 * Getter for seat layout
+	 */
 	public int[][] getSeatLayout() {
 		return seatLayout;
 	}
+	/**
+	 * Setter for cinema code
+	 */
 	public void setSeatLayout(int[][] seatLayout) {
 		this.seatLayout = seatLayout;
 	}
-	
+	/**
+	 * Getter for cinema type
+	 */
 	public CinemaClass getCinemaClass() {
 		return cinemaType;
 	}
-	
+	/**
+	 * Setter for cinema type
+	 */
 	public void setCinemaClass(CinemaClass type) {
 		this.cinemaType = type;
 	}
-	
+	/**
+	 * Getter for cinema hall
+	 */
 	public int getCinemaHall() {
 	    return this.cinemaHall;
 	}
-	
+	/**
+	 * Setter for cinema type
+	 */
 	public int getCineplexNum() {
 	    return this.cineplexNum;
 	}
