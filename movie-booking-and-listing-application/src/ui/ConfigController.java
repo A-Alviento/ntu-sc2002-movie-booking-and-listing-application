@@ -24,7 +24,7 @@ public class ConfigController {
                 while(this.updateHolidays());
                 break;
             case 3: 
-                
+                this.updateSortAccess();
                 break;
             case 4:
                 return false;
@@ -97,7 +97,7 @@ public class ConfigController {
             UserMenuUI.isSortRatings = true;
         
         if(isRating == 0)
-            UserMenuUI.isSortRatings = false;
+            UserMenuUI.isSortSales = false;
         else
             UserMenuUI.isSortSales = true;
         
