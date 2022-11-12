@@ -179,7 +179,12 @@ class MovieRatingsSort implements Comparator<Movie>{
         else
             b = Double.parseDouble(o2.getRating());
         
-        return (int) (a - b);
+        if (a > b)
+            return 1;
+        if (a == b)
+            return 0;
+        else 
+            return -1;
         
     }
 
