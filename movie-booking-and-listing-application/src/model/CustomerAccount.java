@@ -62,7 +62,7 @@ public class CustomerAccount extends Account {
 		System.out.print("Enter your email: ");
 		email = sc.nextLine();
 		System.out.print("Enter your age: ");
-		age = sc.nextInt();
+		age = sc.nextInt();  
 		sc.nextLine();
 		System.out.print("Enter your password: ");
 		password = sc.nextLine();

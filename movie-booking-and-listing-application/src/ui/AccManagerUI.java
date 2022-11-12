@@ -31,13 +31,15 @@ public class AccManagerUI {
         String userPass = CheckUserInput.loopUntilValidString("Enter Password: \n", 0);
         
         int len = mC.cusAcc.size();
-        
+         
         for (int i = 0; i < len; i++) {
-            if (userID.equals(mC.cusAcc.get(i).getEmail())) {
-                if (userPass.equals(mC.cusAcc.get(i).getPassword()))
+            if (userID.toLowerCase().equals(mC.cusAcc.get(i).getEmail().toLowerCase())) {
+                if (userPass.equals(mC.cusAcc.get(i).getPassword())) {
                     mC.currAcc = mC.cusAcc.get(i);
                     System.out.println("Successfully logged in");
+                    
                     return true;
+                }
             }
             
         }

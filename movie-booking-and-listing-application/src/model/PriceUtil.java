@@ -27,7 +27,7 @@ public final class PriceUtil {
 	private static double basePrice = 10;
 	/**
 	 * Base Price Getter
-	 */
+	 */ 
 	public static double getBasePrice() {
 		return basePrice;
 	}
@@ -248,10 +248,10 @@ public final class PriceUtil {
 		}
 		//weekday and before 6pm 
 		Age ageCategory = CheckAge.checkAgeCategory(age);
-		if(ageCategory == Age.STUDENT) {
+		if(ageCategory.equals(Age.STUDENT)) {
 			price *= studentMultiplier; 
 			return;
-		}else if (ageCategory == Age.ELDERLY) {
+		}else if (ageCategory.equals(Age.ELDERLY)) {
 			price *= elderlyMultiplier;
 			return;
 		}

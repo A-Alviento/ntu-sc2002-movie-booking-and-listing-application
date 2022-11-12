@@ -109,10 +109,11 @@ public class MainController {
         switch(selection){
             /** case for user login */
             case 1:
-                /** authenticates customer login */
-                while(!auth)
-                    auth = accMan.authenticateUserAccount();
-                auth = false;
+                /** authenticates customer login */ 
+                
+                auth = accMan.authenticateUserAccount(); 
+                if (auth == false)
+                    return -1;
                 
                 if (!user.displayMainUI()) {
                     currAcc = null;
@@ -141,9 +142,10 @@ public class MainController {
             /** case for admin login */
             case 4:
                 /** authenticates admin login */
-                while(!auth)
-                    auth = accMan.authenticateAdminAccount();
-                auth = false;
+                
+                auth = accMan.authenticateAdminAccount();
+                if (auth == false)
+                    return -1;
                 
                 /** once authenticated, move on */
                 if (!admin.displayAdminUI()) 

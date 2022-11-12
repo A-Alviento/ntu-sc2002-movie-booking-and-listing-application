@@ -104,9 +104,9 @@ public class BookingManager {
                 mC.currMov.getMovieShowTimes().get(movShowingIndex-1).getMovieTime(), mC.currAcc.getAge(),
                 mC.currMov.getMovieShowTimes().get(movShowingIndex-1).getIs3D(), 
                 mC.currMov.getMovieShowTimes().get(movShowingIndex-1).getCinema().getCinemaClass(),
-                mC.currMov.isBlockbuster(), mC.publicHolidays.getPublicHolidays());
+                mC.currMov.isBlockbuster(), mC.publicHolidays.getPublicHolidays()); 
         System.out.println("The final price is " + price + " SGD");
-        
+         
         
         System.out.println("1. Book\n"
                 + "2. Cancel\n");

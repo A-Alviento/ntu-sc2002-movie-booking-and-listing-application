@@ -146,7 +146,7 @@ public class MovieController {
         String review = CheckUserInput.loopUntilValidString("Input your review: ", 0);
         
         mC.currMov.addReview(review, rating);
-        mC.currMov.updateRating();
+        mC.currMov.updateRating();     
     }
     
 

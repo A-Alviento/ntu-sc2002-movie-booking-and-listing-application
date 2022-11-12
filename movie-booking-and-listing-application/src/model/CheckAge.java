@@ -3,7 +3,7 @@ package model;
 /**
  * Helper class to check age of customers.
  */
-public final class CheckAge {
+public final class CheckAge { 
 	private static int studentAge = 15;
 	private static int elderlyAge = 55;
 	
