@@ -16,6 +16,7 @@ public class FillDatabaseMain extends Main{
         ArrayList<Cinema> cinemas = new ArrayList<>();
         ArrayList<Movie> movies = new ArrayList<>();
         ArrayList<MovieShowTime> movieShowTimes = new ArrayList<>();
+        ArrayList<CustomerAccount> customers = new ArrayList<>();
         int k;
 
         
@@ -38,7 +39,7 @@ public class FillDatabaseMain extends Main{
             }
         }
 
-        // Create 7 movies
+        // Create 7 movies and 3 reviews for each respectively
         for (int i = 0; i < 7; i++) {
             String id = Integer.toString(i);
             Movie movie = new Movie("Movie " + id);
@@ -50,6 +51,30 @@ public class FillDatabaseMain extends Main{
             movie.setBlockbuster(i % 2 == 0);
             mdc.addToDatabase("movie", movie);
             movies.add(movie);
+
+            for (int j = 0; j < 3; j++) {
+                // generate R such that it is psuedo-random - to get random average
+                // for testing sort
+                int R = (i * 57 + 12 * 7*j) % 5 + 1;
+                Review review = null;
+                switch(R) {
+                    case 1:
+                    case 2:
+                        movie.addReview("Very bad. Don't go and see it.", R);
+                        break;
+                    case 3:
+                    case 4:
+                        movie.addReview("Meh. So so.", R);
+                        break; 
+                    case 5:
+                        movie.addReview("Get out of your seats and go buy a ticket.", R);
+                        break;
+                    default:
+                        movie.addReview("Default comment", R);
+                        break;
+                } 
+                //mdc.addToDatabase("review", review);
+            }
         }
 
         // For each movie create 2 movie showing at 2 cinemas
@@ -74,7 +99,19 @@ public class FillDatabaseMain extends Main{
             mdc.addToDatabase("movieshowtime", ms);
             movieShowTimes.add(ms);
         }
+
+    for (int i = 0; i < 10; i++) {
+        CustomerAccount ca = new CustomerAccount(
+                                    "Customer " + Integer.toString(i),
+                                    "email" + Integer.toString(i) + "@gmail.com",
+                                    Integer.toString(61202200+i),
+                                    "password" + Integer.toString(i),
+                                    20+i
+        );
+        mdc.addToDatabase("customeraccount", ca);
+        customers.add(ca);
     }
+}
 
     public static void main(String args[]) {
         try {

@@ -21,6 +21,15 @@ public class TestDatabaseMain extends Main{
         for (String s : ModelDatabase.modelKeywords) {
             ArrayList<Model> models = mdc.getArrayList(s);
             System.out.println(s + " : size = " + models.size());
+            switch (s) {
+                case "cineplexes":
+                case "cusotmeraccount":
+                case "movie":
+                //case "publicholiday":
+                    break;
+                default:
+                    System.out.println("DATA SHOWN HERE WON'T BE CONSISTENT.");
+            }
 
             for (Model m: models) {
                 showAttributes(s, m);
@@ -78,11 +87,19 @@ public class TestDatabaseMain extends Main{
                 printable.add(((MovieShowTime)m).getMovieDate());
                 printable.add(((MovieShowTime)m).getMovieTime());
                 printable.add(((MovieShowTime)m).getBooking());
+                break;
+            case "customeraccount":
+                printable.add(((CustomerAccount)m).getBookingList());
+                printable.add(((CustomerAccount)m).getName());
+                printable.add(((CustomerAccount)m).getEmail());
+                printable.add(((CustomerAccount)m).getPhoneNum());
+                printable.add(((CustomerAccount)m).getPassword());
+                printable.add(((CustomerAccount)m).getAge());
+                break;
             default:
                 break;
         }
         showPrintable(printable);
-
     }
 
     public static void showPrintable(ArrayList<Object> printable) {
