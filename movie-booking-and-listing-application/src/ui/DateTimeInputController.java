@@ -30,12 +30,20 @@ public class DateTimeInputController {
         }
     
     public static LocalTime timeInput(String userInput) {
+            while(true) {
+                try {
+                    DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("HH:mm");
+                    LocalTime time = LocalTime.parse(userInput, dateFormat);
+                    System.out.println(time);
+                    return time ;
+                }catch(DateTimeParseException e) {
+                    System.out.println("You did not input the correct pattern, try again: ");
+                    userInput = sc.nextLine();
+                }
+            }
             
-            DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("HH:mm");
-            LocalTime time = LocalTime.parse(userInput, dateFormat);
             
-            System.out.println(time);
-            return time ;
+           
         }
 
 }

@@ -42,7 +42,7 @@ public class PriceModifierUI {
 					input = CheckUserInput.loopUntilValidDouble("Enter new bronze cinema multiplier: ", 0.1, 2.0);
 					PriceUtil.setBronzeCinemaMultiplier(input);
 					System.out.println("Bronze Cinema Multiplier has been modified.\n");
-					break;
+					break; 
 				case 3:
 					input = CheckUserInput.loopUntilValidDouble("Enter new silver cinema multiplier: ", 0.1, 2.0);
 					PriceUtil.setSilverCinemaMultiplier(input);

@@ -33,7 +33,7 @@ public final class PriceUtil {
 	}
 	/**
 	 * Base Price Setter
-	 */
+	 */ 
 	public static void setBasePrice(double input) {
 		basePrice = input;
 	}
