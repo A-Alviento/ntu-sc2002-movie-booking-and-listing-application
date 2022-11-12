@@ -142,7 +142,7 @@ public class BookingManager {
         if (seatID[row][col] == 2)
             return false;
         return true;
-                    
+                     
     }
     
     /**

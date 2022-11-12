@@ -30,7 +30,7 @@ public final class CheckUserInput {
 				System.out.println("");
 			}
 		}
-		return input;
+		return input;  
 	}
 	
 	private static void withinRangeInt(int min, int max, int input) {
