@@ -23,7 +23,7 @@ public class TestDatabaseMain extends Main{
             System.out.println(s + " : size = " + models.size());
             switch (s) {
                 case "cineplexes":
-                case "cusotmeraccount":
+                case "customeraccount":
                 case "movie":
                 //case "publicholiday":
                     break;

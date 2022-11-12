@@ -56,7 +56,6 @@ public class FillDatabaseMain extends Main{
                 // generate R such that it is psuedo-random - to get random average
                 // for testing sort
                 int R = (i * 57 + 12 * 7*j) % 5 + 1;
-                Review review = null;
                 switch(R) {
                     case 1:
                     case 2:
