@@ -96,12 +96,14 @@ public class AdminMenuUI {
                     
                     movCont.setCurrMovie(movieSelected-1);
                     
-                    bookMan.displayShowTimes();
+                    if(bookMan.displayShowTimes()) {
+                        int showTime = CheckUserInput.loopUntilValidInt("Please select a showtime by indicating it's number: \n", 1, mC.currMov.getMovieShowTimes().size());
+                        
+                        movContAdm.updateShowTime(showTime-1); 
+                    }
                     
-                    int showTime = CheckUserInput.loopUntilValidInt("Please select a showtime by indicating it's number: \n", 1, mC.currMov.getMovieShowTimes().size());
-                    
-                    movContAdm.updateShowTime(showTime-1);                    
-                    
+                   
+                      
                     break;
                     
                 case 5:

@@ -67,7 +67,7 @@ public class MovieControllerAdmin {
                     System.out.println("Please choose from the options\n");
             }        
         }
-        
+         
         int option = CheckUserInput.loopUntilValidInt("Is the movie a blockbuster? (0 - No ; 1 - Yes) \n", 0, 1);
         
         if(option == 0)
