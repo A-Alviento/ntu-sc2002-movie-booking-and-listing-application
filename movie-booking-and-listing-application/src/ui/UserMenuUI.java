@@ -109,7 +109,7 @@ public class UserMenuUI {
                     }
                     
                     break;
-                    
+                     
                 case 4:
                     if (!UserMenuUI.isSortSales) {
                         System.out.println("Not authorised to access");
@@ -139,8 +139,8 @@ public class UserMenuUI {
                         System.out.println("No movies to show.");
                         break;
                     }
-                    for (int i = mC.movList.size(); i > mC.movList.size() - sortSize1; i--) {
-                        System.out.println(count1++ + ". " + mC.movList.get(i-1).getTitle() + " " + mC.movList.get(i-1).getRating() + " rating.");
+                    for (int j = mC.movList.size(); j > mC.movList.size() - sortSize1; j--) {
+                        System.out.println(count1++ + ". " + mC.movList.get(j-1).getTitle() + " " + mC.movList.get(j-1).getRating() + " rating.");
                     }
                     break;
                     

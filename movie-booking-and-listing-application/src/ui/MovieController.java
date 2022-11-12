@@ -168,6 +168,7 @@ class MovieRatingsSort implements Comparator<Movie>{
     public int compare(Movie o1, Movie o2) {
         double a, b;
         String s = "NA";
+        
         if (o1.getRating().equals(s))
             a = 0;
         else

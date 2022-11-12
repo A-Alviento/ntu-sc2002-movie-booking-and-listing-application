@@ -12,13 +12,15 @@ public class PublicHolidays extends Model {
 	public static final long serialVersionUID = 91L;
 
 	/**
-	 * Array of the public holidays
+	 * Array of the public holidays 
 	 */
 	private static ArrayList<LocalDate> publicHolidayList;
 	
 	public PublicHolidays(ArrayList<LocalDate> list) {
-	    
-	    publicHolidayList = list;
+	    if (list == null)
+	        publicHolidayList = new ArrayList<>();
+	    else
+	        publicHolidayList = list;
 	}
 	
 	/**

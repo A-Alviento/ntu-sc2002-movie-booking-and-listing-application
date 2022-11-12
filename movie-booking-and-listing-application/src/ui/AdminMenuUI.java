@@ -74,7 +74,7 @@ public class AdminMenuUI {
 
                     break;
                     
-                case 3:
+                case 3: 
                     
                     movCont.listMovies();
 

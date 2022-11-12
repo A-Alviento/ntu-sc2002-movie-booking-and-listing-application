@@ -23,7 +23,7 @@ public class ConfigController {
             case 2:
                 while(this.updateHolidays());
                 break;
-            case 3:
+            case 3: 
                 
                 break;
             case 4:
@@ -48,7 +48,8 @@ public class ConfigController {
         
         switch(selection) {
             case 1:
-                LocalDate newDate = DateTimeInputController.dateInput("Enter a date (yyyy-mm-dd) : ");
+                
+                LocalDate newDate = DateTimeInputController.dateInput(CheckUserInput.loopUntilValidString("Enter a date (yyyy-mm-dd) : \n", 0));
                 PublicHolidays.addPublicHoliday(newDate);
                 System.out.println("Holiday added successfully");
                 break;

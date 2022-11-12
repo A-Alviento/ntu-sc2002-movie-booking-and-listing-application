@@ -197,7 +197,7 @@ public class MovieControllerAdmin {
             }
         }
     }
-    
+     
     public void addShowTime(int cineplexNum, int cinemaNum) {
 
         LocalDate newDate = DateTimeInputController.dateInput(CheckUserInput.loopUntilValidString("Enter a date (yyyy-mm-dd) : \n", 0));
