@@ -106,7 +106,7 @@ public class BookingManager {
                 mC.currMov.getMovieShowTimes().get(movShowingIndex-1).getMovieTime(), mC.currAcc.getAge(),
                 mC.currMov.getMovieShowTimes().get(movShowingIndex-1).getIs3D(), 
                 mC.currMov.getMovieShowTimes().get(movShowingIndex-1).getCinema().getCinemaClass(),
-                mC.currMov.isBlockbuster());
+                mC.currMov.isBlockbuster(), mC.publicHolidays.getPublicHolidays());
         System.out.println("The final price is " + price + " SGD");
         
         
@@ -197,7 +197,7 @@ public class BookingManager {
         
         System.out.print("    ");
         for (char c = 'A'; c < 'I'; c++) {
-            if (Character.compare(c, 'E') == 0)
+            if (Character.compare(c, 'E') == 0) 
                 System.out.print("  ");
             System.out.print(c + " ");
         }

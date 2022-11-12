@@ -75,9 +75,11 @@ public class MainController {
         cusAcc = mdc.getArrayList("customeraccount");
         movList = mdc.getArrayList("movie");
         cinPlex = mdc.getArrayList("cineplexes");
+        
         if (mdc.getArrayList("publicholiday").size() == 0) {
             mdc.addToDatabase("publicholiday", new PublicHolidays(new ArrayList<>()));
         }
+        
         publicHolidays = (PublicHolidays) mdc.getArrayList("publicholiday").get(0);
         // publicHolidays = new PublicHolidays(mdc.getArrayList("publicholiday"));
         

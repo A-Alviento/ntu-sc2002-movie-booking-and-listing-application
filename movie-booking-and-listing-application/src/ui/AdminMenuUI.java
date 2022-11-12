@@ -22,7 +22,7 @@ public class AdminMenuUI {
         this.movCont = new MovieController(this.mC);
         this.bookMan = new BookingManager(this.mC);
         this.movContAdm = new MovieControllerAdmin(this.mC);
-        this.confCont = new ConfigController();
+        this.confCont = new ConfigController(this.mC);
     }
     
     /**

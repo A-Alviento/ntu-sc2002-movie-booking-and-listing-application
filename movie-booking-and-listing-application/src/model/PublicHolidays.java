@@ -14,7 +14,7 @@ public class PublicHolidays extends Model {
 	/**
 	 * Array of the public holidays 
 	 */
-	private static ArrayList<LocalDate> publicHolidayList;
+	private ArrayList<LocalDate> publicHolidayList;
 	
 	public PublicHolidays(ArrayList<LocalDate> list) {
 	    if (list == null)
@@ -27,7 +27,7 @@ public class PublicHolidays extends Model {
 	 * Add a date into the list of public Holiday
 	 * @param date date to be added to the list
 	 */
-	public static void addPublicHoliday(LocalDate date) {
+	public void addPublicHoliday(LocalDate date) {
 		publicHolidayList.add(date);
 	}
 	
@@ -35,7 +35,7 @@ public class PublicHolidays extends Model {
 	 * Get List of public holiday
 	 * @return publicHolidayList  list of public holiday in db
 	 */
-	public static ArrayList<LocalDate> getPublicHolidays(){
+	public ArrayList<LocalDate> getPublicHolidays(){
 		return publicHolidayList;
 	}
 	
@@ -44,7 +44,7 @@ public class PublicHolidays extends Model {
 	 * @return  int 0 - if Entered date is not in the list
 	 * 			int 1 - if entered date is removed.
 	 */
-	public static int removePublicHoliday(LocalDate date) {
+	public int removePublicHoliday(LocalDate date) {
 		Iterator <LocalDate> itr = publicHolidayList.iterator();
 		LocalDate temp;
 		while(itr.hasNext()) {

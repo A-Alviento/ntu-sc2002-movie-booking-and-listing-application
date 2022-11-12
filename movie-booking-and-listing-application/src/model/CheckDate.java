@@ -27,8 +27,7 @@ public class CheckDate {
 	 * @param date Date to be checked
 	 * @return a boolean that shows if the date is a public holiday
 	 */
-	public static boolean isPublicHoliday(LocalDate date) {
-		ArrayList<LocalDate> publicHolidayList = PublicHolidays.getPublicHolidays();
+	public static boolean isPublicHoliday(LocalDate date, ArrayList<LocalDate> publicHolidayList) {
 		if (publicHolidayList == null){
 		    return false;
 		}

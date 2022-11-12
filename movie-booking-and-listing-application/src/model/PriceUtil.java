@@ -1,6 +1,7 @@
 package model;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 /**
  * This class is a static class whose role is to calculate the price of the movie ticket.
  */
@@ -204,7 +205,7 @@ public final class PriceUtil {
 		}else if (cinemaClass == CinemaClass.SILVER) {
 			price *= silverCinemaMultiplier;
 		}else {
-			price *= goldCinemaMultiplier;
+			price *= goldCinemaMultiplier; 
 		}
 		
 		if(is3D) {
@@ -226,9 +227,9 @@ public final class PriceUtil {
 	/**
 	 * A private function that takes the movie price and modifiy it with time of movie and date of movie and the customer age and cinema class.
 	 */
-	private static void updatePrice(LocalDate date, LocalTime time, int age, boolean is3D, CinemaClass cinemaClass, boolean isBlockbuster) {
+	private static void updatePrice(LocalDate date, LocalTime time, int age, boolean is3D, CinemaClass cinemaClass, boolean isBlockbuster, ArrayList<LocalDate> publicHolidayList) {
 		movieBasePrice(is3D, cinemaClass, isBlockbuster);
-		if(CheckDate.isPublicHoliday(date)) {
+		if(CheckDate.isPublicHoliday(date, publicHolidayList)) {
 			price *= publicHolidayMultipler;
 			return;
 		}
@@ -261,8 +262,8 @@ public final class PriceUtil {
 	 * A function to give the price of the movie with all the required considerations.
 	 * @return price of the movie for the customer.
 	 */
-	public static String getPrice(LocalDate date, LocalTime time, int age, boolean is3D, CinemaClass cinemaClass, boolean isBlockbuster) {
-		updatePrice( date,  time,  age,  is3D,  cinemaClass,  isBlockbuster);
+	public static String getPrice(LocalDate date, LocalTime time, int age, boolean is3D, CinemaClass cinemaClass, boolean isBlockbuster, ArrayList<LocalDate> publicHolidayList) {
+		updatePrice( date,  time,  age,  is3D,  cinemaClass,  isBlockbuster, publicHolidayList);
 		addGst();
 		return String.format("%.2f", price);
 	}
