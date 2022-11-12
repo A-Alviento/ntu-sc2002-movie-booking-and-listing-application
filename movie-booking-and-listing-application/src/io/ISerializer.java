@@ -3,8 +3,8 @@ package io;
 import java.io.Serializable;
 
 /**
- * Serializing is the process of converting an object into format suitable for
- * storage, be it in text, binary, etc.
+ * Interface for serializer. Serializing is the process of converting an object
+ * into format suitable for storage, be it in text, binary, etc.
  */
 public interface ISerializer<T, S extends Serializable>{
     /**

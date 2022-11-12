@@ -3,16 +3,13 @@ package io;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import model.*;
-
+import model.Model;
 
 /**
  * Main interface to handle database.
  * To use: create a new controller, add and open databases to the controller,
  * use addToDatabase, deleteFromDatabase, getIterator, ... . When finished,
  * use closeAllDatabase to persist the databases.
- * 
- * @author Min Khant
  */
 public class ModelDatabaseController {
     private ModelDatabase database;
@@ -43,20 +40,37 @@ public class ModelDatabaseController {
         hm = null;
     }
 
-    public void addToDatabase(String modelKeyword, Model m) throws Exception {
+    /**
+     * Add a model to the database using the specified model keyword.
+     * @param modelKeyword the model keyword
+     * @param model the model object
+     */
+    public void addToDatabase(String modelKeyword, Model model) throws Exception {
         if (!ModelDatabase.isKeywordValid(modelKeyword)) {
             throw new Exception("Invalid model keyword.");
         }
-        hm.get(modelKeyword).add(m);
+        hm.get(modelKeyword).add(model);
     }
 
-    public void deleteFromDatabase(String modelKeyword, Model m) throws Exception{
+    /**
+     * Delete from the database using the specified model keyword and a model.
+     * @param modelKeyword the model keyword
+     * @param model the model object
+     */
+    public void deleteFromDatabase(String modelKeyword, Model model) throws Exception{
         if (!ModelDatabase.isKeywordValid(modelKeyword)) {
             throw new Exception("Invalid model keyword.");
         }
-        hm.get(modelKeyword).remove(m);
+        hm.get(modelKeyword).remove(model);
     }
 
+    /**
+     * Get an arraylist reference to the model. Changing the arraylist will also
+     * change the database.
+     * @param <M> the model type
+     * @param modelKeyword the model keyword
+     * @return the arraylist reference
+     */
     @SuppressWarnings("unchecked")
     public <M extends Model> ArrayList<M> getArrayList(String modelKeyword) throws Exception{
         if (!ModelDatabase.isKeywordValid(modelKeyword)) {
@@ -75,6 +89,13 @@ public class ModelDatabaseController {
         return al;
     }
 
+    /**
+     * Get an arraylist reference to the model. Changing the arraylist will NOT
+     * change the database.
+     * @param <M> the model type
+     * @param modelKeyword the model keyword
+     * @return the arraylist reference
+     */
     public <M extends Model> ArrayList<M> getEphemeralArrayList(String modelKeyword) throws Exception {
         if (!ModelDatabase.isKeywordValid(modelKeyword)) {
             throw new Exception("Invalid model keyword.");
@@ -83,6 +104,13 @@ public class ModelDatabaseController {
         return castArrayList(hm.get(modelKeyword));
     }
 
+    /**
+     * Cast an arraylist of type s to an arraylist of type t
+     * @param <T> target type
+     * @param <S> source type
+     * @param al target arraylist
+     * @return casted arraylist
+     */
     @SuppressWarnings("unchecked")
     public static <T,S> ArrayList<T> castArrayList(ArrayList<S> al) {
         ArrayList<T> ret = new ArrayList<>();

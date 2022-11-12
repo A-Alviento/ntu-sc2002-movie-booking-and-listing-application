@@ -11,12 +11,8 @@ import java.util.ArrayList;
 
 /**
  * For object(byte) based database files on local storage.
- * 
- * @author Min Khant
  */
 public class ObjectLocalDatabase<S extends Serializable> extends LocalDatabase<S, S> {
-
-    
     /**
      * Use this constructor if you don't want to change the object
      * before serializing.
@@ -98,7 +94,6 @@ public class ObjectLocalDatabase<S extends Serializable> extends LocalDatabase<S
  * Serializer which just returns the object passed to it.
  */
 class IdentitySerializer<S extends Serializable> implements ISerializer<S, S> {
-
     @Override
     public S serialize(S obj) throws Exception {
         return obj;    
@@ -108,5 +103,4 @@ class IdentitySerializer<S extends Serializable> implements ISerializer<S, S> {
     public S deserialize(S src) throws Exception {
     return src;
     }
-
 }

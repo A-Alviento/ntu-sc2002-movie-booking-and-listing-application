@@ -8,7 +8,7 @@ import java.io.Serializable;
  */
 public interface IDatabase<S extends Serializable> {
     /**
-     * Attempt to open the database.
+     * Attempts to open the database.
      */
     public abstract void open() throws Exception;
 

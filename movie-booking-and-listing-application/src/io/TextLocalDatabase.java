@@ -1,15 +1,13 @@
 package io;
 
-import java.util.Scanner;
 import java.io.File;
 import java.io.PrintWriter;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * For text based database files on local storage.
- * 
- * @author Min Khant
  */
 public abstract class TextLocalDatabase<S extends Serializable> extends LocalDatabase<String, S>{
     public TextLocalDatabase(String filePath, ISerializer<String, S> serializer) {

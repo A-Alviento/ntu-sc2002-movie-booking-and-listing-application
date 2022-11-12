@@ -7,10 +7,12 @@ import model.Model;
 
 /**
  * Database for models.
- * 
- * @author Min Khant
  */
 public class ModelDatabase extends ObjectLocalDatabase<HashMap<String, ArrayList<Model>>> {
+    /**
+     * List of model keywords. It is expected that you use these to access the
+     * database and that the respective model data type is the same.
+     */
     public static String[] modelKeywords = {
         "booking", "cinema", "cineplexes", "customeraccount", "movie",
         "movieshowtime", "review", "publicholiday"
@@ -29,10 +31,6 @@ public class ModelDatabase extends ObjectLocalDatabase<HashMap<String, ArrayList
         return false;
     }
 
-    /**
-     * Keyword is used to uniquely identify the model database from other databases.
-     * @param   filePath    The path of the database
-     */
     public ModelDatabase(String filePath) {
         super(filePath);
     }
