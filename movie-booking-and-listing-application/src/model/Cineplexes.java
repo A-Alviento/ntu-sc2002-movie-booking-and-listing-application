@@ -1,5 +1,8 @@
 package model;
 
+/**
+ * Represent the cineplex.
+ */
 public class Cineplexes extends Model{
 	public static final long serialVersionUID = 85L;
 

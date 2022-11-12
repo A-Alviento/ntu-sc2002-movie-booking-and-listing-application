@@ -1,22 +1,19 @@
 package model;
-/**
- * Represents a customer Account stored in the db
- */
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
+/**
+ * Represents a customer Account stored in the database.
+ */
 public class CustomerAccount extends Account {
     
 	public static final long serialVersionUID = 73L;
 
 	static Scanner sc = new Scanner(System.in);
-	/**
-	 * Name and password variables to be inherited from Account class
-	 */
 	
 	/**
-	 * Cusomter's email 
+	 * Customer's email 
 	 */
 	private String email;
 	/**
@@ -28,7 +25,7 @@ public class CustomerAccount extends Account {
 	 */
 	private int age;
 	/**
-	 * Cusotmer's list of past bookings
+	 * Customer's list of past bookings
 	 */
 	private ArrayList<Booking> bookingList;
 	
@@ -42,7 +39,7 @@ public class CustomerAccount extends Account {
 		bookingList = new ArrayList<Booking>();
 	}
 	/**
-	 *  constructor for a customer account
+	 *  Constructor for a customer account
 	 */
 	public CustomerAccount(String name, String email, String phoneNum, String password, int age ) {
 		this.name = name;
@@ -75,11 +72,9 @@ public class CustomerAccount extends Account {
 	/**
 	* Setter for customer Name
 	*/ 
-	
 	public void setName(String name) {
 		this.name = name;
 	}
-	
 
 	public void addBooking(int[] seat, double price, String movieTitle, String cinemaCode, Cinema cinema) {
 		Booking temp = new Booking( seat,  price,  movieTitle,  cinemaCode, cinema);
@@ -89,6 +84,7 @@ public class CustomerAccount extends Account {
 	public ArrayList<Booking> getBookingList() {
 		return this.bookingList;
 	}
+
 	/**
 	 * Get phone number of the account
 	 * @return customer's phone number
@@ -128,30 +124,32 @@ public class CustomerAccount extends Account {
 	public int getAge() {
 		return age;
 	}	
+
 	/**
-	* Setter for customer phone number
-	*/
+	 * Setter for customer phone number
+	 */
 	public void setPhoneNum(String phoneNum) {
 		this.phoneNum = phoneNum;
 	}
+
 	/**
-	* Setter for customer age
-	*/
+	 * Setter for customer age
+	 */
 	public void setAge(int age) {
 		this.age = age;
 	}
+
 	/**
-	* Setter for customer email
-	*/
+	 * Setter for customer email
+	 */
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 	/**
-	* Setter for customer password
-	*/
+	 * Setter for customer password
+	 */
 	public void setPassword(String pw) {
 		password = pw;
 	}
-	
-
 }

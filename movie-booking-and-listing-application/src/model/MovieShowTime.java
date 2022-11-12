@@ -1,18 +1,26 @@
 package model;
+
 import java.util.ArrayList;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+/**
+ * Each movie can have different movie show times at different cinemas at
+ * different times.
+ */
 public class MovieShowTime extends Model{
+	public static final long serialVersionUID = 513L;
+
 	private Cinema cinema;
 	private ArrayList<Booking> Bookings;
 	LocalDate movieDate;
 	LocalTime movieTime;
 	boolean is3D = false;
 	
-	
-	//Use either LocalTime.of(6,30) or LocalTime.parse("06:30") for local time
-	//Use either LocalDate.of(2022,12,25) or LocalDate.parse("2022-12-25")
+	/**
+	 * Use either LocalTime.of(6,30) or LocalTime.parse("06:30") for local time
+	 * Use either LocalDate.of(2022,12,25) or LocalDate.parse("2022-12-25")
+	 */
 	public MovieShowTime(LocalDate showDate, LocalTime showTime) {
 		this.movieDate = showDate;
 		this.movieTime = showTime;
@@ -61,7 +69,4 @@ public class MovieShowTime extends Model{
 	public void setMovieDate(LocalDate movieDate) {
 		this.movieDate = movieDate;
 	}
-	
-	
-	
 }

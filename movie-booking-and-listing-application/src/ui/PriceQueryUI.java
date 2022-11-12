@@ -31,31 +31,31 @@ public class PriceQueryUI {
 					System.out.println("Base Price is " + PriceUtil.getBasePrice() +"\n");
 					break;
 				case 2: 
-					System.out.println("Bronze Cinema Multipler is " + PriceUtil.getBronzeCinemaMultipler() +"\n");
+					System.out.println("Bronze Cinema Multipler is " + PriceUtil.getBronzeCinemaMultiplier() +"\n");
 					break;
 				case 3:
-					System.out.println("Silver Cinema Multipler is " + PriceUtil.getSilverCinemaMultipler() +"\n");
+					System.out.println("Silver Cinema Multipler is " + PriceUtil.getSilverCinemaMultiplier() +"\n");
 					break;
 				case 4:
-					System.out.println("Gold Cinema Multipler is " + PriceUtil.getGoldCinemaMultipler() +"\n");
+					System.out.println("Gold Cinema Multipler is " + PriceUtil.getGoldCinemaMultiplier() +"\n");
 					break;
 				case 5:
-					System.out.println("Blockbuster Multipler is " + PriceUtil.getBlockbusterMultipler() +"\n");
+					System.out.println("Blockbuster Multipler is " + PriceUtil.getBlockbusterMultiplier() +"\n");
 					break;
 				case 6:
-					System.out.println("Movie in 3D Multipler is " + PriceUtil.getMovie3DMultipler() +"\n");
+					System.out.println("Movie in 3D Multipler is " + PriceUtil.getMovie3DMultiplier() +"\n");
 					break;
 				case 7:
-					System.out.println("Weekend Multipler is " + PriceUtil.getWeekendMultipler() +"\n");
+					System.out.println("Weekend Multipler is " + PriceUtil.getWeekendMultiplier() +"\n");
 					break;
 				case 8:
-					System.out.println("Public Holiday Multipler is " + PriceUtil.getPublicHolidayMultipler()+"\n" );
+					System.out.println("Public Holiday Multipler is " + PriceUtil.getPublicHolidayMultiplier()+"\n" );
 					break;
 				case 9:
-					System.out.println("Student Multipler is " + PriceUtil.getStudentMultipler() +"\n");
+					System.out.println("Student Multipler is " + PriceUtil.getStudentMultiplier() +"\n");
 					break;
 				case 10:
-					System.out.println("Elderly Multipler is " + PriceUtil.getElderlyMultipler() +"\n");
+					System.out.println("Elderly Multipler is " + PriceUtil.getElderlyMultiplier() +"\n");
 					break;
 				case 11: 
 					return;

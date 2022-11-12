@@ -1,14 +1,12 @@
 package model;
 
-/**
- * Payment Utility are methods used for a customer to purchase a movie ticket.  
- */
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.LocalDateTime;
 
-
+/**
+ * Payment utility contains methods used for a customer to purchase a movie ticket.  
+ */
 public class PaymentUtil {
-
 	/**
 	 * Generate the date in the correct format for only this class to use
 	 * @return date formatted in the way transaction ID needs it to be
@@ -27,5 +25,4 @@ public class PaymentUtil {
 	public static String generateTID(String cinemaCode) {
 		return cinemaCode+formattedDate();
 	}
-	
 }

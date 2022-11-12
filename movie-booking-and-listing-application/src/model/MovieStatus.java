@@ -1,7 +1,7 @@
 package model;
 
 /**
- *  Represents 4 different movie status a movie can have. 
+ *  Enumerator to represents 4 different movie status a movie can have. 
  */
 public enum MovieStatus {
 	COMING_SOON("Coming Soon"),
@@ -18,7 +18,6 @@ public enum MovieStatus {
 		this.movieStatus = movieStatus;
 	}
 	
-	
 	/**
 	 * To format the constants into a string
 	 * @return movie's status
@@ -27,5 +26,4 @@ public enum MovieStatus {
 	public String toString() {
 		return movieStatus;
 	}
-						
 }

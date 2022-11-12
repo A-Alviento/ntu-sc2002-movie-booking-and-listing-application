@@ -1,14 +1,18 @@
 package model;
 import java.time.LocalDate;
 
+/**
+ * Represents the booking for a movie show time that a customer account can make.
+ */
 public class Booking extends Model{
 	public static final long serialVersionUID = 711L;
+
 	private int[] seat = new int[2];
 	private double price;
 	private LocalDate date;	
 	private String cinemaCode;
 	private String movieTitle;
-	private String transectionID = "";
+	private String transactionID = "";
 	private Cinema cinema;
 	
 	public Booking(int[] seat, double price, String movieTitle, String cinemaCode, Cinema cinema) {
@@ -17,16 +21,16 @@ public class Booking extends Model{
 		this.date = LocalDate.now();
 		this.movieTitle = movieTitle;
 		this.cinemaCode = cinemaCode;
-		transectionID = createTransectionID();
+		transactionID = createTransactionID();
 		this.cinema = cinema;
 	}
 	
-	private String createTransectionID() {
+	private String createTransactionID() {
 		return PaymentUtil.generateTID(cinemaCode);
 	}
 	
-	public String getTransectionID() {
-		return transectionID;
+	public String getTransactionID() {
+		return transactionID;
 	}
 	
 	public LocalDate getBookingDate() {
@@ -72,5 +76,4 @@ public class Booking extends Model{
 	public Cinema getCinema() {
 	    return this.cinema;
 	}
-	
 }

@@ -3,12 +3,8 @@ package ui;
 import java.time.LocalDate;
 import java.util.Scanner;
 
-import model.PublicHolidays;
-
 /**
- * Serves as logic controller for admins 
- * to modify configuarations
- * 
+ * Serves as logic controller for admins to modify configurations.
  */
 public class ConfigController {
     

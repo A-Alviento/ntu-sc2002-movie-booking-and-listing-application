@@ -1,14 +1,13 @@
 package model;
 
-/**
- *  A utility function used by the Price Class to check if a date is public holiday or weekend
- *  to determine the pricing.
- */
-
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+/**
+ *  Helper class used by the Price Class to check if a date is public holiday or weekend
+ *  to determine the pricing.
+ */
 public class CheckDate {
 	/**
 	 * Check if a date is weekend
@@ -38,7 +37,6 @@ public class CheckDate {
 	** LocalDate.of(2022,11,3) is how to create a LocalDate
 	** Alternatively, LocalDate.parse("2022-11-3") also works
 	*/
-	
 	public static boolean isFriday(LocalDate date) {
 	    if(date.getDayOfWeek() == DayOfWeek.FRIDAY)
 	        return true;

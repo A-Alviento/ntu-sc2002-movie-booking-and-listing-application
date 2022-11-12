@@ -1,7 +1,7 @@
 package model;
 
 /**
- * Represent a review that a customer can make
+ * Represent a review that a customer can make.
  */
 public class Review extends Model{
 	public static final long serialVersionUID = 53L;
@@ -32,6 +32,7 @@ public class Review extends Model{
 	public String getComment() {
 		return comment;
 	}
+
 	/**
 	 * Get rating of a review
 	 * @return rating review's rating

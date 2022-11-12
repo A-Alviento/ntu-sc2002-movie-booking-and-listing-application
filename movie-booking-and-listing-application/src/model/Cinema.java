@@ -1,4 +1,8 @@
 package model;
+
+/**
+ * Represents the cinema in a cineplex.
+ */
 public class Cinema extends Model {
 	public static final long serialVersionUID = 26L;
 
@@ -65,6 +69,4 @@ public class Cinema extends Model {
 //			default: System.out.println("You have entered an invalid cinema Class.");break;
 //		}
 //	}
-	
-
 }

@@ -1,13 +1,12 @@
 package model;
 
-/**
- * Represents list of Public Holidays to be stored in a database
- */
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import java.time.LocalDate;
-
+/**
+ * Represents list of public holidays to be stored in a database.
+ */
 public class PublicHolidays extends Model {
 	public static final long serialVersionUID = 91L;
 
@@ -39,7 +38,7 @@ public class PublicHolidays extends Model {
 		return publicHolidayList;
 	}
 	
-		/**
+	/**
 	 * Remove public holidays from the list.
 	 * @return  int 0 - if Entered date is not in the list
 	 * 			int 1 - if entered date is removed.
@@ -56,5 +55,4 @@ public class PublicHolidays extends Model {
 		}
 		return 0;
 	}
-	
 }

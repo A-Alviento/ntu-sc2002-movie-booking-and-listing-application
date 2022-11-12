@@ -1,18 +1,19 @@
 package model;
+
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Iterator;
+
+
 /**
  * Represents a movie in the database. 
  * Each movie has 10 attributes: title, director, casts (array), reviews (array), synopsis, 
  * 							    rating, movieStatus (enum), censorship (enum), isBlockbuster (bool),
  * 								ticketSale and ShowTimes(array).
- * 
  */
-import java.util.ArrayList;
-import java.time.LocalDateTime;
-import java.util.Iterator;
-
-
 public class Movie extends Model{
 	public static final long serialVersionUID = 67L;
+
 	/**
 	 * Movie Title
 	 */
@@ -62,14 +63,11 @@ public class Movie extends Model{
 	 * Number of ticket sales the movie has made
 	 */
 	private int ticketSale = 0;
+
 	/**
 	 * List of when movie is shown
 	 */
 	private ArrayList<MovieShowTime> movieShowTimes = new ArrayList<MovieShowTime>();
-	
-	
-	
-	
 	
 	/**
 	 * Creates a new Movie with a title
@@ -81,6 +79,7 @@ public class Movie extends Model{
 		this.reviews = new ArrayList<Review>();
 		this.casts = new ArrayList<String>();
 	}
+
 	/**
 	 * Gets the ticketSale
 	 * @return ticketSale number of tickets sold by the movie
@@ -150,6 +149,7 @@ public class Movie extends Model{
 	 */
 	public void setBlockbuster(boolean isBlockbuster) {
 		this.isBlockbuster = isBlockbuster;
+
 	}
 	/**
 	 * Add reviews to the movie by customers
@@ -184,7 +184,6 @@ public class Movie extends Model{
 		rating = totalRating/count;
 	}
 	
-	
 	/**
 	 *  Get the Rating of the movie in string format
 	 *  @return A string with contains the rating of the movie
@@ -198,7 +197,6 @@ public class Movie extends Model{
 		}
 	}
 	
-
 	/**
 	 * Gets the reviews of the movie in an array
 	 * @return Array of the reviews of the movie
@@ -262,6 +260,7 @@ public class Movie extends Model{
 	public boolean isBlockbuster() {
 		return isBlockbuster;
 	}
+
 	/**
 	 * Get list of when movie is shown to be displayed to user
 	 * @return movieShowTimes
@@ -269,6 +268,7 @@ public class Movie extends Model{
 	public ArrayList<MovieShowTime> getMovieShowTimes() {
 		return movieShowTimes;
 	}
+
 	/**
 	 * Set movieShowTime
 	 * @param ArrayList of movieShowTimes
@@ -276,6 +276,7 @@ public class Movie extends Model{
 	public void setMovieShowTimes(ArrayList<MovieShowTime> movieShowTimes) {
 		this.movieShowTimes = movieShowTimes;
 	}
+
 	/**
 	 * Automatically delete movies if their showTime has passed the current time and date
 	 */
@@ -298,6 +299,4 @@ public class Movie extends Model{
 		this.movieShowTimes.add(0,movieShowTime);
 		updateMovieShowTime();
 	}
-
 }
-

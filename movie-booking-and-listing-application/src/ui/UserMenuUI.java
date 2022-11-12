@@ -104,7 +104,7 @@ public class UserMenuUI {
                     for (int i = 1; i <= numBook; i++) {
                         System.out.println("Booking " + i + ": " + mC.currAcc.getBookingList().get(i-1).getMovieTitle() 
                                 + "| Cinema: " + mC.currAcc.getBookingList().get(i-1).getCinemaCode() + "| Transaction ID: " 
-                                + mC.currAcc.getBookingList().get(i-1).getTransectionID() + "| Date/Time: " 
+                                + mC.currAcc.getBookingList().get(i-1).getTransactionID() + "| Date/Time: " 
                                 + mC.currAcc.getBookingList().get(i-1).getBookingDate());
                     }
                     

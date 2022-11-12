@@ -1,21 +1,24 @@
 package model;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+
 /**
- * This class is a static class whose role is to calculate the price of the movie ticket.
+ * Helper class to calculate the price of the movie ticket.
  */
 public final class PriceUtil {
 	/**
 	 * Default constructor to prevent any object to be created using this class 
 	 */
 	private PriceUtil() {};
+
 	/**
 	 * Current GST
 	 */
 	private static double gst = 1.07;
 	/**
-	 * Used as a temp varible to store price
+	 * Used as a temp variable to store price
 	 */
 	private static double price = 0.0;
 	/**
@@ -63,37 +66,37 @@ public final class PriceUtil {
 	/**
 	 * Getter for bronze cinema multiplier
 	 */
-	public static double getBronzeCinemaMultipler() {
+	public static double getBronzeCinemaMultiplier() {
 		return bronzeCinemaMultiplier;
 	}
 	/**
 	 * Setter for bronze cinema multiplier
 	 */
-	public static void setBronzeCinemaMultipler(double multiplier) {
+	public static void setBronzeCinemaMultiplier(double multiplier) {
 		bronzeCinemaMultiplier = multiplier;
 	}
 	/**
 	 * Getter for silver cinema multiplier
 	 */
-	public static double getSilverCinemaMultipler() {
+	public static double getSilverCinemaMultiplier() {
 		return silverCinemaMultiplier;
 	}
 	/**
 	 * Setter for silver cinema multiplier
 	 */
-	public static void setSilverCinemaMultipler(double multiplier) {
+	public static void setSilverCinemaMultiplier(double multiplier) {
 		silverCinemaMultiplier = multiplier;
 	}
 	/**
 	 * Getter for gold cinema multiplier
 	 */
-	public static double getGoldCinemaMultipler() {
+	public static double getGoldCinemaMultiplier() {
 		return goldCinemaMultiplier;
 	}
 	/**
 	 * Setter for gold cinema multiplier
 	 */
-	public static void setGoldCinemaMultipler(double multiplier) {
+	public static void setGoldCinemaMultiplier(double multiplier) {
 		goldCinemaMultiplier = multiplier;
 	}
 	/**
@@ -107,25 +110,25 @@ public final class PriceUtil {
 	/**
 	 * Getter for blockbuster multiplier
 	 */
-	public static double getBlockbusterMultipler() {
+	public static double getBlockbusterMultiplier() {
 		return blockbusterMultiplier;
 	}
 	/**
 	 * Setter for blockbuster multiplier
 	 */
-	public static void setBlockbusterMultipler(double multiplier) {
+	public static void setBlockbusterMultiplier(double multiplier) {
 		blockbusterMultiplier = multiplier;
 	}
 	/**
 	 * Getter for 3D Movie multiplier
 	 */
-	public static double getMovie3DMultipler() {
+	public static double getMovie3DMultiplier() {
 		return movie3DMultiplier;
 	}
 	/**
 	 * Setter for 3D Movie multiplier
 	 */
-	public static void setMovie3DMultipler(double multiplier) {
+	public static void setMovie3DMultiplier(double multiplier) {
 		movie3DMultiplier = multiplier;
 	}
 	
@@ -137,62 +140,62 @@ public final class PriceUtil {
 	/**
 	 * Movie multiplier for public Holiday. So when it is a public holiday, movie is more expensive.
 	 */
-	private static double publicHolidayMultipler = 2.0;
+	private static double publicHolidayMultiplier = 2.0;
 	/**
 	 * Get Weekend Multiplier
 	 */
-	public static double getWeekendMultipler() {
+	public static double getWeekendMultiplier() {
 		return weekendMultiplier;
 	}
 	/**
 	 * Setter for weekend multiplier
 	 */
-	public static void setWeekendMultipler(double multiplier) {
+	public static void setWeekendMultiplier(double multiplier) {
 		weekendMultiplier = multiplier;
 	}
 	/**
 	 * Get public holiday Multiplier
 	 */
-	public static double getPublicHolidayMultipler() {
-		return publicHolidayMultipler;
+	public static double getPublicHolidayMultiplier() {
+		return publicHolidayMultiplier;
 	}
 	/**
 	 * Setter for public holiday multiplier
 	 */
-	public static void setPublicHolidayMultipler(double multiplier) {
-		publicHolidayMultipler = multiplier;
+	public static void setPublicHolidayMultiplier(double multiplier) {
+		publicHolidayMultiplier = multiplier;
 	}	
 	/**
 	 * Student Multiplier (cheaper if customer is student)
 	 */
-	private static double studentMultipler = 0.8;
+	private static double studentMultiplier = 0.8;
 	/**
 	 * Multiplier for Elderly (cheaper if customer is elderly)
 	 */
-	private static double elderlyMultuipler = 0.65;
+	private static double elderlyMultiplier = 0.65;
 	/**
 	 * Student Multiplier getter
 	 */
-	public static double getStudentMultipler() {
-		return studentMultipler;
+	public static double getStudentMultiplier() {
+		return studentMultiplier;
 	}
 	/**
 	 * Student Multiplier setter
 	 */
-	public static void setStudentMultipler(double multiplier) {
-		studentMultipler = multiplier;
+	public static void setStudentMultiplier(double multiplier) {
+		studentMultiplier = multiplier;
 	}	
 	/**
 	 * Elderly Multiplier getter
 	 */
-	public static double getElderlyMultipler() {
-		return elderlyMultuipler;
+	public static double getElderlyMultiplier() {
+		return elderlyMultiplier;
 	}
 	/**
 	 * Elderly Multiplier setter
 	 */
-	public static void setElderlyMultipler(double multiplier) {
-		elderlyMultuipler = multiplier;
+	public static void setElderlyMultiplier(double multiplier) {
+		elderlyMultiplier = multiplier;
 	}
 
 	/**
@@ -225,12 +228,13 @@ public final class PriceUtil {
 		return (time.getHour() >= 18);
 	}
 	/**
-	 * A private function that takes the movie price and modifiy it with time of movie and date of movie and the customer age and cinema class.
+	 * A private function that takes the movie price and modify it with time of
+	 * movie and date of movie and the customer age and cinema class.
 	 */
 	private static void updatePrice(LocalDate date, LocalTime time, int age, boolean is3D, CinemaClass cinemaClass, boolean isBlockbuster, ArrayList<LocalDate> publicHolidayList) {
 		movieBasePrice(is3D, cinemaClass, isBlockbuster);
 		if(CheckDate.isPublicHoliday(date, publicHolidayList)) {
-			price *= publicHolidayMultipler;
+			price *= publicHolidayMultiplier;
 			return;
 		}
 		
@@ -245,19 +249,21 @@ public final class PriceUtil {
 		//weekday and before 6pm 
 		Age ageCategory = CheckAge.checkAgeCategory(age);
 		if(ageCategory == Age.STUDENT) {
-			price *= studentMultipler; 
+			price *= studentMultiplier; 
 			return;
 		}else if (ageCategory == Age.ELDERLY) {
-			price *= elderlyMultuipler;
+			price *= elderlyMultiplier;
 			return;
 		}
 	}
+
 	/**
 	 * A private function to add the GST at the end.
 	 */
 	private static void addGst() {
 		price *= gst;
 	}
+
 	/**
 	 * A function to give the price of the movie with all the required considerations.
 	 * @return price of the movie for the customer.
@@ -267,5 +273,4 @@ public final class PriceUtil {
 		addGst();
 		return String.format("%.2f", price);
 	}
-	
 }
