@@ -5,15 +5,15 @@ import ui.*;
 * Main entry point into the program.
 */
 public class Main {
-    // Temporary workaround for different project path, if one doesn't work
-    // try the other
+    // EDIT THIS IF YOU RECEIVE A FILE NOT FOUND ERROR
     protected static String MODELDATABASEPATH = "data/modeldatabase.ser";
-    // protected static String MODELDATABASEPATH = "movie-booking-and-listing-application/data/modeldatabase.ser";
 
     protected ModelDatabaseController mdc = null;
     protected AppEntry ae= null;
 
     Main() {
+        System.out.println("Working Directory = " + System.getProperty("user.dir"));
+        System.out.println("^^^USE THIS TO EDIT MODELDATABASEPATH IN Main.java IF YOU RECEIVE FILENOTFOUND EXCEPTION.");
         try {
             this.initializeMain();
 
